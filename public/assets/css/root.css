@@ -1,0 +1,9 @@
+:root {
+    /* Colors */
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray: #808080;
+
+    /* Fonts */
+    --font-default: "Space Grotesk", sans-serif;
+}
