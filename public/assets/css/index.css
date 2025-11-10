@@ -1,0 +1,210 @@
+/* Default styles */
+@import url("default.css");
+
+/* >= 1024px width */
+@media screen and (min-width: 1024px) {
+    body {
+        background-color: var(--color-white);
+    }
+
+    header {
+        height: 100vh;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 5%;
+        position: sticky;
+        top: 0;
+        background-color: var(--color-white);
+    }
+
+    nav .links {
+        display: flex;
+        align-items: center;
+    }
+
+    nav .links ul {
+        display: flex;
+    }
+
+    nav .links li {
+        list-style: none;
+        margin: 0px 10px;
+    }
+
+    nav .links a {
+        text-decoration: none;
+        color: var(--color-black);
+    }
+
+    nav .links a:hover:not(.actions a) {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+    }
+
+    .logo {
+        display: flex;
+    }
+
+    .logo svg {
+        width: 180px;
+        height: auto;
+        margin-right: 30px;
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+    }
+
+    .switch button svg {
+        width: 20px;
+    }
+
+    .switch button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 4px;
+        background-color: transparent;
+        border-radius: 10px;
+        border: none;
+        width: min-content;
+        height: auto;
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+    }
+
+    .actions a {
+        text-decoration: none;
+        color: var(--color-black);
+        padding: 10px 45px;
+        width: min-content;
+        margin: 0px 5px;
+        border: 1px solid var(--color-black);
+        font-weight: medium;
+    }
+
+    /* Login */
+    .actions a:nth-child(1) {
+        border: 1px solid var(--color-black);
+    }
+
+    /* Register */
+    .actions a:nth-child(2) {
+        background-color: var(--color-black);
+        color: var(--color-white);
+    }
+
+    .actions a:nth-child(2):hover {
+        background-color: rgba(0, 0, 0, 0.85);
+        color: var(--color-white);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        margin: 30px 5% 0 0;
+    }
+
+    .title {
+        margin-left: 5%;
+        margin-top: 8%;
+    }
+
+    .title h1 {
+        font-size: 3rem;
+    }
+
+    .title p {
+        font-size: 1.3rem;
+        margin: 16px 0;
+    }
+
+    .title .more {
+        margin-top: 35px;
+        display: flex;
+        align-items: center;
+    }
+
+    .title .more a {
+        display: flex;
+        align-items: center;
+        background-color: var(--color-black);
+        color: var(--color-white);
+        text-decoration: none;
+        font-weight: medium;
+        padding: 18px 65px;
+    }
+
+    .title .more a svg {
+        margin-left: 10px;
+        width: 20px;
+        fill: var(--color-white);
+        transition: 200ms ease-in-out;
+    }
+
+    .title .more a:hover {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .title .more a:hover > svg {
+        transform: translate(5px);
+    }
+
+    .pictures {
+        width: 45vw;
+        height: 85vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 5px 5px;
+        grid-template-areas:
+            "picture-1 picture-1 picture-2"
+            "picture-3 picture-4 picture-4"
+            "picture-3 picture-4 picture-4";
+    }
+
+    .picture-1 {
+        grid-area: picture-1;
+        background-image: url("../images/20210613_172924.jpg");
+        background-size: cover;
+        background-position: center bottom;
+        height: 100%;
+        width: 100%;
+    }
+
+    .picture-2 {
+        grid-area: picture-2;
+        background-image: url("../images/20210524_134649.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    .picture-3 {
+        grid-area: picture-3;
+        background-image: url("../images/IMG_20250111_153532353_HDR.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    .picture-4 {
+        grid-area: picture-4;
+        background-image: url("../images/15553370386470~01-01.jpg");
+        background-size: cover;
+        background-position: center bottom;
+        height: 100%;
+        width: 100%;
+    }
+}
