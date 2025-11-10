@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-br" dir="ltr">
+    <head>
+        <!--HTML Meta Tags-->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Marley de S. Santos" />
+        <meta name="description" content="" />
+        <meta name="kwywords" content="" />
+        <meta
+            name="copyright"
+            content="© 2025 Framing. Todos os direitos reservados."
+        />
+
+        <!--Stylesheet-->
+        <link rel="stylesheet" href="public/assets/css/register.css" />
+
+        <!--Favicon-->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="public/assets/icons/favicon.png"
+        />
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!--Title-->
+        <title>Framing | Cadastro</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="image"></div>
+
+            <!--Register Form-->
+            <form>
+                <div class="logo-container">
+                    <div class="logo">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <svg
+                            width="1024"
+                            height="1024"
+                            viewBox="0 0 1024 1024"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <g>
+                                <rect
+                                    width="1024"
+                                    height="1024"
+                                    fill="#FFFFFF"
+                                    fill-rule="evenodd"
+                                />
+                                <g transform="translate(181 141)">
+                                    <rect
+                                        width="100"
+                                        height="429"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="translate(0 100)"
+                                    />
+                                    <rect
+                                        width="100"
+                                        height="529"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="translate(562 213)"
+                                    />
+                                    <path
+                                        d="M0 0L100 0L100 661.535L0.00012207 661.535L0 0Z"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="matrix(0 1 -1 0 662 0)"
+                                    />
+                                    <rect
+                                        width="137"
+                                        height="137"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="translate(262 302)"
+                                    />
+                                    <path
+                                        d="M0 0L100 0L100 562.001L0 562.001L0 0Z"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="matrix(0 -1 1 0 0 742)"
+                                    />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <h2>Cadastre-se</h2>
+                </div>
+
+                <div class="name">
+                    <div class="inputs">
+                        <label for="input_first_name">Nome</label>
+                        <input
+                            type="text"
+                            placeholder="Digite seu nome"
+                            required
+                            id="input_first_name"
+                        />
+                    </div>
+
+                    <div class="inputs">
+                        <label for="input_lastname">Sobrenome</label>
+                        <input
+                            type="text"
+                            placeholder="Digite seu sobrenome"
+                            required
+                            id="input_lastname"
+                        />
+                    </div>
+                </div>
+
+                <div class="inputs">
+                    <label for="input_email">E-mail</label>
+                    <input
+                        type="email"
+                        id="input_email"
+                        placeholder="seu.email@exemplo.com"
+                        required
+                        autocomplete="email"
+                    />
+                </div>
+
+                <div class="inputs">
+                    <label for="input_password">Senha</label>
+                    <input
+                        type="password"
+                        id="input_password"
+                        placeholder="* * * * * * *"
+                        required
+                    />
+                </div>
+
+                <div class="inputs">
+                    <label for="input_password_confirm">Confirmar senha</label>
+                    <input
+                        type="password"
+                        id="input_password_confirm"
+                        placeholder="* * * * * * *"
+                        required
+                    />
+                </div>
+
+                <div id="messages">
+                    Senha e confirmação de senha devem ser iguais
+                </div>
+
+                <div class="inputs">
+                    <button onclick="validate()">Cadastre-se</button>
+                </div>
+
+                <div class="more">
+                    <div class="link-container">
+                        <span>Já possui cadastro?</span>
+                        <a href="login.html">Faça login</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

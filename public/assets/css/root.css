@@ -2,7 +2,9 @@
     /* Colors */
     --color-black: #000000;
     --color-white: #ffffff;
-    --color-gray: #808080;
+    --color-gray: #eeeeee;
+    --color-opaque: rgba(0, 0, 0, 0.9);
+    --color-danger: #ff0000;
 
     /* Fonts */
     --font-default: "Space Grotesk", sans-serif;
