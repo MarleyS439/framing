@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="pt-br" dir="ltr">
+    <head>
+        <!--HTML Meta Tags-->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Marley de S. Santos" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta
+            name="copyright"
+            content="© 2025 Framing. Todos os direitos reservados."
+        />
+
+        <!--Stylesheet-->
+        <link rel="stylesheet" href="assets/css/register.css" />
+
+        <!--Favicon-->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="assets/icons/favicon.png"
+        />
+
+        <!--Google Fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!--Title-->
+        <title>Framing | Cadastro</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="image"></div>
+
+            <!--Register Form-->
+            <form>
+                <div class="logo-container">
+                    <div class="logo">
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <svg
+                            width="1024"
+                            height="1024"
+                            viewBox="0 0 1024 1024"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <g>
+                                <rect
+                                    width="1024"
+                                    height="1024"
+                                    fill="#FFFFFF"
+                                    fill-rule="evenodd"
+                                />
+                                <g transform="translate(181 141)">
+                                    <rect
+                                        width="100"
+                                        height="429"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="translate(0 100)"
+                                    />
+                                    <rect
+                                        width="100"
+                                        height="529"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="translate(562 213)"
+                                    />
+                                    <path
+                                        d="M0 0L100 0L100 661.535L0.00012207 661.535L0 0Z"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="matrix(0 1 -1 0 662 0)"
+                                    />
+                                    <rect
+                                        width="137"
+                                        height="137"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="translate(262 302)"
+                                    />
+                                    <path
+                                        d="M0 0L100 0L100 562.001L0 562.001L0 0Z"
+                                        fill="#000000"
+                                        fill-rule="evenodd"
+                                        transform="matrix(0 -1 1 0 0 742)"
+                                    />
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <h2>Cadastre-se</h2>
+                </div>
+
+                <div class="name">
+                    <div class="inputs">
+                        <label for="input_first_name">Nome</label>
+                        <input
+                            type="text"
+                            placeholder="Digite seu nome"
+                            required
+                            id="input_first_name"
+                            oninput="validarNome()"
+                            onblur="validarNome()"
+                            maxlength="45"
+                            value="Marley"
+                        />
+                    </div>
+
+                    <div class="inputs">
+                        <label for="input_lastname">Sobrenome</label>
+                        <input
+                            type="text"
+                            placeholder="Digite seu sobrenome"
+                            required
+                            id="input_lastname"
+                            oninput="validarSobrenome()"
+                            onblur="validarSobrenome()"
+                            value="Santos"
+                        />
+                    </div>
+                </div>
+
+                <div class="inputs">
+                    <label for="input_email">E-mail</label>
+                    <input
+                        type="email"
+                        id="input_email"
+                        placeholder="seu.email@exemplo.com"
+                        required
+                        autocomplete="email"
+                        oninput="validarEmail()"
+                        onblur="validarEmail()"
+                        value="marleysantos439@gmail.com"
+                    />
+                </div>
+
+                <div class="inputs">
+                    <label for="input_password">Senha</label>
+                    <input
+                        type="password"
+                        id="input_password"
+                        placeholder="* * * * * * *"
+                        required
+                        oninput="validarSenha()"
+                        onblur="validarSenha()"
+                    />
+                </div>
+
+                <div class="inputs">
+                    <label for="input_password_confirm">Confirmar senha</label>
+                    <input
+                        type="password"
+                        id="input_password_confirm"
+                        placeholder="* * * * * * *"
+                        required
+                        oninput="validarConfirmarSenha()"
+                        onblur="validarConfirmarSenha()"
+                    />
+                </div>
+
+                <div id="messages"></div>
+
+                <div class="inputs">
+                    <button type="submit" onclick="cadastrar()" id="btn">
+                        Cadastre-se
+                    </button>
+                </div>
+
+                <div class="more">
+                    <div class="link-container">
+                        <span>Já possui cadastro?</span>
+                        <a href="login.html">Faça login</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--Generate Username-->
+        <script src="./assets/javascript/generateUsername.js"></script>
+
+        <!--Validations and register-->
+        <script>
+            var mensagem = document.getElementById("messages");
+
+            var button = document.getElementById("btn");
+
+            var nomeInput = document.getElementById("input_first_name");
+            var sobrenomeInput = document.getElementById("input_lastname");
+            var emailInput = document.getElementById("input_email");
+            var senhaInput = document.getElementById("input_password");
+            var confirmarSenhaInput = document.getElementById(
+                "input_password_confirm",
+            );
+
+            // Exibir erro
+            function exibirErro(erro, campo) {
+                campo.style.outline = "1px solid var(--color-danger)";
+                mensagem.innerHTML = `
+                <div>
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg
+                        fill="#000000"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g>
+                            <path
+                                d="M10,1a9,9,0,1,0,9,9A9,9,0,0,0,10,1Zm0,16.4A7.4,7.4,0,1,1,17.4,10,7.41,7.41,0,0,1,10,17.4ZM13.29,5.29,10,8.59,6.71,5.29,5.29,6.71,8.59,10l-3.3,3.29,1.42,1.42L10,11.41l3.29,3.3,1.42-1.42L11.41,10l3.3-3.29Z"
+                                style="fill: rgb(255, 0, 0)"
+                            />
+                        </g>
+                    </svg>
+                </div>
+                <span>${erro}</span>
+                `;
+            }
+
+            // Exibir sucesso
+            function exibirSucesso(campo) {
+                campo.style.outline = "1px solid var(--color-success)";
+                mensagem.innerHTML = "";
+            }
+
+            // Validar Nome
+            function validarNome() {
+                var nomeVar = nomeInput.value.trim();
+                if (nomeVar.length < 3) {
+                    nomeInput.style.outline = "1px solid var(--color-danger)";
+                    erro = "Nome deve ter pelo menos 3 caracteres";
+                    button.disabled = true;
+                } else {
+                    exibirSucesso(nomeInput);
+                    button.disabled = false;
+                }
+            }
+
+            // Valida Sobrenome
+            function validarSobrenome() {
+                var sobrenomeVar = sobrenomeInput.value.trim();
+                if (sobrenomeVar == "") {
+                    exibirErro("Sobrenome deve ser preenchido", sobrenomeInput);
+                } else if (sobrenomeVar.length < 2) {
+                    exibirErro(
+                        "Sobrenome deve ter pelo menos 2 caracteres",
+                        sobrenomeInput,
+                    );
+                    button.disabled = true;
+                } else {
+                    exibirSucesso(sobrenomeInput);
+                    button.disabled = false;
+                }
+            }
+
+            // Validar E-mail
+            function validarEmail() {
+                var emailVar = emailInput.value.trim();
+                if (
+                    !emailVar.includes("@") ||
+                    !emailVar.includes(".com") ||
+                    emailVar.includes(" ") ||
+                    emailVar == " "
+                ) {
+                    emailInput.value = emailVar.toLowerCase();
+                    exibirErro("E-mail inválido", emailInput);
+                    button.disabled = true;
+                } else {
+                    emailInput.value = emailVar.toLowerCase();
+                    exibirSucesso(emailInput);
+                    button.disabled = false;
+                }
+            }
+
+            function validarSenha() {
+                var senhaVar = senhaInput.value;
+
+                if (senhaVar.length < 8) {
+                    exibirErro(
+                        "Senha deve ter pelo menos 8 caracteres",
+                        senhaInput,
+                    );
+                    button.disabled = true;
+                } else {
+                    exibirSucesso(senhaInput);
+                    button.disabled = false;
+                }
+            }
+
+            function validarConfirmarSenha() {
+                var senhaVar = senhaInput.value;
+                var confirmarSenhaVar = confirmarSenhaInput.value;
+
+                if (senhaVar != confirmarSenhaVar || confirmarSenhaVar == "") {
+                    exibirErro("Senhas não conferem", confirmarSenhaInput);
+                    button.disabled = true;
+                } else {
+                    exibirSucesso(confirmarSenhaInput);
+                    button.disabled = false;
+                }
+            }
+
+            // Função cadastrar
+            function cadastrar() {
+                var nomeVar = nomeInput.value;
+                var sobrenomeVar = sobrenomeInput.value;
+                var emailVar = emailInput.value;
+                var senhaVar = senhaInput.value;
+                var confirmarSenhaVar = confirmarSenhaInput.value;
+
+                if (
+                    nomeVar == "" &&
+                    sobrenomeVar == "" &&
+                    emailVar == "" &&
+                    senhaVar == "" &&
+                    confirmarSenhaVar == ""
+                ) {
+                    exibirErro("Campos não devem ser vazios!", nomeInput);
+                    exibirErro("Campos não devem ser vazios!", sobrenomeInput);
+                    exibirErro("Campos não devem ser vazios!", emailInput);
+                    exibirErro("Campos não devem ser vazios!", senhaInput);
+                    exibirErro(
+                        "Campos não devem ser vazios!",
+                        confirmarSenhaInput,
+                    );
+                } else {
+                    var apelidoVar = () => {
+                        var nomeMinusculo = nomeVar.toLowerCase();
+                        var sobrenomeMinusculo = sobrenomeVar.toLowerCase();
+                        var numeroAleatorio = Math.random() * 1000;
+                        return `${nomeMinusculo}${sobrenomeMinusculo}${numeroAleatorio}`;
+                    };
+
+                    fetch("/usuarios/cadastrar", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            apelidoServer: apelidoVar(),
+                            nomeServer: nomeVar,
+                            sobrenomeServer: sobrenomeVar,
+                            emailServer: emailVar,
+                            senhaServer: senhaVar,
+                        }),
+                    })
+                        .then(function (resposta) {
+                            console.log("resposta: ", resposta);
+
+                            if (resposta.ok) {
+                                mensagem.style.color = "var(--color-success)";
+                                var msg =
+                                    "Cadastro realizado com sucesso. Redirecinando...";
+                                mensagem.innerHTML = `
+                              <div>
+                              <?xml version="1.0" encoding="utf-8"?>
+                              <svg fill="#000000" width="800px" height="800px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                <rect id="Icons" x="-512" y="-64" width="1280" height="800" style="fill:none;"/>
+                                <g id="Icons1">
+                                  <g id="Strike"/>
+                                  <g id="H1"/>
+                                  <g id="H2"/>
+                                  <g id="H3"/>
+                                  <g id="list-ul"/>
+                                  <g id="hamburger-1"/>
+                                  <g id="hamburger-2"/>
+                                  <g id="list-ol"/>
+                                  <g id="list-task"/>
+                                  <g id="trash"/>
+                                  <g id="vertical-menu"/>
+                                  <g id="horizontal-menu"/>
+                                  <g id="sidebar-2"/>
+                                  <g id="Pen"/>
+                                  <g id="Pen1"/>
+                                  <g id="clock"/>
+                                  <g id="external-link"/>
+                                  <g id="hr"/>
+                                  <path id="success" d="M56.103,16.824l-33.296,33.297l-14.781,-14.78l2.767,-2.767l11.952,11.952l30.53,-30.53c0.943,0.943 1.886,1.886 2.828,2.828Z" style="fill-rule: nonzero; fill: rgb(26, 170, 85);"/>
+                                  <g id="info"/>
+                                  <g id="warning"/>
+                                  <g id="plus-circle"/>
+                                  <g id="minus-circle"/>
+                                  <g id="vue"/>
+                                  <g id="cog"/>
+                                  <g id="logo"/>
+                                  <g id="radio-check"/>
+                                  <g id="eye-slash"/>
+                                  <g id="eye"/>
+                                  <g id="toggle-off"/>
+                                  <g id="shredder"/>
+                                  <g id="spinner--loading--dots-"/>
+                                  <g id="react"/>
+                                  <g id="check-selected"/>
+                                  <g id="turn-off"/>
+                                  <g id="code-block"/>
+                                  <g id="user"/>
+                                  <g id="coffee-bean"/>
+                                  <g id="coffee-beans">
+                                    <g id="coffee-bean1"/>
+                                  </g>
+                                  <g id="coffee-bean-filled"/>
+                                  <g id="coffee-beans-filled">
+                                    <g id="coffee-bean2"/>
+                                  </g>
+                                  <g id="clipboard"/>
+                                  <g id="clipboard-paste"/>
+                                  <g id="clipboard-copy"/>
+                                  <g id="Layer1"/>
+                                </g>
+                              </svg>
+                              </div>
+                              <span>${msg}</span>
+                              `;
+
+                                setTimeout(() => {
+                                    window.location = "login.html";
+                                }, "2000");
+                            } else {
+                                throw "Houve um erro ao tentar realizar o cadastro!";
+                            }
+                        })
+                        .catch(function (resposta) {
+                            console.log(`#ERRO: ${resposta}`);
+                        });
+
+                    return false;
+                }
+            }
+        </script>
+    </body>
+</html>

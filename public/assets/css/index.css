@@ -207,4 +207,58 @@
         height: 100%;
         width: 100%;
     }
+
+    /* Footer */
+    footer {
+        background-color: var(--color-black);
+        padding: 5%;
+    }
+
+    footer .logo-footer {
+        margin: 0px 0px 100px 0px;
+    }
+
+    footer .logo-footer span {
+        font-size: 1.5rem;
+        color: var(--color-white);
+    }
+
+    footer .about h2 {
+        color: var(--color-white);
+    }
+
+    footer .footer-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    footer .about {
+        margin: 0px 10%;
+    }
+
+    footer .about ul li a {
+        font-weight: normal;
+        color: var(--color-white);
+    }
+
+    footer .about ul li {
+        margin: 20px 0px;
+    }
+
+    .copy {
+        color: var(--color-white);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .copy a {
+        text-decoration: none;
+        color: var(--color-white);
+        margin: 0px 10px;
+    }
+
+    .copy i {
+        font-size: 25px;
+    }
 }

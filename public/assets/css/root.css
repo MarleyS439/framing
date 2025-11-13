@@ -5,6 +5,7 @@
     --color-gray: #eeeeee;
     --color-opaque: rgba(0, 0, 0, 0.9);
     --color-danger: #ff0000;
+    --color-success: rgb(26, 170, 85);
 
     /* Fonts */
     --font-default: "Space Grotesk", sans-serif;
