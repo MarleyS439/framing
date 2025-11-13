@@ -6,21 +6,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content="Marley de S. Santos" />
         <meta name="description" content="" />
-        <meta name="kwywords" content="" />
+        <meta name="keywords" content="" />
         <meta
             name="copyright"
             content="© 2025 Framing. Todos os direitos reservados."
         />
 
         <!--Stylesheet-->
-        <link rel="stylesheet" href="public/assets/css/register.css" />
+        <link rel="stylesheet" href="assets/css/login.css" />
 
         <!--Favicon-->
         <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="public/assets/icons/favicon.png"
+            href="assets/icons/favicon.png"
         />
 
         <!--Google Fonts-->
@@ -32,14 +32,14 @@
         />
 
         <!--Title-->
-        <title>Framing | Cadastro</title>
+        <title>Framing | Login</title>
     </head>
 
     <body>
         <div class="container">
             <div class="image"></div>
 
-            <!--Register Form-->
+            <!--Login Form-->
             <form>
                 <div class="logo-container">
                     <div class="logo">
@@ -96,29 +96,7 @@
                             </g>
                         </svg>
                     </div>
-                    <h2>Cadastre-se</h2>
-                </div>
-
-                <div class="name">
-                    <div class="inputs">
-                        <label for="input_first_name">Nome</label>
-                        <input
-                            type="text"
-                            placeholder="Digite seu nome"
-                            required
-                            id="input_first_name"
-                        />
-                    </div>
-
-                    <div class="inputs">
-                        <label for="input_lastname">Sobrenome</label>
-                        <input
-                            type="text"
-                            placeholder="Digite seu sobrenome"
-                            required
-                            id="input_lastname"
-                        />
-                    </div>
+                    <h2>Login</h2>
                 </div>
 
                 <div class="inputs">
@@ -142,31 +120,39 @@
                     />
                 </div>
 
-                <div class="inputs">
-                    <label for="input_password_confirm">Confirmar senha</label>
-                    <input
-                        type="password"
-                        id="input_password_confirm"
-                        placeholder="* * * * * * *"
-                        required
-                    />
-                </div>
-
                 <div id="messages">
-                    Senha e confirmação de senha devem ser iguais
+                    <div>
+                        <?xml version="1.0" encoding="utf-8"?>
+                        <svg
+                            fill="#000000"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <g>
+                                <path
+                                    d="M10,1a9,9,0,1,0,9,9A9,9,0,0,0,10,1Zm0,16.4A7.4,7.4,0,1,1,17.4,10,7.41,7.41,0,0,1,10,17.4ZM13.29,5.29,10,8.59,6.71,5.29,5.29,6.71,8.59,10l-3.3,3.29,1.42,1.42L10,11.41l3.29,3.3,1.42-1.42L11.41,10l3.3-3.29Z"
+                                    style="fill: rgb(255, 0, 0)"
+                                />
+                            </g>
+                        </svg>
+                    </div>
+                    <span>E-mail ou senha inválidos</span>
                 </div>
 
                 <div class="inputs">
-                    <button onclick="validate()">Cadastre-se</button>
+                    <button id="login">Login</button>
                 </div>
 
                 <div class="more">
                     <div class="link-container">
-                        <span>Já possui cadastro?</span>
-                        <a href="login.html">Faça login</a>
+                        <span>Ainda não possui conta?</span>
+                        <a href="register.html">Cadastre-se</a>
                     </div>
                 </div>
             </form>
         </div>
+
+        <!--Login Validation-->
+        <script src="./public/assets/javascript/login.js"></script>
     </body>
 </html>
