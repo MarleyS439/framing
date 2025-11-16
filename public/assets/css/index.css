@@ -283,7 +283,17 @@
         margin: 0px 10px;
     }
 
+    .copy span a {
+        margin: 0px 4px;
+        text-decoration: underline;
+    }
+
     .copy i {
         font-size: 25px;
+        transition: 180ms ease-in-out;
+    }
+
+    .copy i:hover {
+        opacity: 0.8;
     }
 }

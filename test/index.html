@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Teste de galeria</title>
+    </head>
+    <style>
+        .galeria {
+            columns: 3; /* número de colunas */
+            column-gap: 10px; /* espaço entre colunas */
+        }
+
+        .foto {
+            break-inside: avoid;
+            margin-bottom: 10px;
+        }
+
+        .foto img {
+            width: 100%;
+            display: block;
+            border-radius: 6px;
+        }
+    </style>
+
+    <body>
+        <div class="galeria">
+            <div class="foto">
+                <img src="https://picsum.photos/300/400?1" />
+            </div>
+            <div class="foto">
+                <img src="https://picsum.photos/300/500?2" />
+            </div>
+            <div class="foto">
+                <img src="https://picsum.photos/300/350?3" />
+            </div>
+            <div class="foto">
+                <img src="https://picsum.photos/300/450?4" />
+            </div>
+            <div class="foto">
+                <img src="https://picsum.photos/300/380?5" />
+            </div>
+        </div>
+    </body>
+</html>
