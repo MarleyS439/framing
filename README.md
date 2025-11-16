@@ -55,4 +55,4 @@ Para usufruir deste projeto, você repositório em sua máquina e executar os se
 
 Caso de dúvidas, sugestões de melhorias ou correções, entre em contato:
 
-- [marleysantos439@gmail.com](https://mailto:marleysantos439@gmail.com)
+- [marleysantos439@gmail.com](mailto:marleysantos439@gmail.com)
