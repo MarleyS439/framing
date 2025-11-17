@@ -6,7 +6,7 @@
 
 **Framing** é uma rede social desenvolvida para fotógrafos e entusiatas de fotografia.
 
-Este projeto acadêmico faz parte da disciplina de Pesquisa e Inovação da __São Paulo Tech School__ - [@BandTec](https://github.com/BandTec), do curso de __Ciência da Computação__, 1º semestre.
+Este projeto acadêmico faz parte da disciplina de Pesquisa e Inovação da __São Paulo Tech School__ (SPTECH) - [@BandTec](https://github.com/BandTec), do curso de __Ciência da Computação__, 1º semestre.
 
 O objetivo é oferecer um ambiente minimalista, elegante e focado na exibição de imagens, permitindo que usuários publiquem fotos, explorem conteúdos, sigam outros usuários e interajam por meio de curtidas, comentários e hashtags.
 
