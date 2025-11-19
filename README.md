@@ -13,9 +13,7 @@ O objetivo é oferecer um ambiente minimalista, elegante e focado na exibição 
 ## Funcionalidades
 
 - Cadastro e autenticação de usuários
-- Publicação de posts de imagens com hashtags
 - Feed de imagens
-- Capacidade de seguir usuários
 - Sistema de curtidas e comentários nos posts
 - Exploração de hashtags
 - Upload de imagens para post
@@ -41,7 +39,7 @@ Para usufruir deste projeto, você repositório em sua máquina e executar os se
 
 `npm install`
 
-3. Congigurar as credenciais do banco de dados conforme o `.env.example`
+3. Configurar as credenciais do banco de dados conforme o `.env.example`
 
 4. Executar o servidor web do NodeJS no terminal 
 
