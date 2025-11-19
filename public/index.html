@@ -207,22 +207,37 @@
 
         <!--Main-->
         <main>
-            <!--History-->
-            <section class="history">
-                <div class="image">
-                    <img src="assets/images/primeira-fotografia.png" alt="" />
+            <!--Cards-->
+            <div class="title-more">
+                <h2>Muito mais que um clique</h2>
+            </div>
+
+            <section class="cards">
+                <div class="cards-container">
+                    <div class="items" id="momento">
+                        <span class="title">O Momento</span>
+                        <p>
+                            Fotografar é capturar um instante que não volta. A
+                            imagem congela o irrepetível.
+                        </p>
+                    </div>
+                    <div class="items" id="olhar">
+                        <span class="title">O Olhar</span>
+                        <p>
+                            A foto não mostra o mundo como ele é, mas como o
+                            fotógrafo o interpreta.
+                        </p>
+                    </div>
+                    <div class="items" id="luz">
+                        <span class="title">A Luz</span>
+                        <p>
+                            A luz é a verdadeira autora da fotografia; o
+                            fotógrafo apenas negocia com ela.
+                        </p>
+                    </div>
                 </div>
-                <div class="content">
-                    <h2>Um pouco de História</h2>
-                    <p>
-                        O conceito da fotografia como conhecemos hoje não
-                        começou nesta fase e sim a partir do século XVI. No ano
-                        de 1826, Joseph Nicéphore Niépce capturou a considerada
-                        a primeira fotografia da história que tem registro de
-                        permanência. Chamada de “Vista da Janela de Le Gras”,
-                        com uma placa de betume de Judéia e estanho.
-                    </p>
-                </div>
+
+                <div class="image-container" id="imageAtual"></div>
             </section>
         </main>
 
@@ -339,7 +354,42 @@
             </div>
         </footer>
 
-        <!--Change Theme-->
-        <script src="public/assets/javascript/theme.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                var imgs = [
+                    "assets/images/IMG_20190306_144139_023.jpg",
+                    "assets/images/IMG-20220831-WA0259.jpg",
+                    "assets/images/IMG_20241101_171252352_HDR.jpg",
+                ];
+
+                imageAtual.innerHTML = `<img src="${imgs[0]}" alt="" >`;
+
+                var momento = document.getElementById("momento");
+                momento.style.backgroundColor = "var(--color-gray)";
+                var olhar = document.getElementById("olhar");
+                var luz = document.getElementById("luz");
+
+                momento.addEventListener("click", () => {
+                    imageAtual.innerHTML = `<img src="${imgs[0]}" alt="">`;
+                    momento.style.backgroundColor = "var(--color-gray)";
+                    luz.style.backgroundColor = "var(--color-white)";
+                    olhar.style.backgroundColor = "var(--color-white)";
+                });
+
+                olhar.addEventListener("click", () => {
+                    imageAtual.innerHTML = `<img src="${imgs[1]}" alt="">`;
+                    olhar.style.backgroundColor = "var(--color-gray)";
+                    momento.style.backgroundColor = "var(--color-white)";
+                    luz.style.backgroundColor = "var(--color-white)";
+                });
+
+                luz.addEventListener("click", () => {
+                    imageAtual.innerHTML = `<img src="${imgs[2]}" alt="">`;
+                    luz.style.backgroundColor = "var(--color-gray)";
+                    momento.style.backgroundColor = "var(--color-white)";
+                    olhar.style.backgroundColor = "var(--color-white)";
+                });
+            });
+        </script>
     </body>
 </html>
