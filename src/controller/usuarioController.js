@@ -1,5 +1,38 @@
 var usuarioModel = require("../model/usuarioModel");
 
+function autenticar(req, res) {
+  var email = req.body.emailServer;
+  var senha = req.body.senhaServer;
+
+  if (email == undefined) {
+    res.status(400).send("Seu e-mail está undefined");
+  } else if (senha == undefined) {
+    res.status(400).send("Sua senha está undefined");
+  } else {
+    usuarioModel
+      .autenticar(email, senha)
+      .then(function (resultadoAutenticar) {
+        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`);
+
+        if (resultadoAutenticar.length == 1) {
+          console.log(resultadoAutenticar);
+        } else if (resultadoAutenticar.length == 0) {
+          res.status(400).send("E-mail ou senha inválidos");
+        } else {
+          res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          `\nHouve um erro ao realizar o login. Erro: ${erro.sqlMessage}`,
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
 function cadastrar(req, res) {
   var apelido = req.body.apelidoServer;
   var nome = req.body.nomeServer;
@@ -19,7 +52,12 @@ function cadastrar(req, res) {
   } else if (senha == undefined) {
     res.status(400).send("Senha do usuário está undefined!");
   } else {
-    // Adicionar uma validação para nome de usuário logo acima
+    // usuarioModel.possuiCadastro(email);
+    // if (resultado.length == 1) {
+    //   console.log(resultado);
+    //   res.status(409).send("E-mail já cadastrado!");
+    // }
+
     usuarioModel
       .cadastrar(apelido, nome, sobrenome, email, senha, status)
       .then(function (resultado) {
@@ -38,4 +76,5 @@ function cadastrar(req, res) {
 
 module.exports = {
   cadastrar,
+  autenticar,
 };

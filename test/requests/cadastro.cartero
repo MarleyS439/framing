@@ -1,0 +1,16 @@
+version = 1
+url = "http://localhost:3333/usuarios/cadastrar"
+method = "POST"
+
+[body]
+type = "raw"
+format = "json"
+body = """
+{
+    "nomeServer": "Marley",
+    "sobrenomeServer": "Santos",
+    "emailServer": "marleysantos439@gmail.com",
+    "apelidoServer": "marleysantos43",
+    "senhaServer": "12345678",
+    "statusServer": 1
+}"""

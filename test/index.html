@@ -9,6 +9,7 @@
         .galeria {
             columns: 3; /* número de colunas */
             column-gap: 10px; /* espaço entre colunas */
+            padding: 10%;
         }
 
         .foto {
@@ -24,22 +25,35 @@
     </style>
 
     <body>
-        <div class="galeria">
-            <div class="foto">
-                <img src="https://picsum.photos/300/400?1" />
-            </div>
-            <div class="foto">
-                <img src="https://picsum.photos/300/500?2" />
-            </div>
-            <div class="foto">
-                <img src="https://picsum.photos/300/350?3" />
-            </div>
-            <div class="foto">
-                <img src="https://picsum.photos/300/450?4" />
-            </div>
-            <div class="foto">
-                <img src="https://picsum.photos/300/380?5" />
-            </div>
-        </div>
+        <div class="galeria" id="gallery"></div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const gallery = document.getElementById("gallery");
+
+                var html = "";
+                for (var i = 0; i < 50; i++) {
+                    html += `
+                      <div class="foto">
+                          <img src="https://picsum.photos/300/400?1" />
+                      </div>
+                      <div class="foto">
+                          <img src="https://picsum.photos/300/500?2" />
+                      </div>
+                      <div class="foto">
+                          <img src="https://picsum.photos/300/350?3" />
+                      </div>
+                      <div class="foto">
+                          <img src="https://picsum.photos/300/450?4" />
+                      </div>
+                      <div class="foto">
+                          <img src="https://picsum.photos/300/380?5" />
+                      </div>
+                    `;
+                }
+
+                gallery.innerHTML = html;
+            });
+        </script>
     </body>
 </html>
