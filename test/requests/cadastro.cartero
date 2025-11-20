@@ -7,10 +7,10 @@ type = "raw"
 format = "json"
 body = """
 {
+    "apelidoServer": "marleys439",
     "nomeServer": "Marley",
     "sobrenomeServer": "Santos",
     "emailServer": "marleysantos439@gmail.com",
-    "apelidoServer": "marleysantos43",
-    "senhaServer": "12345678",
+    "senhaServer": "122345678",
     "statusServer": 1
 }"""
