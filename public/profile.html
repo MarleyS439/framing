@@ -353,23 +353,56 @@
                         <label for="input_foto_post"></label>
                     </div>
                 </div>
-                <div>
+                <div class="container-text">
                     <span id="titulo">Título do post</span>
                     <div>
-                        <p></p>
+                        <p id="descricao">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magnam aliquam.
+                        </p>
+                        <div class="hashtags">
+                            <span id="tags"></span>
+                            <span id="autor">@marleysantos439</span>
+                        </div>
                     </div>
 
                     <!--Form-->
                     <form>
-                        <label for="input_titulo">Título</label>
-                        <input
-                            type="text"
-                            max="50"
-                            id="input_titulo"
-                            oninput="titulo()"
-                            onblur="() => {if (preview.innerHTML == '') preview.innerHTML = 'Insira um título'}"
-                        />
+                        <div class="input-post">
+                            <label for="input_titulo">Título</label>
+                            <input
+                                type="text"
+                                max="50"
+                                id="input_titulo"
+                                oninput="titulo()"
+                                onblur="titulo()"
+                                placeholder="Digite o título da postagem"
+                            />
+                        </div>
+                        <div class="input-post">
+                            <label for="input_descricao">Descrição</label>
+                            <textarea
+                                cols="5"
+                                rows="3"
+                                placeholder="Descrição do post"
+                            ></textarea>
+                        </div>
+                        <div class="input-post">
+                            <label for="input_hashtags">Hashtags</label>
+                            <input
+                                type="text"
+                                id="input_hashtags"
+                                placeholder="Separe por espaço"
+                            />
+                        </div>
                     </form>
+                    <div>
+                        <button onclick="hashtags()">Adicionar</button>
+                    </div>
+                    <div>
+                        <button onclick="postar()">Publicar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -456,6 +489,40 @@
                 var conteudo = input.value;
 
                 preview.innerHTML = conteudo;
+            }
+
+            function descricao() {
+                var preview = document.getElementById("descricao");
+                var input = document.getElementById("input");
+            }
+
+            modalPost.style.display = "none";
+
+            var hashtags = [];
+
+            function hashtags() {
+                var preview = document.getElementById("tags");
+
+                var hashtag = document.getElementById("hashtag").value;
+
+                if (hashtag != "") hashtags.push(hashtag);
+
+                for (var i = 0; i < hashtags.length; i++) {
+                    var html = "";
+                    html += `
+                      <span class="tag">${hashtags[i]}</span>
+                    `;
+                }
+
+                preview.innerHTML = html;
+            }
+
+            function postar() {
+                const formData = new formData();
+                formData.append("foto_post", foto.files[0]);
+                formData.append("titulo_post", titulo);
+                formData.append("descricao", descricao);
+                formData.append("hashtags");
             }
         </script>
     </body>

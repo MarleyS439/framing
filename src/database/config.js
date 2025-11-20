@@ -27,7 +27,9 @@ function executar(instrucao) {
     conexao.query(instrucao, function (erro, resultados) {
       conexao.end();
 
-      if (erro) reject(erro);
+      if (erro) {
+        reject(erro);
+      }
       console.log(resultados);
 
       resolve(resultados);

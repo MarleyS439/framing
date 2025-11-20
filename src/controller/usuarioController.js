@@ -17,6 +17,7 @@ function autenticar(req, res) {
 
         if (resultadoAutenticar.length == 1) {
           console.log(resultadoAutenticar);
+          res.json(resultadoAutenticar);
         } else if (resultadoAutenticar.length == 0) {
           res.status(400).send("E-mail ou senha inválidos");
         } else {
@@ -52,12 +53,6 @@ function cadastrar(req, res) {
   } else if (senha == undefined) {
     res.status(400).send("Senha do usuário está undefined!");
   } else {
-    // usuarioModel.possuiCadastro(email);
-    // if (resultado.length == 1) {
-    //   console.log(resultado);
-    //   res.status(409).send("E-mail já cadastrado!");
-    // }
-
     usuarioModel
       .cadastrar(apelido, nome, sobrenome, email, senha, status)
       .then(function (resultado) {
