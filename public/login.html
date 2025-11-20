@@ -107,6 +107,8 @@
                         placeholder="seu.email@exemplo.com"
                         required
                         autocomplete="email"
+                        oninput="validarEmail()"
+                        onblur="validarEmail()"
                     />
                 </div>
 
@@ -117,30 +119,15 @@
                         id="input_password"
                         placeholder="* * * * * * *"
                         required
+                        oninput="validarSenha()"
+                        onblur="validarSenha()"
                     />
                 </div>
 
-                <div id="messages">
-                    <div>
-                        <?xml version="1.0" encoding="utf-8"?>
-                        <svg
-                            fill="#000000"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <g>
-                                <path
-                                    d="M10,1a9,9,0,1,0,9,9A9,9,0,0,0,10,1Zm0,16.4A7.4,7.4,0,1,1,17.4,10,7.41,7.41,0,0,1,10,17.4ZM13.29,5.29,10,8.59,6.71,5.29,5.29,6.71,8.59,10l-3.3,3.29,1.42,1.42L10,11.41l3.29,3.3,1.42-1.42L11.41,10l3.3-3.29Z"
-                                    style="fill: rgb(255, 0, 0)"
-                                />
-                            </g>
-                        </svg>
-                    </div>
-                    <span>E-mail ou senha inválidos</span>
-                </div>
+                <div id="messages"></div>
 
                 <div class="inputs">
-                    <button id="login">Login</button>
+                    <button id="login" onclick="fazerLogin()">Login</button>
                 </div>
 
                 <div class="more">
@@ -152,7 +139,107 @@
             </form>
         </div>
 
-        <!--Login Validation-->
-        <script src="./public/assets/javascript/login.js"></script>
+        <script>
+            var mensagem = document.getElementById("messages");
+            var emailInput = document.getElementById("input_email");
+            var button = document.getElementById("login");
+            var senhaInput = document.getElementById("input_password");
+
+            // Exibir erro
+            function exibirErro(erro, campo) {
+                campo.style.outline = "1px solid var(--color-danger)";
+                mensagem.innerHTML = `
+                <div>
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg
+                        fill="#000000"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g>
+                            <path
+                                d="M10,1a9,9,0,1,0,9,9A9,9,0,0,0,10,1Zm0,16.4A7.4,7.4,0,1,1,17.4,10,7.41,7.41,0,0,1,10,17.4ZM13.29,5.29,10,8.59,6.71,5.29,5.29,6.71,8.59,10l-3.3,3.29,1.42,1.42L10,11.41l3.29,3.3,1.42-1.42L11.41,10l3.3-3.29Z"
+                                style="fill: rgb(255, 0, 0)"
+                            />
+                        </g>
+                    </svg>
+                </div>
+                <span>${erro}</span>
+                `;
+            }
+
+            function validarSenha() {
+                var senhaVar = senhaInput.value;
+
+                if (senhaVar.length < 8) {
+                    exibirErro(
+                        "Senha deve ter pelo menos 8 caracteres",
+                        senhaInput,
+                    );
+                    button.disabled = true;
+                } else {
+                    exibirSucesso(senhaInput);
+                    button.disabled = false;
+                }
+            }
+
+            // Exibir sucesso
+            function exibirSucesso(campo) {
+                campo.style.outline = "1px solid var(--color-success)";
+                mensagem.innerHTML = "";
+            }
+
+            // Validar E-mail
+            function validarEmail() {
+                var emailVar = emailInput.value.trim();
+                if (
+                    !emailVar.includes("@") ||
+                    !emailVar.includes(".com") ||
+                    emailVar.includes(" ") ||
+                    emailVar == " "
+                ) {
+                    emailInput.value = emailVar.toLowerCase();
+                    exibirErro("E-mail inválido", emailInput);
+                    button.disabled = true;
+                } else {
+                    emailInput.value = emailVar.toLowerCase();
+                    exibirSucesso(emailInput);
+                    button.disabled = false;
+                }
+            }
+
+            function fazerLogin() {
+                var emailVar = emailInput.value;
+                var senhaVar = senhaInput.value;
+
+                fetch("/usuarios/autenticar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        emailServer: emailVar,
+                        senhaServer: senhaVar,
+                    }),
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            mensagem.innerHTML = `Login autenticado com sucesso`;
+
+                            setTimeout(() => {
+                                window.location = "profile.html";
+                            }, 2000);
+                        } else {
+                            throw "Erro ao realizar o login";
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log("#Erro", resposta);
+                    });
+                return false;
+            }
+        </script>
     </body>
 </html>

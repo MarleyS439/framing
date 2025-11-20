@@ -111,7 +111,6 @@
                             oninput="validarNome()"
                             onblur="validarNome()"
                             maxlength="45"
-                            value="Marley"
                         />
                     </div>
 
@@ -124,7 +123,6 @@
                             id="input_lastname"
                             oninput="validarSobrenome()"
                             onblur="validarSobrenome()"
-                            value="Santos"
                         />
                     </div>
                 </div>
@@ -139,7 +137,6 @@
                         autocomplete="email"
                         oninput="validarEmail()"
                         onblur="validarEmail()"
-                        value="marleysantos439@gmail.com"
                     />
                 </div>
 
@@ -170,9 +167,7 @@
                 <div id="messages"></div>
 
                 <div class="inputs">
-                    <button type="submit" onclick="cadastrar()" id="btn">
-                        Cadastre-se
-                    </button>
+                    <button type="submit" id="btn">Cadastre-se</button>
                 </div>
 
                 <div class="more">
@@ -307,6 +302,10 @@
                 }
             }
 
+            button.addEventListener("click", () => {
+                cadastrar();
+            });
+
             // Função cadastrar
             function cadastrar() {
                 var nomeVar = nomeInput.value;
@@ -334,7 +333,7 @@
                     var apelidoVar = () => {
                         var nomeMinusculo = nomeVar.toLowerCase();
                         var sobrenomeMinusculo = sobrenomeVar.toLowerCase();
-                        var numeroAleatorio = Math.random() * 1000;
+                        var numeroAleatorio = Math.floor(Math.random() * 1000);
                         return `${nomeMinusculo}${sobrenomeMinusculo}${numeroAleatorio}`;
                     };
 
@@ -423,10 +422,46 @@
                                 }, "2000");
                             } else {
                                 throw "Houve um erro ao tentar realizar o cadastro!";
+                                mensagem.innerHTML = `
+                                  <div>
+                                      <?xml version="1.0" encoding="utf-8"?>
+                                      <svg
+                                          fill="#000000"
+                                          viewBox="0 0 20 20"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                          <g>
+                                              <path
+                                                  d="M10,1a9,9,0,1,0,9,9A9,9,0,0,0,10,1Zm0,16.4A7.4,7.4,0,1,1,17.4,10,7.41,7.41,0,0,1,10,17.4ZM13.29,5.29,10,8.59,6.71,5.29,5.29,6.71,8.59,10l-3.3,3.29,1.42,1.42L10,11.41l3.29,3.3,1.42-1.42L11.41,10l3.3-3.29Z"
+                                                  style="fill: rgb(255, 0, 0)"
+                                              />
+                                          </g>
+                                      </svg>
+                                  </div>
+                                  <span>${resposta}</span>
+                                  `;
                             }
                         })
                         .catch(function (resposta) {
                             console.log(`#ERRO: ${resposta}`);
+                            mensagem.innerHTML = `
+                              <div>
+                                  <?xml version="1.0" encoding="utf-8"?>
+                                  <svg
+                                      fill="#000000"
+                                      viewBox="0 0 20 20"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                      <g>
+                                          <path
+                                              d="M10,1a9,9,0,1,0,9,9A9,9,0,0,0,10,1Zm0,16.4A7.4,7.4,0,1,1,17.4,10,7.41,7.41,0,0,1,10,17.4ZM13.29,5.29,10,8.59,6.71,5.29,5.29,6.71,8.59,10l-3.3,3.29,1.42,1.42L10,11.41l3.29,3.3,1.42-1.42L11.41,10l3.3-3.29Z"
+                                              style="fill: rgb(255, 0, 0)"
+                                          />
+                                      </g>
+                                  </svg>
+                              </div>
+                              <span>${resposta}</span>
+                              `;
                         });
 
                     return false;

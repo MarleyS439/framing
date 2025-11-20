@@ -1,0 +1,12 @@
+version = 1
+url = "http://localhost:3333/usuarios/autenticar"
+method = "POST"
+
+[body]
+type = "raw"
+format = "json"
+body = """
+{
+    "emailServer": "marleysantos439@gmail.com",
+    "senhaServer": "12345678"
+}"""
