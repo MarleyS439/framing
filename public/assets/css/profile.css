@@ -489,7 +489,7 @@
         position: absolute;
         top: 0;
         width: 100%;
-        height: 100%;
+        height: 120vh;
         padding: 5%;
         background-color: rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(5px);
@@ -519,6 +519,7 @@
     .new-post-container .image {
         width: 100%;
         border: 1px solid var(--color--black);
+        margin: 10px 0px;
     }
 
     .new-post-container .image img {
@@ -526,8 +527,55 @@
         break-inside: avoid;
     }
 
+    .container-text form {
+        padding: 10px;
+        overflow-y: scroll;
+        border-top: 1px solid var(--color-gray);
+    }
+
+    .container-text .input-post {
+        margin: 20px 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-text {
+        padding: 2%;
+        width: 60%;
+    }
+
+    .container-text input,
+    .container-text textarea {
+        padding: 10px;
+        background-color: var(--color-gray);
+        border: 1px solid var(--color-gray);
+    }
+
     #titulo {
         border-bottom: 1px solid var(--color-black);
         font-size: 2rem;
+    }
+
+    #descricao {
+        padding: 5px;
+        margin: 10px 0px;
+    }
+
+    #autor {
+        padding: 5px;
+        font-size: 1rem;
+        font-weight: medium;
+    }
+
+    .hashtags {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tag {
+        background-color: var(gray);
+        padding: 5px;
+        font-size: 1rem;
     }
 }

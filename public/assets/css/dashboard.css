@@ -1,0 +1,15 @@
+/* Default styles */
+@import url("default.css");
+
+/* >= 1024px width */
+@media screen and (min-width: 1024px) {
+    body {
+        background-color: var(--color-white);
+        display: flex;
+    }
+
+    .navigation {
+        width: 100%;
+        margin: 5%;
+    }
+}
