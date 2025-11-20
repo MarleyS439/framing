@@ -5,10 +5,10 @@ USE framing;
 -- Usuário
 CREATE TABLE usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    usuario VARCHAR(45) NOT NULL,
+    usuario VARCHAR(45) UNIQUE NOT NULL,
     nome VARCHAR(45) NOT NULL,
     sobrenome VARCHAR(45) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
     resumo VARCHAR(45),
     foto_path VARCHAR(255) NOT NULL DEFAULT 'public/assets/uploads/profile/profile_default.png',
