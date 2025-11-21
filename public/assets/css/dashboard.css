@@ -9,7 +9,75 @@
     }
 
     .navigation {
+        width: 25vw;
+        display: flex;
+        padding: 2%;
+        flex-direction: column;
+        border: 1px solid green;
+    }
+
+    .navigation ul li {
+        list-style: none;
+        margin: 10px 0px;
+    }
+
+    .navigation ul li button {
+        border: none;
+        padding: 5px;
+        color: var(--color-black);
+        background-color: var(--color-white);
+        cursor: pointer;
+        transition: 200ms ease-in-out;
+    }
+
+    .navigation ul li button:hover {
+        text-decoration: underline;
+    }
+
+    .body {
+        height: 100%;
         width: 100%;
-        margin: 5%;
+        border: 1px solid red;
+        padding: 2%;
+    }
+
+    .card-profile {
+        display: flex;
+    }
+
+    .card-profile .info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-profile .posts {
+        display: flex;
+    }
+
+    .card-profile .icon {
+        display: flex;
+    }
+
+    .kpi {
+        border: 1px solid red;
+    }
+
+    .kpi .total {
+        border: 1px solid purple;
+        display: flex;
+    }
+
+    .container-1 {
+        display: flex;
+        padding: 10px;
+    }
+
+    .kpi .data {
+        padding: 5%;
+    }
+
+    .chart {
+        width: 100%;
+        padding: 10px;
     }
 }

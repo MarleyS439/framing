@@ -19,6 +19,11 @@ function validarSessao() {
     var htmlEmail = document.getElementById("email_user");
     var htmlNome = document.getElementById("name_user");
     var htmlFoto = document.getElementById("foto_perfil");
+    var htmlFotoPerfilModalEdit = document.getElementById("foto_perfil_edit");
+    var inputNome = document.getElementById("input_nome");
+    var inputUsername = document.getElementById("input_username");
+    var inputSobrenome = document.getElementById("input_sobrenome");
+    var inputEmail = document.getElementById("input_email");
 
     var nomeCompletoExibir = `${nome} ${sobrenome}`;
     var emailExibir = `${email}`;
@@ -28,6 +33,14 @@ function validarSessao() {
     htmlEmail.innerHTML = emailExibir;
     htmlUsuario.innerHTML = usuarioExibir;
     htmlFoto.src = foto;
-    console.log(htmlFoto.src);
+    htmlFotoPerfilModalEdit.src = foto;
+    inputNome.value = nome;
+    inputUsername.value = usuario;
+    inputSobrenome.value = sobrenome;
+    inputEmail.value = email;
   }
+}
+
+function limparSessao() {
+  sessionStorage.clear();
 }

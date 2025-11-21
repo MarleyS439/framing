@@ -189,23 +189,19 @@
                 <span>Editar Perfil</span>
                 <div class="edit-container">
                     <div class="image">
-                        <img src="assets/images/Avatar.png" alt="" />
+                        <img id="foto_perfil_edit" src="" alt="" />
                         <div class="username">
-                            <input
-                                type="text"
-                                id="input_username"
-                                value="marleys439"
-                            />
+                            <input type="text" id="input_username" />
                         </div>
                         <div class="select-image">
-                            <label for="input_foto_perfil"
+                            <label for="input_fot_perfil"
                                 >Selecionar imagem</label
                             >
                             <input
                                 type="file"
                                 required
                                 id="input_fot_perfil"
-                                placeholder="Selecionar"
+                                oninput="atualizarFotoPerfil()"
                             />
                         </div>
                     </div>
@@ -528,6 +524,12 @@
                 formData.append("titulo_post", titulo);
                 formData.append("descricao", descricao);
                 formData.append("hashtags");
+            }
+
+            function atualizarFotoPerfil() {
+                var fotoPerfil = document.getElementById("input_fot_perfil");
+                var imagem = document.getElementById("foto_perfil_edit");
+                imagem.src = URL.createObjectURL(fotoPerfil.files[0]);
             }
         </script>
     </body>
