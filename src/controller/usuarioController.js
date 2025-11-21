@@ -1,5 +1,38 @@
 var usuarioModel = require("../model/usuarioModel");
 
+// Função controller para autenticar usuário
+function autenticar(req, res) {
+  var email = req.body.emailServer;
+  var senha = req.body.senhaServer;
+
+  if (email == undefined) {
+    res.status(400).send("Seu e-mail está undefined");
+  } else if (senha == undefined) {
+    res.status(400).send("Sua senha está undefined");
+  } else {
+    usuarioModel
+      .autenticar(email, senha)
+      .then(function (resultado) {
+        if (resultado.length == 1) {
+          return res.status(201).json(resultado[0]);
+        } else if (resultado.length == 0) {
+          res.status(403).send("E-mail ou senha inválidos");
+        } else {
+          res.status(403).send("Mais de um usuário com mesmo login e senha");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao autenticar o usuário: ",
+          erro.sqlMessage,
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
+// Função controller para cadastrar usuário
 function cadastrar(req, res) {
   var apelido = req.body.apelidoServer;
   var nome = req.body.nomeServer;
@@ -21,13 +54,12 @@ function cadastrar(req, res) {
     usuarioModel
       .cadastrar(apelido, nome, sobrenome, email, senha)
       .then((resultado) => {
-        res.json(resultado);
+        return res.status(201).json(resultado);
       })
       .catch(function (erro) {
         console.log(erro);
         console.log(
-          "\nHouve um erro ao realizar o cadastro! Erro: ",
-          erro.sqlMessage,
+          "\nHouve um erro ao realizar o cadastro: " + erro.sqlMessage,
         );
         res.status(500).json(erro.sqlMessage);
       });
@@ -36,4 +68,5 @@ function cadastrar(req, res) {
 
 module.exports = {
   cadastrar,
+  autenticar,
 };

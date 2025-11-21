@@ -167,7 +167,9 @@
                 <div id="messages"></div>
 
                 <div class="inputs">
-                    <button onclick="cadastrar()" id="btn">Cadastre-se</button>
+                    <button type="button" onclick="cadastrar()" id="btn">
+                        Cadastre-se
+                    </button>
                 </div>
 
                 <div class="more">
@@ -301,7 +303,6 @@
 
             // Função cadastrar
             function cadastrar() {
-                console.log("Cadastro");
                 var nomeVar = nomeInput.value;
                 var sobrenomeVar = sobrenomeInput.value;
                 var emailVar = emailInput.value;
@@ -331,8 +332,6 @@
                         return `${nomeMinusculo}${sobrenomeMinusculo}${numeroAleatorio}`;
                     }
 
-                    console.log(apelidoVar);
-
                     fetch("/usuarios/cadastrar", {
                         method: "POST",
                         headers: {
@@ -350,96 +349,79 @@
                             console.log("resposta: ", resposta);
 
                             if (resposta.ok) {
-                                // mensagem.style.color = "var(--color-success)";
-                                // var msg =
-                                //     "Cadastro realizado com sucesso. Redirecinando...";
+                                mensagem.style.color = "var(--color-success)";
+                                var msg =
+                                    "Cadastro realizado com sucesso. Redirecionando...";
 
-                                // mensagem.innerHTML = `
-                                // <div>
-                                // <?xml version="1.0" encoding="utf-8"?>
-                                // <svg fill="#000000" width="800px" height="800px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-                                //   <rect id="Icons" x="-512" y="-64" width="1280" height="800" style="fill:none;"/>
-                                //   <g id="Icons1">
-                                //     <g id="Strike"/>
-                                //     <g id="H1"/>
-                                //     <g id="H2"/>
-                                //     <g id="H3"/>
-                                //     <g id="list-ul"/>
-                                //     <g id="hamburger-1"/>
-                                //     <g id="hamburger-2"/>
-                                //     <g id="list-ol"/>
-                                //     <g id="list-task"/>
-                                //     <g id="trash"/>
-                                //     <g id="vertical-menu"/>
-                                //     <g id="horizontal-menu"/>
-                                //     <g id="sidebar-2"/>
-                                //     <g id="Pen"/>
-                                //     <g id="Pen1"/>
-                                //     <g id="clock"/>
-                                //     <g id="external-link"/>
-                                //     <g id="hr"/>
-                                //     <path id="success" d="M56.103,16.824l-33.296,33.297l-14.781,-14.78l2.767,-2.767l11.952,11.952l30.53,-30.53c0.943,0.943 1.886,1.886 2.828,2.828Z" style="fill-rule: nonzero; fill: rgb(26, 170, 85);"/>
-                                //     <g id="info"/>
-                                //     <g id="warning"/>
-                                //     <g id="plus-circle"/>
-                                //     <g id="minus-circle"/>
-                                //     <g id="vue"/>
-                                //     <g id="cog"/>
-                                //     <g id="logo"/>
-                                //     <g id="radio-check"/>
-                                //     <g id="eye-slash"/>
-                                //     <g id="eye"/>
-                                //     <g id="toggle-off"/>
-                                //     <g id="shredder"/>
-                                //     <g id="spinner--loading--dots-"/>
-                                //     <g id="react"/>
-                                //     <g id="check-selected"/>
-                                //     <g id="turn-off"/>
-                                //     <g id="code-block"/>
-                                //     <g id="user"/>
-                                //     <g id="coffee-bean"/>
-                                //     <g id="coffee-beans">
-                                //       <g id="coffee-bean1"/>
-                                //     </g>
-                                //     <g id="coffee-bean-filled"/>
-                                //     <g id="coffee-beans-filled">
-                                //       <g id="coffee-bean2"/>
-                                //     </g>
-                                //     <g id="clipboard"/>
-                                //     <g id="clipboard-paste"/>
-                                //     <g id="clipboard-copy"/>
-                                //     <g id="Layer1"/>
-                                //   </g>
-                                // </svg>
-                                // </div>
-                                // <span>${msg}</span>
-                                // `;
+                                mensagem.innerHTML = `
+                                <div>
+                                <?xml version="1.0" encoding="utf-8"?>
+                                <svg fill="#000000" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                  <rect id="Icons" x="-512" y="-64" width="1280" height="800" style="fill:none;"/>
+                                  <g id="Icons1">
+                                    <g id="Strike"/>
+                                    <g id="H1"/>
+                                    <g id="H2"/>
+                                    <g id="H3"/>
+                                    <g id="list-ul"/>
+                                    <g id="hamburger-1"/>
+                                    <g id="hamburger-2"/>
+                                    <g id="list-ol"/>
+                                    <g id="list-task"/>
+                                    <g id="trash"/>
+                                    <g id="vertical-menu"/>
+                                    <g id="horizontal-menu"/>
+                                    <g id="sidebar-2"/>
+                                    <g id="Pen"/>
+                                    <g id="Pen1"/>
+                                    <g id="clock"/>
+                                    <g id="external-link"/>
+                                    <g id="hr"/>
+                                    <path id="success" d="M56.103,16.824l-33.296,33.297l-14.781,-14.78l2.767,-2.767l11.952,11.952l30.53,-30.53c0.943,0.943 1.886,1.886 2.828,2.828Z" style="fill-rule: nonzero; fill: rgb(26, 170, 85);"/>
+                                    <g id="info"/>
+                                    <g id="warning"/>
+                                    <g id="plus-circle"/>
+                                    <g id="minus-circle"/>
+                                    <g id="vue"/>
+                                    <g id="cog"/>
+                                    <g id="logo"/>
+                                    <g id="radio-check"/>
+                                    <g id="eye-slash"/>
+                                    <g id="eye"/>
+                                    <g id="toggle-off"/>
+                                    <g id="shredder"/>
+                                    <g id="spinner--loading--dots-"/>
+                                    <g id="react"/>
+                                    <g id="check-selected"/>
+                                    <g id="turn-off"/>
+                                    <g id="code-block"/>
+                                    <g id="user"/>
+                                    <g id="coffee-bean"/>
+                                    <g id="coffee-beans">
+                                      <g id="coffee-bean1"/>
+                                    </g>
+                                    <g id="coffee-bean-filled"/>
+                                    <g id="coffee-beans-filled">
+                                      <g id="coffee-bean2"/>
+                                    </g>
+                                    <g id="clipboard"/>
+                                    <g id="clipboard-paste"/>
+                                    <g id="clipboard-copy"/>
+                                    <g id="Layer1"/>
+                                  </g>
+                                </svg>
+                                </div>
+                                <span>${msg}</span>
+                                `;
 
                                 setTimeout(() => {
                                     window.location = "login.html";
                                 }, 2000);
 
-                                console.log(resposta);
+                                console.log(resposta.sqlMessage);
+                                return true;
                             } else {
-                                throw "Houve um erro ao tentar realizar o cadastro!";
-                                mensagem.innerHTML = `
-                                    <div>
-                                        <?xml version="1.0" encoding="utf-8"?>
-                                        <svg
-                                            fill="#000000"
-                                            viewBox="0 0 20 20"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <g>
-                                                <path
-                                                    d="M10,1a9,9,0,1,0,9,9A9,9,0,0,0,10,1Zm0,16.4A7.4,7.4,0,1,1,17.4,10,7.41,7.41,0,0,1,10,17.4ZM13.29,5.29,10,8.59,6.71,5.29,5.29,6.71,8.59,10l-3.3,3.29,1.42,1.42L10,11.41l3.29,3.3,1.42-1.42L11.41,10l3.3-3.29Z"
-                                                    style="fill: rgb(255, 0, 0)"
-                                                />
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <span>${resposta}</span>
-                                    `;
+                                throw `Houve um erro ao realizar o cadastro`;
                             }
                         })
                         .catch(function (resposta) {

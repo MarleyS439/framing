@@ -38,6 +38,7 @@
 
     .profile-card .picture img {
         width: 100px;
+        border-radius: 50%;
     }
 
     .profile-card .info .username {

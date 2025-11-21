@@ -40,19 +40,19 @@
             <!--Profile-->
             <div class="profile-card">
                 <div class="picture">
-                    <img src="assets/images/Avatar.png" alt="Foto de perfil" />
+                    <img id="foto_perfil" src="" alt="Foto de perfil" />
                 </div>
                 <div class="info">
-                    <span class="name">Marley Santos</span>
-                    <span class="username">@marleysantos439</span>
+                    <span class="name" id="name_user"></span>
+                    <span class="username" id="username">@marleysantos439</span>
                     <div class="email-container">
                         <span class="title">E-mail</span>
                         <a
                             href="mailto:marleysantos439@gmail.com"
                             title="Enviar e-mail"
                             class="email"
-                            >marleysantos439@gmail.com</a
-                        >
+                            id="email_user"
+                        ></a>
                     </div>
                 </div>
 
@@ -407,8 +407,13 @@
             </div>
         </div>
 
+        <!--Session-->
+        <script src="assets/javascript/session.js"></script>
+
         <script>
             document.addEventListener("DOMContentLoaded", () => {
+                validarSessao();
+
                 var quantidadeImagens = 30;
                 var galeria = document.getElementById("gallery");
                 var html = "";
