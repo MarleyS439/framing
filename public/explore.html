@@ -36,5 +36,11 @@
     </head>
     <body>
         <nav></nav>
+
+        <script>
+            if (sessionStorage.EMAIL_USUARIO == null) {
+                window.location.href = "register.html";
+            }
+        </script>
     </body>
 </html>

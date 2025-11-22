@@ -1,5 +1,7 @@
 CREATE DATABASE framing;
 
+-- DROP DATABASE framing;
+
 USE framing;
 
 -- Usuário
@@ -11,10 +13,19 @@ CREATE TABLE usuario (
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
     resumo VARCHAR(45),
-    foto_path VARCHAR(255) NOT NULL DEFAULT 'public/assets/uploads/profile/profile_default.png',
-    capa_path VARCHAR(255) NOT NULL DEFAULT 'public/assets/uploads/profile/capa_default.png',
+    foto_path VARCHAR(255) NOT NULL DEFAULT '/assets/uploads/profile/perfil_default.png',
+    capa_path VARCHAR(255) NOT NULL DEFAULT '/assets/uploads/profile/cover/capa_default.png',
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     atualizado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE temp (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    arquivo VARCHAR(255) NOT NULL,
+    fk_id_usuario INT,
+    CONSTRAINT fkUsuarioTemp
+        FOREIGN KEY (fk_id_usuario)
+            REFERENCES usuario(id)
 );
 
 -- Hashtag

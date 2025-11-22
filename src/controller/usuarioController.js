@@ -16,9 +16,11 @@ function autenticar(req, res) {
         if (resultado.length == 1) {
           return res.status(201).json(resultado[0]);
         } else if (resultado.length == 0) {
-          res.status(403).send("E-mail ou senha inválidos");
+          return res.status(403).send("E-mail ou senha inválidos");
         } else {
-          res.status(403).send("Mais de um usuário com mesmo login e senha");
+          return res
+            .status(403)
+            .send("Mais de um usuário com mesmo login e senha");
         }
       })
       .catch(function (erro) {
@@ -27,7 +29,7 @@ function autenticar(req, res) {
           "\nHouve um erro ao autenticar o usuário: ",
           erro.sqlMessage,
         );
-        res.status(500).json(erro.sqlMessage);
+        return res.status(500).json(erro.sqlMessage);
       });
   }
 }
