@@ -19,6 +19,7 @@
         position: sticky;
         top: 0;
         background-color: var(--color-white);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     nav .links {
@@ -92,18 +93,23 @@
         font-weight: medium;
     }
 
-    main {
-        padding: 5%;
+    main .title-more {
+        padding: 2% 5%;
+        position: sticky;
+        top: 0px;
+        background-color: var(--color-white);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     main .cards {
         display: flex;
+        padding: 5%;
         align-items: center;
     }
 
     main .title-more h2 {
         width: 100%;
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     main .cards-container {
@@ -256,6 +262,68 @@
         width: 100%;
     }
 
+    /* History */
+    main .history {
+        padding: 0;
+        width: 100%;
+    }
+
+    main .content {
+        width: 100%;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    main .paragraph p {
+        margin: 25px 0px;
+    }
+
+    main .link {
+        padding: 30px 0px;
+    }
+
+    main .paragraph a {
+        padding: 15px 60px;
+        background-color: var(--color-black);
+        color: var(--color-white);
+    }
+
+    main .content .content-title h3 {
+        margin: 50px 0px 25px 0px;
+    }
+
+    main .title-history {
+        padding: 2% 5%;
+        position: sticky;
+        display: flex;
+        justify-content: flex-end;
+        top: 0px;
+        width: 100%;
+        background-color: var(--color-white);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    main .history .title-history h2 {
+        position: sticky;
+        width: 100%;
+        top: 0px;
+        font-size: 2rem;
+        display: flex;
+        justify-content: flex-end;
+        background-color: var(--color-white);
+    }
+
+    main .history .container .image img {
+        width: 40vw;
+    }
+
+    main .history .container {
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+
     /* Footer */
     footer {
         background-color: var(--color-black);
@@ -284,9 +352,19 @@
         margin: 0px 10%;
     }
 
+    footer .about {
+        display: flex;
+        flex-direction: column;
+    }
+
     footer .about ul li a {
         font-weight: normal;
         color: var(--color-white);
+        transition: 200ms ease-in-out;
+    }
+
+    footer .about ul li a:hover {
+        opacity: 0.8;
     }
 
     footer .about ul li {
@@ -304,6 +382,11 @@
         text-decoration: none;
         color: var(--color-white);
         margin: 0px 10px;
+        transition: 200ms ease-in-out;
+    }
+
+    .copy a:hover {
+        opacity: 0.8;
     }
 
     .copy span a {

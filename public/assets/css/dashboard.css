@@ -6,14 +6,15 @@
     body {
         background-color: var(--color-white);
         display: flex;
+        height: 100vh;
     }
 
     .navigation {
-        width: 25vw;
+        width: 30vw;
         display: flex;
         padding: 2%;
         flex-direction: column;
-        border: 1px solid green;
+        border-right: 1px solid var(--color-gray);
     }
 
     .navigation ul li {
@@ -34,15 +35,26 @@
         text-decoration: underline;
     }
 
+    .logo {
+        margin: 30px 0px;
+    }
+
     .body {
         height: 100%;
         width: 100%;
-        border: 1px solid red;
         padding: 2%;
     }
 
     .card-profile {
         display: flex;
+        border: 1px solid red;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .card-profile img {
+        width: 120px;
+        margin: 10px;
     }
 
     .card-profile .info {
@@ -50,20 +62,36 @@
         flex-direction: column;
     }
 
+    .card-profile .info .nome {
+        font-weight: medium;
+        font-size: 2rem;
+        margin-right: 20px;
+        width: 100%;
+        border: 1px solid red;
+    }
+
     .card-profile .posts {
         display: flex;
+        border: 1px solid red;
+        margin-top: 20px;
+        justify-content: flex-start;
+    }
+
+    .card-profile .posts .information {
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+    }
+
+    .card-profile .title {
+        font-weight: medium;
     }
 
     .card-profile .icon {
         display: flex;
     }
 
-    .kpi {
-        border: 1px solid red;
-    }
-
     .kpi .total {
-        border: 1px solid purple;
         display: flex;
     }
 
@@ -73,7 +101,14 @@
     }
 
     .kpi .data {
+        margin: 10px;
         padding: 5%;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .kpi .data .value {
+        font-size: 2rem;
+        margin-right: 2px;
     }
 
     .chart {

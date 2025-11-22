@@ -11,4 +11,8 @@ router.post("/autenticar", function (req, res) {
   usuarioController.autenticar(req, res);
 });
 
+router.post("/buscar/preview:id", function (req, res) {
+  usuarioController.buscarPreview();
+});
+
 module.exports = router;

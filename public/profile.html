@@ -1,420 +1,415 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
-    <head>
-        <!--HTML Meta Tags-->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Marley de S. Santos" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta
-            name="copyright"
-            content="© 2025 Framing. Todos os direitos reservados."
-        />
+  <head>
+    <!--HTML Meta Tags-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Marley de S. Santos" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+      name="copyright"
+      content="© 2025 Framing. Todos os direitos reservados."
+    />
 
-        <!--Stylesheet-->
-        <link rel="stylesheet" href="assets/css/profile.css" />
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="assets/css/profile.css" />
 
-        <!--Favicon-->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="assets/icons/favicon.png"
-        />
+    <!--Favicon-->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon.png"
+    />
 
-        <!--Google Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
-            rel="stylesheet"
-        />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
 
-        <!--Title-->
-        <title>Meu perfil</title>
-    </head>
-    <body>
-        <!--Hero-->
-        <div class="hero">
-            <!--Profile-->
-            <div class="profile-card">
-                <div class="picture">
-                    <img id="foto_perfil" src="" alt="Foto de perfil" />
-                </div>
-                <div class="info">
-                    <span class="name" id="name_user"></span>
-                    <span class="username" id="username">@marleysantos439</span>
-                    <div class="email-container">
-                        <span class="title">E-mail</span>
-                        <a
-                            href="mailto:marleysantos439@gmail.com"
-                            title="Enviar e-mail"
-                            class="email"
-                            id="email_user"
-                        ></a>
-                    </div>
-                </div>
-
-                <div class="info-profile">
-                    <div class="data">
-                        <span class="label">Curtiu</span>
-                        <span class="count">120</span>
-                    </div>
-                    <div class="data">
-                        <span class="label">Posts</span>
-                        <span class="count">120</span>
-                    </div>
-                </div>
-            </div>
-
-            <!--Button-->
-            <div class="buttons">
-                <!--Edit Profile-->
-                <div class="edit-profile">
-                    <button id="edit-profile">
-                        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                        <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                        <svg
-                            viewBox="0 -0.5 21 21"
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                        >
-                            <title>edit [#1479]</title>
-                            <desc>Created with Sketch.</desc>
-                            <defs></defs>
-                            <g
-                                id="Page-1"
-                                stroke="none"
-                                stroke-width="1"
-                                fill="none"
-                                fill-rule="evenodd"
-                            >
-                                <g
-                                    id="Dribbble-Light-Preview"
-                                    transform="translate(-99.000000, -400.000000)"
-                                    fill="#000000"
-                                >
-                                    <g
-                                        id="icons"
-                                        transform="translate(56.000000, 160.000000)"
-                                    >
-                                        <path
-                                            d="M61.9,258.010643 L45.1,258.010643 L45.1,242.095788 L53.5,242.095788 L53.5,240.106431 L43,240.106431 L43,260 L64,260 L64,250.053215 L61.9,250.053215 L61.9,258.010643 Z M49.3,249.949769 L59.63095,240 L64,244.114985 L53.3341,254.031929 L49.3,254.031929 L49.3,249.949769 Z"
-                                            id="edit-[#1479]"
-                                        ></path>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                        <span>Editar perfil</span>
-                    </button>
-                </div>
-
-                <!--Edit cover-->
-                <div class="edit-profile">
-                    <button id="edit-cover">
-                        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                        <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                        <svg
-                            viewBox="-0.5 0 20 20"
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                        >
-                            <title>cover_flow [#1412]</title>
-                            <desc>Created with Sketch.</desc>
-                            <defs></defs>
-                            <g
-                                id="Page-1"
-                                stroke="none"
-                                stroke-width="1"
-                                fill="none"
-                                fill-rule="evenodd"
-                            >
-                                <g
-                                    id="Dribbble-Light-Preview"
-                                    transform="translate(-380.000000, -640.000000)"
-                                    fill="#000000"
-                                >
-                                    <g
-                                        id="icons"
-                                        transform="translate(56.000000, 160.000000)"
-                                    >
-                                        <path
-                                            d="M326.111111,497 L340.888889,497 L340.888889,495 L326.111111,495 L326.111111,497 Z M330.333333,492 L336.666667,492 L336.666667,488 L330.333333,488 L330.333333,492 Z M328.222222,494 L338.777778,494 L338.777778,486 L328.222222,486 L328.222222,494 Z M326.111111,485 L340.888889,485 L340.888889,483 L326.111111,483 L326.111111,485 Z M324,482 L343,482 L343,480 L324,480 L324,482 Z M324,500 L343,500 L343,498 L324,498 L324,500 Z"
-                                            id="cover_flow-[#1412]"
-                                        ></path>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                        <span>Editar capa</span>
-                    </button>
-                </div>
-            </div>
-            <!-- Edit Profile -->
+    <!--Title-->
+    <title>Meu perfil</title>
+  </head>
+  <body>
+    <!--Hero-->
+    <div class="hero" id="capa">
+      <!--Profile-->
+      <div class="profile-card">
+        <div class="picture">
+          <img id="foto_perfil" src="" alt="Foto de perfil" />
+        </div>
+        <div class="info">
+          <span class="name" id="name_user"></span>
+          <span class="username" id="username">@marleysantos439</span>
+          <div class="email-container">
+            <span class="title">E-mail</span>
+            <a
+              href="mailto:marleysantos439@gmail.com"
+              title="Enviar e-mail"
+              class="email"
+              id="email_user"
+            ></a>
+          </div>
         </div>
 
-        <!--Navigation-->
-        <div class="navigation">
-            <ul>
-                <li>
-                    <button onclick="redirect('index.html')">Início</button>
-                </li>
-
-                <li>
-                    <button>Meus posts</button>
-                </li>
-
-                <li>
-                    <button>Curtidos</button>
-                </li>
-                <li>
-                    <button onclick="redirect('dashboard.html')">
-                        Minha dashboard
-                    </button>
-                </li>
-            </ul>
+        <div class="info-profile">
+          <div class="data">
+            <span class="label">Curtiu</span>
+            <span class="count">120</span>
+          </div>
+          <div class="data">
+            <span class="label">Posts</span>
+            <span class="count">120</span>
+          </div>
         </div>
+      </div>
 
-        <div class="container-gallery">
-            <div class="gallery" id="gallery"></div>
-        </div>
-
-        <!--Modal Edit Profile-->
-        <div id="modalEditProfile">
-            <div class="modal-container">
-                <span>Editar Perfil</span>
-                <div class="edit-container">
-                    <div class="image">
-                        <img id="foto_perfil_edit" src="" alt="" />
-                        <div class="username">
-                            <input type="text" id="input_username" />
-                        </div>
-                        <div class="select-image">
-                            <label for="input_fot_perfil"
-                                >Selecionar imagem</label
-                            >
-                            <input
-                                type="file"
-                                required
-                                id="input_fot_perfil"
-                                oninput="atualizarFotoPerfil()"
-                            />
-                        </div>
-                    </div>
-
-                    <div class="edit-info">
-                        <div class="names">
-                            <div class="name">
-                                <label for="input_nome">Nome</label>
-                                <input
-                                    type="text"
-                                    id="input_nome"
-                                    required
-                                    placeholder="Digite seu nome"
-                                />
-                            </div>
-                            <div class="name">
-                                <label for="input_sobrenome">Sobrenome</label>
-                                <input
-                                    type="text"
-                                    id="input_sobrenome"
-                                    required
-                                    placeholder="Digite seu sobrenome"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="other">
-                            <div class="inputs">
-                                <label for="input_email">E-mail</label>
-                                <input
-                                    type="email"
-                                    id="input_email"
-                                    required
-                                    placeholder="Digite seu e-mail"
-                                />
-                            </div>
-
-                            <div class="inputs">
-                                <label for="input_senha">Senha atual</label>
-                                <input
-                                    type="password"
-                                    id="input_senha"
-                                    required
-                                    placeholder="Digite a sua senha atual"
-                                />
-                            </div>
-                            <div class="inputs">
-                                <label for="input_nova">Nova senha</label>
-                                <input
-                                    type="password"
-                                    id="input_nova"
-                                    required
-                                    placeholder="Digite sua nova senha"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="options">
-                    <button class="delete" onclick="">Excluir conta</button>
-                    <div>
-                        <button class="cancel" id="cancelUpdateEdit">
-                            Cancelar
-                        </button>
-
-                        <button class="save">Salvar alterações</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Modal Edit Cover-->
-        <div id="modalEditCover">
-            <div class="edit-container">
-                <span>Editar Capa</span>
-                <div class="opt-cover">
-                    <div
-                        class="cover"
-                        style="background-image: url(assets/images/capa.png)"
-                    ></div>
-                    <div class="select-cover">
-                        <label for="input_cover">Selecionar imagem</label>
-                        <input type="file" required id="input_cover" />
-                    </div>
-                </div>
-                <div class="options-cover">
-                    <button class="cancel" id="cancelCover">Cancelar</button>
-
-                    <button class="save" id="saveCover">
-                        Salvar alterações
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!--Add Post-->
-        <div class="add-post" id="addPost">
+      <!--Button-->
+      <div class="buttons">
+        <!--Edit Profile-->
+        <div class="edit-profile">
+          <button id="edit-profile">
             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
             <svg
-                viewBox="0 -0.5 21 21"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 -0.5 21 21"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
             >
-                <title>plus [#1512]</title>
-                <desc>Created with Sketch.</desc>
-                <defs></defs>
+              <title>edit [#1479]</title>
+              <desc>Created with Sketch.</desc>
+              <defs></defs>
+              <g
+                id="Page-1"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
                 <g
-                    id="Page-1"
-                    stroke="none"
-                    stroke-width="1"
-                    fill="none"
-                    fill-rule="evenodd"
+                  id="Dribbble-Light-Preview"
+                  transform="translate(-99.000000, -400.000000)"
+                  fill="#000000"
                 >
-                    <g
-                        id="Dribbble-Light-Preview"
-                        transform="translate(-379.000000, -240.000000)"
-                        fill="#000000"
-                    >
-                        <g
-                            id="icons"
-                            transform="translate(56.000000, 160.000000)"
-                        >
-                            <polygon
-                                id="plus-[#1512]"
-                                points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"
-                            ></polygon>
-                        </g>
-                    </g>
+                  <g id="icons" transform="translate(56.000000, 160.000000)">
+                    <path
+                      d="M61.9,258.010643 L45.1,258.010643 L45.1,242.095788 L53.5,242.095788 L53.5,240.106431 L43,240.106431 L43,260 L64,260 L64,250.053215 L61.9,250.053215 L61.9,258.010643 Z M49.3,249.949769 L59.63095,240 L64,244.114985 L53.3341,254.031929 L49.3,254.031929 L49.3,249.949769 Z"
+                      id="edit-[#1479]"
+                    ></path>
+                  </g>
                 </g>
+              </g>
             </svg>
-            <span>Novo post</span>
+            <span>Editar perfil</span>
+          </button>
         </div>
 
-        <!--Modal New Post-->
-        <div class="new-post" id="modalPost">
-            <div class="new-post-container">
-                <div class="sidea">
-                    <span>Novo Post</span>
-                    <div class="image">
-                        <img src="assets/images/20230101_052111.jpg" alt="" />
-                    </div>
-                    <div>
-                        <label for="input_foto_post"></label>
-                    </div>
-                </div>
-                <div class="container-text">
-                    <span id="titulo">Título do post</span>
-                    <div>
-                        <p id="descricao">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magnam aliquam.
-                        </p>
-                        <div class="hashtags">
-                            <span id="tags"></span>
-                            <span id="autor">@marleysantos439</span>
-                        </div>
-                    </div>
+        <!--Edit cover-->
+        <div class="edit-profile">
+          <button id="edit-cover">
+            <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+            <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+            <svg
+              viewBox="-0.5 0 20 20"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <title>cover_flow [#1412]</title>
+              <desc>Created with Sketch.</desc>
+              <defs></defs>
+              <g
+                id="Page-1"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g
+                  id="Dribbble-Light-Preview"
+                  transform="translate(-380.000000, -640.000000)"
+                  fill="#000000"
+                >
+                  <g id="icons" transform="translate(56.000000, 160.000000)">
+                    <path
+                      d="M326.111111,497 L340.888889,497 L340.888889,495 L326.111111,495 L326.111111,497 Z M330.333333,492 L336.666667,492 L336.666667,488 L330.333333,488 L330.333333,492 Z M328.222222,494 L338.777778,494 L338.777778,486 L328.222222,486 L328.222222,494 Z M326.111111,485 L340.888889,485 L340.888889,483 L326.111111,483 L326.111111,485 Z M324,482 L343,482 L343,480 L324,480 L324,482 Z M324,500 L343,500 L343,498 L324,498 L324,500 Z"
+                      id="cover_flow-[#1412]"
+                    ></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <span>Editar capa</span>
+          </button>
+        </div>
+      </div>
+      <!-- Edit Profile -->
+    </div>
 
-                    <!--Form-->
-                    <form>
-                        <div class="input-post">
-                            <label for="input_titulo">Título</label>
-                            <input
-                                type="text"
-                                max="50"
-                                id="input_titulo"
-                                oninput="titulo()"
-                                onblur="titulo()"
-                                placeholder="Digite o título da postagem"
-                            />
-                        </div>
-                        <div class="input-post">
-                            <label for="input_descricao">Descrição</label>
-                            <textarea
-                                cols="5"
-                                rows="3"
-                                placeholder="Descrição do post"
-                            ></textarea>
-                        </div>
-                        <div class="input-post">
-                            <label for="input_hashtags">Hashtags</label>
-                            <input
-                                type="text"
-                                id="input_hashtags"
-                                placeholder="Separe por espaço"
-                            />
-                        </div>
-                    </form>
-                    <div>
-                        <button onclick="hashtags()">Adicionar</button>
-                    </div>
-                    <div>
-                        <button onclick="postar()">Publicar</button>
-                    </div>
-                </div>
+    <!--Navigation-->
+    <div class="navigation">
+      <ul>
+        <li>
+          <button onclick="redirect('index.html')">Início</button>
+        </li>
+
+        <li>
+          <button>Meus posts</button>
+        </li>
+
+        <li>
+          <button>Curtidos</button>
+        </li>
+        <li>
+          <button onclick="redirect('dashboard.html')">Minha dashboard</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container-gallery">
+      <div class="gallery" id="gallery"></div>
+    </div>
+
+    <!--Modal Edit Profile-->
+    <div id="modalEditProfile">
+      <div class="modal-container">
+        <span>Editar Perfil</span>
+        <div class="edit-container">
+          <div class="image">
+            <img id="foto_perfil_edit" src="" alt="" />
+            <div class="username">
+              <input type="text" id="input_username" />
             </div>
+            <div class="select-image">
+              <label for="input_fot_perfil">Selecionar imagem</label>
+              <input
+                type="file"
+                required
+                id="input_fot_perfil"
+                oninput="atualizarFotoPerfil()"
+              />
+            </div>
+          </div>
+
+          <div class="edit-info">
+            <div class="names">
+              <div class="name">
+                <label for="input_nome">Nome</label>
+                <input
+                  type="text"
+                  id="input_nome"
+                  required
+                  placeholder="Digite seu nome"
+                />
+              </div>
+              <div class="name">
+                <label for="input_sobrenome">Sobrenome</label>
+                <input
+                  type="text"
+                  id="input_sobrenome"
+                  required
+                  placeholder="Digite seu sobrenome"
+                />
+              </div>
+            </div>
+
+            <div class="other">
+              <div class="inputs">
+                <label for="input_email">E-mail</label>
+                <input
+                  type="email"
+                  id="input_email"
+                  required
+                  placeholder="Digite seu e-mail"
+                />
+              </div>
+
+              <div class="inputs">
+                <label for="input_senha">Senha atual</label>
+                <input
+                  type="password"
+                  id="input_senha"
+                  required
+                  placeholder="Digite a sua senha atual"
+                />
+              </div>
+              <div class="inputs">
+                <label for="input_nova">Nova senha</label>
+                <input
+                  type="password"
+                  id="input_nova"
+                  required
+                  placeholder="Digite sua nova senha"
+                />
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="options">
+          <button class="delete" onclick="">Excluir conta</button>
+          <div>
+            <button class="cancel" id="cancelUpdateEdit">Cancelar</button>
 
-        <!--Session-->
-        <script src="assets/javascript/session.js"></script>
+            <button class="save">Salvar alterações</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                validarSessao();
+    <!--Modal Edit Cover-->
+    <div id="modalEditCover">
+      <div class="edit-container">
+        <span>Editar Capa</span>
+        <div class="opt-cover">
+          <div class="cover" id="capa_edit"></div>
+          <div class="select-cover">
+            <label for="input_cover">Selecionar imagem</label>
+            <input
+              type="file"
+              accept="image/jpg, image/png, image/jpeg"
+              required
+              name="foto_capa"
+              id="input_cover"
+              oninput="enviarPreview()"
+            />
+          </div>
+        </div>
+        <div class="options-cover">
+          <button class="cancel" id="cancelCover">Cancelar</button>
 
-                var quantidadeImagens = 30;
-                var galeria = document.getElementById("gallery");
-                var html = "";
-                for (var i = 1; i < quantidadeImagens; i++) {
-                    html += `
+          <button class="save" id="saveCover">Salvar alterações</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Add Post-->
+    <div class="add-post" id="addPost">
+      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+      <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+      <svg
+        viewBox="0 -0.5 21 21"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <title>plus [#1512]</title>
+        <desc>Created with Sketch.</desc>
+        <defs></defs>
+        <g
+          id="Page-1"
+          stroke="none"
+          stroke-width="1"
+          fill="none"
+          fill-rule="evenodd"
+        >
+          <g
+            id="Dribbble-Light-Preview"
+            transform="translate(-379.000000, -240.000000)"
+            fill="#ffffff"
+          >
+            <g id="icons" transform="translate(56.000000, 160.000000)">
+              <polygon
+                id="plus-[#1512]"
+                points="344 89 344 91 334.55 91 334.55 100 332.45 100 332.45 91 323 91 323 89 332.45 89 332.45 80 334.55 80 334.55 89"
+              ></polygon>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <span>Novo post</span>
+    </div>
+
+    <!--Modal New Post-->
+    <div class="new-post" id="modalPost">
+      <div class="new-post-container">
+        <div class="sidea">
+          <span>Novo Post</span>
+          <div class="image">
+            <img src="assets/images/20230101_052111.jpg" alt="" />
+          </div>
+          <div>
+            <label for="input_foto_post">Selecionar</label>
+            <input type="file" id="input_foto_post" name="foto_capa" required />
+          </div>
+        </div>
+        <div class="container-text">
+          <span id="titulo">Título do post</span>
+          <div class="container-preview">
+            <p id="descricao"></p>
+            <div class="hashtags">
+              <span id="tags"></span>
+              <span id="input_nome_post"></span>
+            </div>
+          </div>
+
+          <!--Form-->
+          <form>
+            <div class="input-post">
+              <label for="input_titulo">Título</label>
+              <input
+                type="text"
+                max="50"
+                id="input_titulo"
+                oninput="titulo()"
+                onblur="titulo()"
+                placeholder="Digite o título da postagem"
+              />
+            </div>
+            <div class="input-post">
+              <label for="input_descricao">Descrição</label>
+              <textarea
+                id="descricao_input"
+                cols="5"
+                rows="3"
+                placeholder="Descrição do post"
+                oninput="descricao()"
+              ></textarea>
+            </div>
+            <div class="input-post">
+              <label for="input_hashtags">Hashtags</label>
+              <input
+                type="text"
+                id="input_hashtags"
+                placeholder="Adicionar no máximo 7"
+              />
+            </div>
+          </form>
+
+          <div class="buttons-post">
+            <button id="cancelPost">Cancelar</button>
+            <div>
+              <button id="hashtag" onclick="hashtags()">
+                Adicionar hashtag
+              </button>
+            </div>
+            <div>
+              <button id="publicar" type="button" onclick="enviarPreview()">
+                Publicar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Session-->
+    <script src="assets/javascript/session.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        validarSessao();
+
+        // Quantidade de imagens a serem exibidas
+        var quantidadeImagens = 30;
+        var galeria = document.getElementById("gallery");
+        var html = "";
+        for (var i = 1; i < quantidadeImagens; i++) {
+          html += `
                         <div class="image up">
                             <div class="image-overlay" id="imagem-${i}">
                               <span class="likes">
@@ -436,101 +431,155 @@
                                 </div>
                               <span>
                             </div>
-                            <img src="assets/uploads/images/imagem_${i}.jpg" />
+                            <img loading="lazy" src="assets/uploads/images/imagem_${i}.jpg" />
                         </div>
                     `;
-                }
-                galeria.innerHTML = html;
-            });
+        }
+        galeria.innerHTML = html;
+      });
 
-            // Redirecionar
-            function redirect(url) {
-                window.location = url;
+      // Função para redirecionar
+      function redirect(url) {
+        window.location.href = url;
+      }
+
+      var buttonEditProfile = document.getElementById("edit-profile");
+      var modalEditProfile = document.getElementById("modalEditProfile");
+      var buttonCancelUpdateEdit = document.getElementById("cancelUpdateEdit");
+
+      // Ação para abrir o modal de editar o perfil
+      buttonEditProfile.addEventListener("click", () => {
+        modalEditProfile.style.display = "inline-block";
+        document.body.style.overflowY = "hidden";
+      });
+
+      // Ação para fechar o modal de editar o perfil
+      buttonCancelUpdateEdit.addEventListener("click", () => {
+        modalEditProfile.style.display = "none";
+        document.body.style.overflowY = "auto";
+      });
+
+      var buttonEditCover = document.getElementById("edit-cover");
+      var modalEditCover = document.getElementById("modalEditCover");
+      var buttonCancelUpdateCover = document.getElementById("cancelCover");
+
+      // Ação para acionar o botão de editar capa
+      buttonEditCover.addEventListener("click", () => {
+        modalEditCover.style.display = "inline-block";
+        document.body.style.overflowY = "hidden";
+      });
+
+      // Ação para fechar o modal de editar perfil
+      buttonCancelUpdateCover.addEventListener("click", () => {
+        modalEditCover.style.display = "none";
+        document.body.style.overflowY = "auto";
+      });
+
+      var buttonNewPost = document.getElementById("addPost");
+      var modalAddPost = document.getElementById("modalPost");
+      // Ação para ocultar o modal de post
+      buttonNewPost.addEventListener("click", () => {
+        modalAddPost.style.display = "inline-block";
+        document.body.style.overflowY = "hidden";
+        window.scrollTo(0, 0);
+      });
+
+      // Função para inserir a descrição no preview do título do post
+      function titulo() {
+        var preview = document.getElementById("titulo");
+        var input = document.getElementById("input_titulo");
+        var conteudo = input.value;
+
+        preview.innerHTML = conteudo;
+      }
+
+      // Função para inserir a descrição no preview do post
+      function descricao() {
+        var preview = document.getElementById("descricao");
+        var input = document.getElementById("descricao_input").value;
+        preview.innerHTML = input;
+      }
+
+      // Lista de hashtags
+      var listahashtags = [];
+      // Função para inserir as hashtags
+      function hashtags() {
+        var preview = document.getElementById("tags");
+        var hashtag = document.getElementById("input_hashtags").value.trim();
+        if (hashtag != "" && listahashtags.length < 7)
+          listahashtags.push(hashtag.toLowerCase());
+        var conteudo = "";
+        for (var i = 0; i < listahashtags.length; i++) {
+          conteudo += `<span class="listaHashtags">#${listahashtags[i]}</span>`;
+        }
+        preview.innerHTML = conteudo;
+        input_hashtags.value = "";
+      }
+
+      var buttonCancelPost = document.getElementById("cancelPost");
+
+      // Ação para fechar o modal de post
+      buttonCancelPost.addEventListener("click", () => {
+        modalAddPost.style.display = "none";
+        document.body.style.overflowY = "auto";
+      });
+
+      
+      var fundoCapa = document.getElementById("capa_edit");
+      fundoCapa.style.backgroundImage = `url(${sessionStorage.CAPA_USUARIO})`;
+
+      function enviarPreview() {
+        var foto = document.getElementById("input_cover");
+        var id = sessionStorage.ID_USUARIO;
+
+        var formData = new FormData();
+        formData.append("foto_capa", foto.files[0]);
+        formData.append("id", id);
+
+        fetch("/upload/enviar/capa", {
+          method: "POST",
+          body: formData,
+        })
+          .then((resposta) => {
+            if (resposta.ok) {
+              resposta.json().then((json) => {
+                buscarPreview();
+              });
             }
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      }
 
-            var buttonEditProfile = document.getElementById("edit-profile");
-            var modalEditProfile = document.getElementById("modalEditProfile");
-            var buttonCancelUpdateEdit =
-                document.getElementById("cancelUpdateEdit");
+      // Função para buscar o preview da imagem
+      function buscarPreview() {
+        var id = sessionStorage.ID_USUARIO;
 
-            buttonEditProfile.addEventListener("click", () => {
-                modalEditProfile.style.display = "inline-block";
-                document.body.style.overflowY = "hidden";
-            });
-            buttonCancelUpdateEdit.addEventListener("click", () => {
-                modalEditProfile.style.display = "none";
-                document.body.style.overflowY = "auto";
-            });
-
-            var buttonEditCover = document.getElementById("edit-cover");
-            var modalEditCover = document.getElementById("modalEditCover");
-            var buttonCancelUpdateCover =
-                document.getElementById("cancelCover");
-
-            buttonEditCover.addEventListener("click", () => {
-                modalEditCover.style.display = "inline-block";
-                document.body.style.overflowY = "hidden";
-            });
-            buttonCancelUpdateCover.addEventListener("click", () => {
-                modalEditCover.style.display = "none";
-                document.body.style.overflowY = "auto";
-            });
-
-            var buttonNewPost = document.getElementById("addPost");
-            var modalAddPost = document.getElementById("modalPost");
-
-            buttonNewPost.addEventListener("click", () => {
-                modalAddPost.style.display = "inline-block";
-                document.body.style.overflowY = "hidden";
-            });
-
-            function titulo() {
-                var preview = document.getElementById("titulo");
-                var input = document.getElementById("input_titulo");
-                var conteudo = input.value;
-
-                preview.innerHTML = conteudo;
+        fetch(`/upload/preview/${id}`)
+          .then((resposta) => {
+            if (resposta.ok) {
+              resposta.json().then((json) => {
+                sessionStorage.CAPA_USUARIO = `/assets/uploads/images/${json[0].arquivo}`;
+                document.getElementById(
+                  "capa_edit"
+                ).style.backgroundImage = `url(${sessionStorage.CAPA_USUARIO})`;
+              });
             }
+          })
+          .catch((erro) => {
+            console.error(erro);
+          });
+      }
 
-            function descricao() {
-                var preview = document.getElementById("descricao");
-                var input = document.getElementById("input");
-            }
+      function confirmarCapa() {
 
-            modalPost.style.display = "none";
+      }
 
-            var hashtags = [];
-
-            function hashtags() {
-                var preview = document.getElementById("tags");
-
-                var hashtag = document.getElementById("hashtag").value;
-
-                if (hashtag != "") hashtags.push(hashtag);
-
-                for (var i = 0; i < hashtags.length; i++) {
-                    var html = "";
-                    html += `
-                      <span class="tag">${hashtags[i]}</span>
-                    `;
-                }
-
-                preview.innerHTML = html;
-            }
-
-            function postar() {
-                const formData = new formData();
-                formData.append("foto_post", foto.files[0]);
-                formData.append("titulo_post", titulo);
-                formData.append("descricao", descricao);
-                formData.append("hashtags");
-            }
-
-            function atualizarFotoPerfil() {
-                var fotoPerfil = document.getElementById("input_fot_perfil");
-                var imagem = document.getElementById("foto_perfil_edit");
-                imagem.src = URL.createObjectURL(fotoPerfil.files[0]);
-            }
-        </script>
-    </body>
+      // Função para listar os posts do usuário
+      function listarPostUsuario() {
+        fetch("/usuarios/:id");
+      }
+    </script>
+  </body>
 </html>

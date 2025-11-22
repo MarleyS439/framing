@@ -237,6 +237,8 @@
                                 sessionStorage.SOBRENOME_USUARIO =
                                     json.sobrenome;
                                 sessionStorage.FOTO_PERFIL = json.foto_path;
+                                sessionStorage.ID_USUARIO = json.id;
+                                sessionStorage.CAPA_USUARIO = json.capa_path;
                             });
 
                             mensagem.style.color = "var(--color-success)";
@@ -311,8 +313,8 @@
                         }
                     })
                     .catch(function (resposta) {
+                        mensagem.innerHTML = `Usuário ou senha inválidos`;
                         console.log("#Erro", resposta);
-                        mensagem.innerHTML = `Erro`;
                     });
                 return false;
             }

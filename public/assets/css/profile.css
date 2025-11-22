@@ -10,7 +10,6 @@
     .hero {
         position: relative;
         margin: 2% 5%;
-        background-image: url("../images/capa.png");
         height: 30vh;
         padding: 5%;
         background-position: center left;
@@ -477,8 +476,14 @@
         display: flex;
         cursor: pointer;
         align-items: center;
-        background-color: var(--color-white);
+        color: var(--color-white);
+        background-color: var(--color-black);
         box-shadow: -5px 5px 5px -2px rgba(0, 0, 0, 0.2);
+        transition: 200ms ease-in-out;
+    }
+
+    .add-post:hover {
+        background-color: var(--color-hover);
     }
 
     .add-post svg {
@@ -488,17 +493,18 @@
     }
 
     .new-post {
+        display: none;
         position: absolute;
         top: 0;
         width: 100%;
-        height: 120vh;
-        padding: 5%;
+        height: 100%;
         background-color: rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(5px);
         z-index: 120;
     }
 
     .new-post-container {
+        margin: 20px;
         display: flex;
         align-items: center;
     }
@@ -527,6 +533,53 @@
     .new-post-container .image img {
         width: 100%;
         break-inside: avoid;
+    }
+
+    .buttons-post {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .buttons-post button {
+        padding: 10px 30px;
+        margin: 0px 10px;
+    }
+
+    #publicar {
+        border: 1px solid var(--color-black);
+        color: var(--color-white);
+        background-color: var(--color-black);
+        cursor: pointer;
+        width: 200px;
+        transition: 200ms ease-in-out;
+    }
+
+    #publicar:hover {
+        background-color: var(--color-opaque);
+    }
+
+    #hashtag {
+        background-color: var(--color-white);
+        border: 1px solid var(--color-black);
+        transition: 200ms ease-in-out;
+        cursor: pointer;
+    }
+
+    #hashtag:hover {
+        background-color: var(--color-black);
+        color: var(--color-white);
+    }
+
+    #cancelPost {
+        background-color: var(--color-danger);
+        border: 1px solid var(--color-danger);
+        color: var(--color-white);
+        cursor: pointer;
+        transition: 200ms ease-in-out;
+    }
+
+    #cancelPost:hover {
+        opacity: 0.8;
     }
 
     .container-text form {
@@ -570,14 +623,24 @@
         font-weight: medium;
     }
 
-    .hashtags {
-        display: flex;
-        flex-direction: column;
+    input:focus-visible,
+    textarea:focus-visible {
+        outline: 1px solid var(--color-black);
     }
 
-    .tag {
+    #tags {
         background-color: var(gray);
         padding: 5px;
         font-size: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        text-wrap: wrap;
+    }
+
+    .listaHashtags {
+        border: 1px solid var(--color-gray);
+        padding: 5px;
+        margin: 0px 5px;
+        background-color: var(--color-gray);
     }
 }
