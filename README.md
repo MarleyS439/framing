@@ -1,4 +1,4 @@
-![Framing Logo](https://github.com/MarleyS439/framing/blob/master/public/assets/images/Logo-Framing.png)
+![Framing Logo](https://raw.githubusercontent.com/MarleyS439/framing/main/public/assets/images/Logo-Framing.png)
 
 # Framing - Rede Social Para Amantes da Fotografia
 
@@ -6,7 +6,7 @@
 
 **Framing** é uma rede social desenvolvida para fotógrafos e entusiatas de fotografia.
 
-Este projeto acadêmico faz parte da disciplina de Pesquisa e Inovação da __São Paulo Tech School__ (SPTECH) - [@BandTec](https://github.com/BandTec), do curso de __Ciência da Computação__, 1º semestre.
+Este projeto acadêmico faz parte da disciplina de Pesquisa e Inovação da **São Paulo Tech School** (SPTECH) - [@BandTec](https://github.com/BandTec), do curso de **Ciência da Computação**, 1º semestre.
 
 O objetivo é oferecer um ambiente minimalista, elegante e focado na exibição de imagens, permitindo que usuários publiquem fotos, explorem conteúdos, sigam outros usuários e interajam por meio de curtidas, comentários e hashtags.
 
@@ -20,7 +20,7 @@ O objetivo é oferecer um ambiente minimalista, elegante e focado na exibição 
 
 ## Tecnologias
 
-- **Front-end:** HTML5, CSS3 e JavaScript 
+- **Front-end:** HTML5, CSS3 e JavaScript
 - **Back-end:** NodeJS
 - **Banco de dados:** (MySQL/MariaDB)
 - **Bibliotecas:** Express, MySQL2, Dotenv, Path e Multer
@@ -41,7 +41,7 @@ Para usufruir deste projeto, você repositório em sua máquina e executar os se
 
 3. Configurar as credenciais do banco de dados conforme o `.env.example`
 
-4. Executar o servidor web do NodeJS no terminal 
+4. Executar o servidor web do NodeJS no terminal
 
 `node app.js`
 
