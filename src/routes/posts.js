@@ -16,4 +16,8 @@ router.get("/listarTudo", function (req, res) {
   postsController.listarTudo(req, res);
 });
 
+// Listar todos que não sejam meus
+router.post("/listaTudoMenosEu/:id", function (req, res) {
+  postsController.listarTudoMenosEu(req, res);
+});
 module.exports = router;

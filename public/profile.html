@@ -422,7 +422,6 @@
         // Função para buscar os posts do usuário
         function buscarPostsUsuario() {
           var id = sessionStorage.ID_USUARIO;
-
           fetch(`/usuarios/posts/${id}`, {
             method: "POST",
             headers: {
@@ -606,7 +605,8 @@
       function exibirNomeFoto() {
         var foto = document.getElementById("input_foto_post").files[0].name;
 
-        var nomeExibicao = (document.getElementById("exibirNome").innerHTML = foto);
+        var nomeExibicao = (document.getElementById("exibirNome").innerHTML =
+          foto);
       }
 
       // Função para buscar o preview da imagem

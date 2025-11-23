@@ -45,11 +45,28 @@ function listarTudo(req, res) {
     })
     .catch(function (erro) {
       console.log(erro);
-      res.status(500).send(err);
+      res.status(500).send(erro);
+    });
+}
+
+// Função para listar todos os posts que não sejam do propŕio usuario
+function listarTudoMenosEu(req, res) {
+  var id = req.body.id;
+  console.log("Listando todo os posts que não seja do usuário");
+
+  postsModel
+    .listarTudoMenosEu(id)
+    .then(function (resultado) {
+      return res.status(200).json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res.status(500).send(erro);
     });
 }
 
 module.exports = {
   postar,
-  listarTudo
+  listarTudo,
+  listarTudoMenosEu,
 };

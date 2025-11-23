@@ -146,9 +146,17 @@
 
       // Listar todos os posts
       function listartPosts() {
-        fetch("/posts/listarTudo", {
-          method: "GET",
+        var id = sessionStorage.ID_USUARIO;
+        fetch(`/posts/listaTudoMenosEu/${id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: id,
+          }),
         }).then(function (resposta) {
+          console.log("Buscando posts que não sejam do usuario: ", id);
           if (resposta.ok) {
             console.log(resposta);
             resposta.json().then((json) => {
@@ -166,7 +174,7 @@
                   "gallery"
                 ).innerHTML += `                     
                     <div class="image up">
-                            <div class="image-overlay" id="imagem-${post.id}" onclick="abrirModal(${post.id})">
+                            <div class="image-overlay" id="imagem-${post.id}">
                               <span class="likes">
                                 <div class="item">
                                   <span>${post.titulo}</span>

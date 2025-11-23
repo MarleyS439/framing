@@ -30,7 +30,26 @@ function listarTudo() {
   return database.executar(sql);
 }
 
+// Função para listar todos os posts que não sejamk do proório usuário
+function listarTudoMenosEu(id) {
+  console.log("Listando todos os posts que não sejam do próprio usuário: ", id);
+
+  var sql = `
+    SELECT u.id,
+       u.usuario,
+       p.titulo,
+       p.descricao,
+       p.foto_path
+    FROM post p
+    JOIN usuario u ON p.fk_id_usuario = u.id
+    WHERE p.fk_id_usuario <> ${id};
+  `;
+  console.log("Executnado a instrução SQL: ", sql);
+  return database.executar(sql);
+}
+
 module.exports = {
   postar,
   listarTudo,
+  listarTudoMenosEu,
 };
