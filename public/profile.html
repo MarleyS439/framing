@@ -602,6 +602,7 @@
           });
       }
 
+      // Função para exibir o nome da imagem na área de post
       function exibirNomeFoto() {
         var foto = document.getElementById("input_foto_post").files[0].name;
 
@@ -691,10 +692,6 @@
         window.location.href = "index.html";
       }
 
-      // Função para listar os posts do usuário
-      function listarPostUsuario() {
-        fetch("/usuarios/:id");
-      }
     </script>
   </body>
 </html>

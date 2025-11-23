@@ -35,7 +35,9 @@ function listarTudoMenosEu(id) {
   console.log("Listando todos os posts que não sejam do próprio usuário: ", id);
 
   var sql = `
-    SELECT u.id,
+    SELECT 
+       p.id AS idPost,
+       u.id AS idUsuario,
        u.usuario,
        p.titulo,
        p.descricao,
@@ -48,8 +50,31 @@ function listarTudoMenosEu(id) {
   return database.executar(sql);
 }
 
+// Função para curtir um post
+function curtir(idPost, idUsuario) {
+  console.log("Curtindo um post");
+
+  var sql = `
+    INSERT INTO post_curtido
+    VALUES (${idPost}, ${idUsuario});
+  `;
+
+  console.log("Executando a instrução SQL: ", sql);
+  return database.executar(sql);
+}
+
+// Funçção para listar comentarios
+function listarComentarios(idPost) {
+  console.log("Listando comentarios para o post de ID: " + idPost);
+
+  var sql = `
+    
+  `;
+}
+
 module.exports = {
   postar,
   listarTudo,
   listarTudoMenosEu,
+  curtir,
 };

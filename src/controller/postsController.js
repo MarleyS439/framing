@@ -65,8 +65,35 @@ function listarTudoMenosEu(req, res) {
     });
 }
 
+// Função para curtir um post
+function curtir(req, res) {
+  var idUsuario = req.body.idUsuario;
+  var idPost = req.body.idPost;
+  console.log(idPost, idUsuario);
+
+  console.log("Realizando o like de post");
+
+  postsModel
+    .curtir(idPost, idUsuario)
+    .then(function (resultado) {
+      return res.status(201).json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res.status(500).send(erro);
+    });
+}
+
+function listarComentarios(req, res) {
+  var idPost = req.body.idPost;
+  console.log("Verificando comentários para o post de ID: " + idPost);
+
+  postsModel.listarComentarios(idPost)
+}
+
 module.exports = {
   postar,
   listarTudo,
   listarTudoMenosEu,
+  curtir,
 };

@@ -1,4 +1,4 @@
-![Framing Logo](https://raw.githubusercontent.com/MarleyS439/framing/main/public/assets/images/Logo-Framing.png)
+
 
 # Framing - Rede Social Para Amantes da Fotografia
 

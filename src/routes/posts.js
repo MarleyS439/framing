@@ -20,4 +20,15 @@ router.get("/listarTudo", function (req, res) {
 router.post("/listaTudoMenosEu/:id", function (req, res) {
   postsController.listarTudoMenosEu(req, res);
 });
+
+// Curtir
+router.post("/curtir/:id", function (req, res) {
+  postsController.curtir(req, res);
+});
+
+// COmentarios
+router.post("/listarComentarios/:id", function (req, res) {
+  postsController.listarComentarios(req, res);
+});
+
 module.exports = router;

@@ -118,15 +118,113 @@
     </div>
 
     <div class="title-explore">
-      <h2>Explorar</h2>
+      <h2>Explorar Fotografias</h2>
 
       <div class="inform">
-        <span>Explore as fotografias de outros usuários</span>
+        <span
+          >Explore as fotografias de outros usuários. Curta e interaja ❤️</span
+        >
       </div>
     </div>
 
     <div class="container-gallery">
       <div class="gallery" id="gallery"></div>
+    </div>
+
+    <div id="more-content"></div>
+
+    <div class="modalJaCurtido" id="jaCurtido">
+      <div class="content">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+        <svg
+          width="25px"
+          height="25px"
+          viewBox="-1 0 30 30"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+        >
+          <title>alert</title>
+          <desc>Created with Sketch Beta.</desc>
+          <defs></defs>
+          <g
+            id="Page-1"
+            stroke="none"
+            stroke-width="1"
+            fill="none"
+            fill-rule="evenodd"
+            sketch:type="MSPage"
+          >
+            <g
+              id="Icon-Set"
+              sketch:type="MSLayerGroup"
+              transform="translate(-362.000000, -880.000000)"
+              fill="#000000"
+            >
+              <path
+                d="M365,904 L368,898 L368,890 C368,885.582 371.582,882 376,882 C380.418,882 384,885.582 384,890 L384,898 L387,904 L365,904 L365,904 Z M376,908 C374.695,908 373.597,907.163 373.184,906 L378.816,906 C378.403,907.163 377.305,908 376,908 L376,908 Z M386,898 L386,890 C386,884.478 381.522,880 376,880 C370.478,880 366,884.478 366,890 L366,898 L362,906 L371.101,906 C371.564,908.282 373.581,910 376,910 C378.419,910 380.436,908.282 380.899,906 L390,906 L386,898 L386,898 Z"
+                id="alert"
+                sketch:type="MSShapeGroup"
+              ></path>
+            </g>
+          </g>
+        </svg>
+        <span>Ops! Você já curtiu esse post</span>
+      </div>
+    </div>
+
+    <div class="modalJaCurtido" id="curtiu">
+      <div class="content">
+        <?xml version="1.0" encoding="utf-8"?>
+        <svg
+          width="25"
+          height="25"
+          viewBox="0 0 25 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g>
+            <path
+              d="M12.5 21.875C12.5 21.875 23.0584 11.3166 23.0584 11.3166C24.3016 10.0734 25 8.38728 25 6.62913C25 6.62913 25 6.33178 25 6.33178C25 2.83484 22.1652 0 18.6683 0C16.7447 0 14.9255 0.874359 13.7239 2.37634C13.7239 2.37634 12.5 3.90625 12.5 3.90625C12.5 3.90625 11.2761 2.37634 11.2761 2.37634C10.0745 0.874359 8.25528 0 6.33178 0C2.83484 0 0 2.83484 0 6.33178C0 6.33178 0 6.62913 0 6.62913C0 8.38728 0.698422 10.0734 1.94162 11.3166C1.94162 11.3166 12.5 21.875 12.5 21.875Z"
+              fill="#FF0000"
+              fill-rule="evenodd"
+              transform="translate(0 1.563)"
+            />
+          </g>
+        </svg>
+        <span>Você curtiu esse post</span>
+      </div>
+    </div>
+
+    <div class="modalComentario" id="modalComentario">
+      <form>
+        <span id="titulo_post">Título do post</span>
+        <br />
+        <span id="usuario_do_post">Usuário</span>
+        <div class="input-area">
+          <label>Comente este post:</label>
+          <textarea
+            type="text"
+            id="comentarioValor"
+            placeholder="Digite seu comentário"
+            required
+          ></textarea>
+        </div>
+        <div class="buttons-comentario">
+          <button
+            type="button"
+            onclick="cancelarComentario()"
+            id="cancelar-comentario"
+          >
+            Cancelar
+          </button>
+          <button type="button" id="publicarComentario">
+            Publicar comentário
+          </button>
+        </div>
+      </form>
     </div>
 
     <script src="assets/javascript/session.js"></script>
@@ -140,6 +238,11 @@
 
       function redirect(url) {
         window.location.href = url;
+      }
+
+      function logout() {
+        sessionStorage.clear();
+        redirect("login.html");
       }
 
       document.addEventListener("DOMContentLoaded", listartPosts());
@@ -170,28 +273,158 @@
               }
 
               posts.forEach((post) => {
-                document.getElementById(
-                  "gallery"
-                ).innerHTML += `                     
+                document.getElementById("gallery").innerHTML += `
                     <div class="image up">
-                            <div class="image-overlay" id="imagem-${post.id}">
+                            <div class="image-overlay" id="${post.idPost}">
                               <span class="likes">
                                 <div class="item">
-                                  <span>${post.titulo}</span>
+                                  <span id="titulo-${post.idPost}">${post.titulo}</span>
                                 </div>
-
                                 <div class="item">
-                                  <span>@${post.usuario}</span>
+                                  <span id="usuario_post-${post.idPost}">@${post.usuario}</span>
                                 </div>
                               <span>
+                              <div class="like" title="Curtir post" onclick="like(${post.idPost})">
+                                <?xml version="1.0" encoding="utf-8"?>
+                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <g>
+                                    <path d="M12.5 21.875C12.5 21.875 23.0584 11.3166 23.0584 11.3166C24.3016 10.0734 25 8.38728 25 6.62913C25 6.62913 25 6.33178 25 6.33178C25 2.83484 22.1652 0 18.6683 0C16.7447 0 14.9255 0.874359 13.7239 2.37634C13.7239 2.37634 12.5 3.90625 12.5 3.90625C12.5 3.90625 11.2761 2.37634 11.2761 2.37634C10.0745 0.874359 8.25528 0 6.33178 0C2.83484 0 0 2.83484 0 6.33178C0 6.33178 0 6.62913 0 6.62913C0 8.38728 0.698422 10.0734 1.94162 11.3166C1.94162 11.3166 12.5 21.875 12.5 21.875Z" fill="#FF0000" fill-rule="evenodd" transform="translate(0 1.563)" />
+                                  </g>
+                                </svg>
+                              </div>
+                              <div class="like" title="Comentar post" onclick="comentar(${post.idPost})">
+                                <?xml version="1.0" encoding="utf-8"?>
+                                <svg width="25" height="25" viewBox="0 0 25 25" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                  <g>
+                                    <path d="M18.75 0C18.75 0 0 0 0 0L0 15.625L6.25 15.625L9.375 18.75L12.5 15.625L18.75 15.625C18.75 15.625 18.75 0 18.75 0Z" fill="##ffffff" fill-rule="evenodd" transform="translate(6.25 1.563)"></path>
+                                    <path d="M3.125 0C3.125 0 3.125 12.5 3.125 12.5L11.2056 12.5L13.6049 14.8992L11.3951 17.1089L9.91117 15.625L0 15.625L0 0C0 0 3.125 0 3.125 0Z" fill="#ffffff" fill-rule="evenodd" transform="translate(0 7.813)"></path>
+                                  </g>
+                                </svg>
+                              </div>
                             </div>
                             <img src="/assets/uploads/images/${post.foto_path}" alt=""/>
                         </div>
                     `;
               });
             });
+
+            document.getElementById(
+              "more-content"
+            ).innerHTML = `<p>Parece que você viu todos os posts</p>`;
           }
         });
+      }
+
+      // Exibir a mensagem de já curtido
+      function jaCurtido() {
+        document.getElementById("jaCurtido").style.display = "flex";
+        setTimeout(() => {
+          document.getElementById("jaCurtido").style.display = "none";
+        }, 2500);
+      }
+
+      // CUrtiu post
+      function curtiuPost() {
+        document.getElementById("curtiu").style.display = "flex";
+        setTimeout(() => {
+          document.getElementById("curtiu").style.display = "none";
+        }, 2500);
+      }
+
+      // FUnção para abrir modal e comentar post
+      function comentar(idPost) {
+        var modal = (document.getElementById("modalComentario").style.display =
+          "flex");
+        var usuarioPost = document.getElementById(
+          `usuario_post-${idPost}`
+        ).innerHTML;
+        var tituloPost = document.getElementById(`titulo-${idPost}`).innerHTML;
+        document.getElementById("titulo_post").innerHTML = tituloPost;
+        document.getElementById("usuario_do_post").innerHTML = usuarioPost;
+
+        // Carregar os posts
+        fetch(`posts/listarComentarios/${idPost}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            idPost: idPost,
+          }),
+        }).then(function (resposta) {
+          console.log("Listand os posts");
+          if (resposta.ok) {
+            resposta.json().then((json) => {
+              sessionStorage.COMENTARIOS = JSON.stringify(json);
+              var comentarios = JSON.parse(sessionStorage.COMENTARIOS);
+
+              if (comentarios.length == 0) {
+                document.getElementById("msgComentarios").innerHTML =
+                  "Nenhum comentário ainda";
+              } else {
+                comentarios.forEach((comentario) => {
+                  document.getElementById("msgComentarios").innerHTML += `
+                    <div>${comentario.conteudo}</div><br>
+                  `;
+                });
+              }
+            });
+          }
+        });
+      }
+
+      // Função para cencelar comentario
+      function cancelarComentario() {
+        document.getElementById("modalComentario").style.display = "none";
+      }
+
+      // FUnção para comentar post
+      function publicarComentario(idPost) {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var comentario = document.getElementById("comentario");
+
+        fetch(`posts/comentar/${idPost}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: {
+            idPost: idPost,
+            idUsuario: idUsuario,
+            comentario: comentario,
+          },
+        });
+      }
+
+      // Função para curtir post
+      function like(idPost) {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`posts/curtir/${idPost}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            idUsuario: idUsuario,
+            idPost: idPost,
+          }),
+        })
+          .then(function (resposta) {
+            console.log("Curtindo um post");
+            if (resposta.ok) {
+              console.log(resposta);
+              resposta.json().then((json) => {
+                sessionStorage.POSTS_CURTIDOS = JSON.stringify(json);
+                curtiuPost();
+              });
+            } else {
+              jaCurtido();
+            }
+          })
+          .catch(function (erro) {
+            console.log(erro);
+          });
       }
     </script>
   </body>

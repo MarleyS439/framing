@@ -31,7 +31,7 @@ function cadastrar(apelido, nome, sobrenome, email, senha) {
 
   var sql = `
     INSERT INTO usuario
-    VALUES (DEFAULT, '${apelido}', '${nome}', '${sobrenome}', '${email}', '${senha}', NULL, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+    VALUES (DEFAULT, '${apelido}', '${nome}', '${sobrenome}', '${email}', '${senha}', DEFAULT, DEFAULT, DEFAULT, DEFAULT);
   `;
   console.log("Executando a instrução:\n", sql);
   return database.executar(sql);
