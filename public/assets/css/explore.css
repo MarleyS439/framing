@@ -3,8 +3,145 @@
 
 /* >= 1024px width */
 @media screen and (min-width: 1024px) {
-    body {
-        background-color: var(--color-white);
-        display: flex;
-    }
+  body {
+    background-color: var(--color-white);
+  }
+
+  .container-gallery {
+    padding: 5%;
+  }
+
+  .gallery {
+    columns: 4;
+    column-gap: 10px;
+  }
+
+  .image {
+    position: relative;
+    break-inside: avoid;
+    margin-bottom: 10px;
+    display: flex;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .image-overlay {
+    visibility: hidden;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-opaque);
+    cursor: pointer;
+  }
+
+  .image-overlay svg {
+    width: 20px;
+  }
+
+  .image-overlay .likes {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 5%;
+  }
+
+  .image-overlay .likes .item {
+    margin: 0px 10px;
+  }
+
+  .image-overlay .likes span {
+    color: var(--color-white);
+    margin: 0px 5px;
+  }
+
+  .image img {
+    width: 100%;
+    display: block;
+  }
+
+  .image:hover > .image-overlay {
+    visibility: visible;
+  }
+
+  .information {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    padding: 10%;
+    transition: 200ms ease-in-out;
+    display: none;
+  }
+
+  .info .title {
+    font-size: 1.5rem;
+    width: 100%;
+    text-wrap: nowrap;
+  }
+
+  .navigation {
+    position: sticky;
+    top: 0;
+    background-color: var(--color-white);
+    padding: 1% 5%;
+    z-index: 10;
+    margin: 0% 5%;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .navigation ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .navigation ul li {
+    list-style: none;
+    margin-right: 20px;
+  }
+
+  .navigation button {
+    padding: 5px 10px;
+    background-color: var(--color-white);
+    border: none;
+    cursor: pointer;
+  }
+
+  .navigation button:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .title-explore {
+    position: sticky;
+    top: 0;
+    margin: 5%;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 2% 5%;
+  }
+
+  .title-explore .inform {
+    margin-top: 20px;
+  }
+
+  .logo svg {
+    width: 50px;
+  }
+
+  .nothing {
+    display: block;
+    flex-direction: column;
+    font-size: 2rem;
+    width: max-content;
+    color: #3a3a3a;
+  }
+
+  .goto {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .goto:hover {
+    opacity: 0.8;
+  }
+
+  
 }

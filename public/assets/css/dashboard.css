@@ -3,116 +3,142 @@
 
 /* >= 1024px width */
 @media screen and (min-width: 1024px) {
-    body {
-        background-color: var(--color-white);
-        display: flex;
-        height: 100vh;
-    }
+  body {
+    background-color: var(--color-white);
+    display: flex;
+    height: 100vh;
+  }
 
-    .navigation {
-        width: 30vw;
-        display: flex;
-        padding: 2%;
-        flex-direction: column;
-        border-right: 1px solid var(--color-gray);
-    }
+  .navigation {
+    width: 15vw;
+    display: flex;
+    padding: 2%;
+    flex-direction: column;
+    border-right: 1px solid var(--color-gray);
+  }
 
-    .navigation ul li {
-        list-style: none;
-        margin: 10px 0px;
-    }
+  .navigation ul li {
+    list-style: none;
+    margin: 10px 0px;
+  }
 
-    .navigation ul li button {
-        border: none;
-        padding: 5px;
-        color: var(--color-black);
-        background-color: var(--color-white);
-        cursor: pointer;
-        transition: 200ms ease-in-out;
-    }
+  .navigation ul li button {
+    border: none;
+    padding: 5px;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+  }
 
-    .navigation ul li button:hover {
-        text-decoration: underline;
-    }
+  .navigation ul li button:hover {
+    text-decoration: underline;
+  }
 
-    .logo {
-        margin: 30px 0px;
-    }
+  .logo {
+    margin: 30px 0px;
+  }
 
-    .body {
-        height: 100%;
-        width: 100%;
-        padding: 2%;
-    }
+  .body {
+    padding: 20px;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-rows: 0fr 1fr 2fr;
+    gap: 20px 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "profile-card profile-card chart1 chart1"
+      "total-curtidas total-comentario chart1 chart1"
+      "char3 char3 ranking ranking";
+  }
 
-    .card-profile {
-        display: flex;
-        border: 1px solid red;
-        width: 100%;
-        padding: 10px;
-    }
+  .profile-card {
+    display: flex;
+    flex-direction: column;
+    grid-area: profile-card;
+    padding: 10px;
+    display: flex;
+    box-shadow: 0px 2px 2px 2px var(--color-gray);
+  }
 
-    .card-profile img {
-        width: 120px;
-        margin: 10px;
-    }
+  .profile-card .image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    .card-profile .info {
-        display: flex;
-        flex-direction: column;
-    }
+  .profile-card .image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 500px;
+    margin: 0px 20px 0px 0px;
+  }
 
-    .card-profile .info .nome {
-        font-weight: medium;
-        font-size: 2rem;
-        margin-right: 20px;
-        width: 100%;
-        border: 1px solid red;
-    }
+  .profile-card .informations {
+    display: flex;
+    justify-content: flex-start;
+  }
 
-    .card-profile .posts {
-        display: flex;
-        border: 1px solid red;
-        margin-top: 20px;
-        justify-content: flex-start;
-    }
+  .profile-card .informations .item {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
+  }
 
-    .card-profile .posts .information {
-        display: flex;
-        flex-direction: column;
-        margin-right: 30px;
-    }
+  .profile-card .name {
+    font-size: 1.5rem;
+    display: flex;
+    width: max-content;
+  }
 
-    .card-profile .title {
-        font-weight: medium;
-    }
+  .total-curtidas {
+    grid-area: total-curtidas;
+    padding: 10px;
+    box-shadow: 0px 2px 2px 2px var(--color-gray);
+  }
 
-    .card-profile .icon {
-        display: flex;
-    }
+  .icon {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
-    .kpi .total {
-        display: flex;
-    }
+  .icon svg {
+    margin: 10px;
+  }
 
-    .container-1 {
-        display: flex;
-        padding: 10px;
-    }
+  .icon span {
+    font-size: 2rem;
+  }
 
-    .kpi .data {
-        margin: 10px;
-        padding: 5%;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    }
+  .content span:nth-child(1) {
+    font-weight: 500;
+  }
 
-    .kpi .data .value {
-        font-size: 2rem;
-        margin-right: 2px;
-    }
+  .total-comentario {
+    grid-area: total-comentario;
+    padding: 10px;
+    box-shadow: 0px 2px 2px 2px var(--color-gray);
+  }
 
-    .chart {
-        width: 100%;
-        padding: 10px;
-    }
+  .chart1 {
+    display: flex;
+    align-items: center;
+    grid-area: chart1;
+    box-shadow: 0px 2px 2px 2px var(--color-gray);
+  }
+
+  #curtidas {
+    padding: 10px;
+  }
+
+  .ranking {
+    grid-area: ranking;
+  }
+
+  .char3 {
+    grid-area: char3;
+  }
 }

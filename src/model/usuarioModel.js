@@ -37,22 +37,46 @@ function cadastrar(apelido, nome, sobrenome, email, senha) {
   return database.executar(sql);
 }
 
+// FUnção para confirmar a capa do usuario
 function confirmarCapa(id) {
-  console.log(
-    "Confirmando a capa de usuário:\n" +
-      "ID de usuário:" +
-      id +
-      `\nFoto: ${capa}`
-  );
+  console.log("Confirmando a capa de usuário:\n" + "ID de usuário:", id);
 
   var sql = `
     UPDATE usuario
     SET capa_path = CONCAT('assets/uploads/images/',
                            (SELECT arquivo
                             FROM temp
-                            WHERE fk_id_usuario = ${id}))
+                            WHERE fk_id_usuario = ${id} 
+                            ORDER BY id 
+                            DESC LIMIT 1)
+                    )
     WHERE usuario.id = ${id};`;
 
+  var select = `
+    SELECT capa_path
+    FROM usuario
+    WHERE id = ${id};
+  `;
+
+  console.log("Executando a instrução SQL: \n", sql);
+  return database.executar(sql).then(function () {
+    return database.executar(select);
+  });
+}
+
+// Função para listar todos os posts do usuario
+function listarPosts(id) {
+  console.log("Executando consulta de posts do usuário de ID: ", id);
+
+  var sql = `
+    SELECT id,
+          titulo,
+          foto_path,
+          descricao,
+          criado_em
+    FROM post
+    WHERE fk_id_usuario = ${id};
+  `;
   console.log("Executando a instrução SQL: \n", sql);
   return database.executar(sql);
 }
@@ -60,4 +84,6 @@ function confirmarCapa(id) {
 module.exports = {
   autenticar,
   cadastrar,
+  confirmarCapa,
+  listarPosts,
 };

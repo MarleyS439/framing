@@ -1,4 +1,6 @@
 var usuarioModel = require("../model/usuarioModel");
+var uploadModel = require("../model/uploadModel");
+const { response } = require("express");
 
 // Função controller para autenticar usuário
 function autenticar(req, res) {
@@ -27,7 +29,7 @@ function autenticar(req, res) {
         console.log(erro);
         console.log(
           "\nHouve um erro ao autenticar o usuário: ",
-          erro.sqlMessage,
+          erro.sqlMessage
         );
         return res.status(500).json(erro.sqlMessage);
       });
@@ -61,14 +63,51 @@ function cadastrar(req, res) {
       .catch(function (erro) {
         console.log(erro);
         console.log(
-          "\nHouve um erro ao realizar o cadastro: " + erro.sqlMessage,
+          "\nHouve um erro ao realizar o cadastro: " + erro.sqlMessage
         );
         res.status(500).json(erro.sqlMessage);
       });
   }
 }
 
+// Função para confirmar a capa
+function confirmarCapa(req, res) {
+  var id = req.params.id;
+  console.log("Confirmando alteração para: ", id);
+
+  usuarioModel
+    .confirmarCapa(id)
+    .then(function (resultado) {
+      console.log(resultado);
+      res.json(resultado[0].capa_path);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res.status(500).send(erro);
+    });
+}
+
+// Função para listar todos os posts do usuário
+function listarPosts(req, res) {
+  var id = req.body.id;
+  console.log("Listando postos do usário de ID: ", id);
+
+  usuarioModel
+    .listarPosts(id)
+    .then(function (resultado) {
+      res.status(200).json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res.status(500).send(erro);
+    });
+}
+
+
+
 module.exports = {
   cadastrar,
   autenticar,
+  confirmarCapa,
+  listarPosts,
 };

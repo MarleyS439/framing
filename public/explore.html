@@ -1,46 +1,190 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
-    <head>
-        <!--HTML Meta Tags-->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Marley de S. Santos" />
-        <meta name="description" content="" />
-        <meta name="kwywords" content="" />
-        <meta
-            name="copyright"
-            content="© 2025 Framing. Todos os direitos reservados."
-        />
+  <head>
+    <!--HTML Meta Tags-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Marley de S. Santos" />
+    <meta name="description" content="" />
+    <meta name="kwywords" content="" />
+    <meta
+      name="copyright"
+      content="© 2025 Framing. Todos os direitos reservados."
+    />
 
-        <!--Stylesheet-->
-        <link rel="stylesheet" href="assets/css/explore.css" />
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="assets/css/explore.css" />
 
-        <!--Favicon-->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="assets/icons/favicon.png"
-        />
+    <!--Favicon-->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon.png"
+    />
 
-        <!--Google Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
-            rel="stylesheet"
-        />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
 
-        <!--Title-->
-        <title>Explorar</title>
-    </head>
-    <body>
-        <nav></nav>
+    <!--Title-->
+    <title>Explorar</title>
+  </head>
+  <body>
+    <div class="top">
+      <!--Navigation-->
+      <div class="navigation">
+        <ul>
+          <li>
+            <div class="logo">
+              <?xml version="1.0" encoding="utf-8"?>
+              <svg
+                viewBox="0 0 1024 1024"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <rect
+                    width="1024"
+                    height="1024"
+                    fill="#FFFFFF"
+                    fill-rule="evenodd"
+                  />
+                  <g transform="translate(181 141)">
+                    <rect
+                      width="100"
+                      height="429"
+                      fill="#000000"
+                      fill-rule="evenodd"
+                      transform="translate(0 100)"
+                    />
+                    <rect
+                      width="100"
+                      height="529"
+                      fill="#000000"
+                      fill-rule="evenodd"
+                      transform="translate(562 213)"
+                    />
+                    <path
+                      d="M0 0L100 0L100 661.535L0.00012207 661.535L0 0Z"
+                      fill="#000000"
+                      fill-rule="evenodd"
+                      transform="matrix(0 1 -1 0 662 0)"
+                    />
+                    <rect
+                      width="137"
+                      height="137"
+                      fill="#000000"
+                      fill-rule="evenodd"
+                      transform="translate(262 302)"
+                    />
+                    <path
+                      d="M0 0L100 0L100 562.001L0 562.001L0 0Z"
+                      fill="#000000"
+                      fill-rule="evenodd"
+                      transform="matrix(0 -1 1 0 0 742)"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </li>
 
-        <script>
-            if (sessionStorage.EMAIL_USUARIO == null) {
-                window.location.href = "register.html";
-            }
-        </script>
-    </body>
+          <li>
+            <button onclick="redirect('index.html')">Início</button>
+          </li>
+
+          <li>
+            <button onclick="redirect('profile.html')">Meu perfil</button>
+          </li>
+
+          <li>
+            <button>Curtidos</button>
+          </li>
+          <li>
+            <button onclick="redirect('dashboard.html')">
+              Minha dashboard
+            </button>
+          </li>
+          <li>
+            <button onclick="logout()">Sair</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="title-explore">
+      <h2>Explorar</h2>
+
+      <div class="inform">
+        <span>Explore as fotografias de outros usuários</span>
+      </div>
+    </div>
+
+    <div class="container-gallery">
+      <div class="gallery" id="gallery"></div>
+    </div>
+
+    <script src="assets/javascript/session.js"></script>
+
+    <script>
+      if (sessionStorage.EMAIL_USUARIO == null) {
+        window.location.href = "register.html";
+      }
+
+      var msgSemPost = `<span class="nothing">Não há nada ainda por aqui. <a class="goto" onclick="redirect('profile.html')">Poste sua fotografia</a></span>`;
+
+      function redirect(url) {
+        window.location.href = url;
+      }
+
+      document.addEventListener("DOMContentLoaded", listartPosts());
+
+      // Listar todos os posts
+      function listartPosts() {
+        fetch("/posts/listarTudo", {
+          method: "GET",
+        }).then(function (resposta) {
+          if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then((json) => {
+              console.log(json);
+
+              sessionStorage.TODOS_POSTS = JSON.stringify(json);
+              var posts = JSON.parse(sessionStorage.TODOS_POSTS);
+
+              if (posts.length == 0) {
+                document.getElementById("gallery").innerHTML = msgSemPost;
+              }
+
+              posts.forEach((post) => {
+                document.getElementById(
+                  "gallery"
+                ).innerHTML += `                     
+                    <div class="image up">
+                            <div class="image-overlay" id="imagem-${post.id}" onclick="abrirModal(${post.id})">
+                              <span class="likes">
+                                <div class="item">
+                                  <span>${post.titulo}</span>
+                                </div>
+
+                                <div class="item">
+                                  <span>@${post.usuario}</span>
+                                </div>
+                              <span>
+                            </div>
+                            <img src="/assets/uploads/images/${post.foto_path}" alt=""/>
+                        </div>
+                    `;
+              });
+            });
+          }
+        });
+      }
+    </script>
+  </body>
 </html>

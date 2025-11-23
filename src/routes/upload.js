@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var uploadController = require("../controller/uploadController");
-const upload = require("../config/upload");
+var upload = require("../config/upload");
 
 // Enviar post
 router.post("/enviar", upload.single("foto"), function (req, res) {
@@ -15,6 +15,11 @@ router.post("/trazer", upload.single("foto"), function (req, res) {
 
 // Enviar capa
 router.post("/enviar/capa", upload.single("foto_capa"), function (req, res) {
+  uploadController.enviarPreview(req, res);
+});
+
+// Enviar post
+router.post("/post", upload.single("foto_post"), function (req, res) {
   uploadController.enviarPreview(req, res);
 });
 

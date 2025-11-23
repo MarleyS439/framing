@@ -63,7 +63,7 @@
           </div>
           <div class="data">
             <span class="label">Posts</span>
-            <span class="count">120</span>
+            <span class="count" id="quantidade_posts"></span>
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@
     <div class="navigation">
       <ul>
         <li>
-          <button onclick="redirect('index.html')">Início</button>
+          <button onclick="redirect('explore.html')">Explorar</button>
         </li>
 
         <li>
@@ -167,6 +167,9 @@
         </li>
         <li>
           <button onclick="redirect('dashboard.html')">Minha dashboard</button>
+        </li>
+        <li>
+          <button onclick="logout()">Sair</button>
         </li>
       </ul>
     </div>
@@ -275,14 +278,15 @@
               required
               name="foto_capa"
               id="input_cover"
-              oninput="enviarPreview()"
             />
           </div>
         </div>
         <div class="options-cover">
           <button class="cancel" id="cancelCover">Cancelar</button>
 
-          <button class="save" id="saveCover">Salvar alterações</button>
+          <button class="save" id="saveCover" onclick="confirmarCapa()">
+            Salvar alterações
+          </button>
         </div>
       </div>
     </div>
@@ -330,11 +334,18 @@
         <div class="sidea">
           <span>Novo Post</span>
           <div class="image">
-            <img src="assets/images/20230101_052111.jpg" alt="" />
+            <img src="" alt="" />
           </div>
           <div>
             <label for="input_foto_post">Selecionar</label>
-            <input type="file" id="input_foto_post" name="foto_capa" required />
+            <input
+              type="file"
+              id="input_foto_post"
+              name="foto_post"
+              oninput="exibirNomeFoto()"
+              required
+            />
+            <div id="exibirNome"></div>
           </div>
         </div>
         <div class="container-text">
@@ -363,32 +374,20 @@
             <div class="input-post">
               <label for="input_descricao">Descrição</label>
               <textarea
-                id="descricao_input"
+                id="input_descricao"
                 cols="5"
                 rows="3"
+                maxlength="255"
                 placeholder="Descrição do post"
                 oninput="descricao()"
               ></textarea>
-            </div>
-            <div class="input-post">
-              <label for="input_hashtags">Hashtags</label>
-              <input
-                type="text"
-                id="input_hashtags"
-                placeholder="Adicionar no máximo 7"
-              />
             </div>
           </form>
 
           <div class="buttons-post">
             <button id="cancelPost">Cancelar</button>
             <div>
-              <button id="hashtag" onclick="hashtags()">
-                Adicionar hashtag
-              </button>
-            </div>
-            <div>
-              <button id="publicar" type="button" onclick="enviarPreview()">
+              <button id="publicar" type="button" onclick="publicarPost()">
                 Publicar
               </button>
             </div>
@@ -397,21 +396,65 @@
       </div>
     </div>
 
+    <!-- Modal Image -->
+    <!-- <div class="modal-image" id="modalPostOpen">
+      <div class="image-container">
+        <img id="" src="assets/images/20210524_134649.jpg" alt="" />
+        <div class="container-info">
+          <div class="">
+            <span>Título do post</span>
+            <p>Descricao</p>
+          </div>
+        </div>
+      </div>
+    </div>
+ -->
     <!--Session-->
     <script src="assets/javascript/session.js"></script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         validarSessao();
+        buscarPostsUsuario();
+        var msgSemPost = `<span class="nothing">Nada por enquanto. Que tal publicar uma foto?</span>`;
+        var totalPosts = 0;
 
-        // Quantidade de imagens a serem exibidas
-        var quantidadeImagens = 30;
-        var galeria = document.getElementById("gallery");
-        var html = "";
-        for (var i = 1; i < quantidadeImagens; i++) {
-          html += `
+        // Função para buscar os posts do usuário
+        function buscarPostsUsuario() {
+          var id = sessionStorage.ID_USUARIO;
+
+          fetch(`/usuarios/posts/${id}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: id,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("Listando posts");
+              if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then((json) => {
+                  console.log(json);
+
+                  sessionStorage.POSTS = JSON.stringify(json);
+                  var posts = JSON.parse(sessionStorage.POSTS);
+
+                  var quantidade = document.getElementById("quantidade_posts");
+                  quantidade.innerHTML = `${posts.length}`;
+
+                  if (posts.length == 0) {
+                    document.getElementById("gallery").innerHTML = msgSemPost;
+                  } else {
+                    posts.forEach((post) => {
+                      document.getElementById(
+                        "gallery"
+                      ).innerHTML += `                     
                         <div class="image up">
-                            <div class="image-overlay" id="imagem-${i}">
+                            <div class="image-overlay" id="imagem-${post.id}" onclick="abrirModal(${post.id})">
                               <span class="likes">
                                 <div class="item">
                                   <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
@@ -431,12 +474,28 @@
                                 </div>
                               <span>
                             </div>
-                            <img loading="lazy" src="assets/uploads/images/imagem_${i}.jpg" />
+                            <img src="/assets/uploads/images/${post.foto_path}" alt=""/>
                         </div>
                     `;
+                    });
+                  }
+                });
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
         }
-        galeria.innerHTML = html;
       });
+
+      // Função para abrir um modal de de iamgem
+      function abrirModal(id) {
+        var modal = document.getElementById("modalPostOpen");
+        var imagemClicada = document.getElementById(`imagem-${id}`);
+        var imgSrc = imagemClicada.getElementsByTagName("img")[0].src;
+        var titulo = imagemClicada.querySelector("span").innerText;
+        var descricao = imagemClicada.querySelector("p").innerText;
+      }
 
       // Função para redirecionar
       function redirect(url) {
@@ -490,30 +549,22 @@
         var input = document.getElementById("input_titulo");
         var conteudo = input.value;
 
+        if (conteudo == "") {
+          conteudo = "Digite seu título";
+        }
+
         preview.innerHTML = conteudo;
       }
 
       // Função para inserir a descrição no preview do post
       function descricao() {
         var preview = document.getElementById("descricao");
-        var input = document.getElementById("descricao_input").value;
-        preview.innerHTML = input;
-      }
+        var input = document.getElementById("input_descricao").value;
 
-      // Lista de hashtags
-      var listahashtags = [];
-      // Função para inserir as hashtags
-      function hashtags() {
-        var preview = document.getElementById("tags");
-        var hashtag = document.getElementById("input_hashtags").value.trim();
-        if (hashtag != "" && listahashtags.length < 7)
-          listahashtags.push(hashtag.toLowerCase());
-        var conteudo = "";
-        for (var i = 0; i < listahashtags.length; i++) {
-          conteudo += `<span class="listaHashtags">#${listahashtags[i]}</span>`;
+        if (input == "") {
+          input = "Digite sua descrição da imagem";
         }
-        preview.innerHTML = conteudo;
-        input_hashtags.value = "";
+        preview.innerHTML = input;
       }
 
       var buttonCancelPost = document.getElementById("cancelPost");
@@ -524,10 +575,10 @@
         document.body.style.overflowY = "auto";
       });
 
-      
       var fundoCapa = document.getElementById("capa_edit");
       fundoCapa.style.backgroundImage = `url(${sessionStorage.CAPA_USUARIO})`;
 
+      // FUnção para nenviar o preview
       function enviarPreview() {
         var foto = document.getElementById("input_cover");
         var id = sessionStorage.ID_USUARIO;
@@ -552,6 +603,12 @@
           });
       }
 
+      function exibirNomeFoto() {
+        var foto = document.getElementById("input_foto_post").files[0].name;
+
+        var nomeExibicao = (document.getElementById("exibirNome").innerHTML = foto);
+      }
+
       // Função para buscar o preview da imagem
       function buscarPreview() {
         var id = sessionStorage.ID_USUARIO;
@@ -572,8 +629,66 @@
           });
       }
 
+      // Confirmar capa
       function confirmarCapa() {
+        var id = sessionStorage.ID_USUARIO;
+        fetch(`/usuarios/confirmar/${id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((resposta) => {
+            if (resposta.ok) {
+              resposta.json().then((json) => {
+                sessionStorage.CAPA_USUARIO = `${json}`;
+                document.getElementById(
+                  "capa_edit"
+                ).style.backgroundImage = `url(${sessionStorage.CAPA_USUARIO})`;
+                modalEditCover.style.display = "none";
+                document.body.style.overflowY = "auto";
+                window.location.reload(true);
+              });
+            }
+          })
+          .catch((erro) => {
+            console.error(erro);
+          });
+      }
 
+      // Função para publicar post
+      function publicarPost() {
+        var id = sessionStorage.ID_USUARIO.toString();
+        var fotoPost = document.getElementById("input_foto_post");
+        var tituloPost = document.getElementById("input_titulo").value;
+        var descricaoPost = document.getElementById("input_descricao").value;
+
+        const formData = new FormData();
+
+        formData.append("id", id);
+        formData.append("titulo", tituloPost);
+        formData.append("foto_post", fotoPost.files[0]);
+        formData.append("descricao", descricaoPost);
+
+        fetch("/posts/postar", {
+          method: "POST",
+          body: formData,
+        })
+          .then(function (resposta) {
+            console.log(resposta);
+            if (resposta.ok) {
+              console.log("Postou foto");
+              window.location.reload(true);
+            }
+          })
+          .catch(function (erro) {
+            console.log(erro);
+          });
+      }
+
+      function logout() {
+        sessionStorage.clear();
+        window.location.href = "index.html";
       }
 
       // Função para listar os posts do usuário

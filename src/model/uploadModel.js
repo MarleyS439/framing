@@ -27,6 +27,7 @@ function buscarPreview(id) {
   return database.executar(sql);
 }
 
+
 module.exports = {
   enviar,
   buscarPreview,

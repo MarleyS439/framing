@@ -1,267 +1,307 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
-    <head>
-        <!--HTML Meta Tags-->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Marley de S. Santos" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta
-            name="copyright"
-            content="© 2025 Framing. Todos os direitos reservados."
-        />
+  <head>
+    <!--HTML Meta Tags-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Marley de S. Santos" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+      name="copyright"
+      content="© 2025 Framing. Todos os direitos reservados."
+    />
 
-        <!--Stylesheet-->
-        <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
 
-        <!--Favicon-->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="assets/icons/favicon.png"
-        />
+    <!--Favicon-->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon.png"
+    />
 
-        <!--Google Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
-            rel="stylesheet"
-        />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
 
-        <!--Chart JS-->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+    <!--Chart JS-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
 
-        <!--Title-->
-        <title>Dashboard</title>
-    </head>
-    <body>
-        <!--Navigation-->
-        <div class="navigation">
-            <div class="logo">
-                <?xml version="1.0" encoding="utf-8"?>
-                <svg
-                    viewBox="0 0 753 184"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <g>
-                        <path
-                            d="M9.49219 141.696L9.49219 40.903L72.8789 40.903L72.8789 58.1647L28.5117 58.1647L28.5117 82.528L69.3984 82.528L69.3984 99.7897L28.5117 99.7897L28.5117 141.696L9.49219 141.696ZM86.9858 141.696L86.9858 70.2585L104.845 70.2585L104.845 78.3444L107.412 78.3444Q108.994 74.0202 112.65 72.0163Q116.341 69.9772 121.263 69.9772L129.876 69.9772L129.876 86.114L120.947 86.114Q114.056 86.114 109.591 89.8054Q105.126 93.4616 105.126 101.091L105.126 141.696L86.9858 141.696ZM164.465 143.7Q156.801 143.7 150.754 141.063Q144.708 138.391 141.192 133.294Q137.676 128.161 137.676 120.813Q137.676 109.739 145.446 104.114Q153.215 98.489 165.309 98.489L184.891 98.489L184.891 94.4812Q184.891 89.4187 181.727 86.1843Q178.563 82.9499 171.637 82.9499Q164.887 82.9499 161.547 86.0437Q158.243 89.1374 157.258 94.0241L140.559 88.3991Q142.282 82.9499 146.079 78.4147Q149.911 73.8796 156.309 71.0671Q162.708 68.2546 171.919 68.2546Q186.051 68.2546 194.243 75.321Q202.469 82.3522 202.469 95.7468L202.469 122.395Q202.469 126.719 206.512 126.719L212.243 126.719L212.243 141.696L200.149 141.696Q194.84 141.696 191.36 139.13Q187.915 136.528 187.915 132.204L187.915 132.063L185.172 132.063Q184.61 133.786 182.571 136.598Q180.567 139.376 176.243 141.555Q171.919 143.7 164.465 143.7ZM167.629 129.04Q175.258 129.04 180.075 124.786Q184.891 120.532 184.891 113.466L184.891 112.024L166.61 112.024Q161.583 112.024 158.7 114.204Q155.817 116.348 155.817 120.251Q155.817 124.118 158.84 126.579Q161.864 129.04 167.629 129.04ZM225.514 141.696L225.514 70.2585L243.373 70.2585L243.373 78.0632L245.94 78.0632Q247.838 74.4421 252.127 71.8054Q256.451 69.1335 263.518 69.1335Q271.147 69.1335 275.752 72.0866Q280.358 75.0397 282.819 79.7858L285.42 79.7858Q287.846 75.1804 292.311 72.1569Q296.776 69.1335 305.002 69.1335Q311.611 69.1335 316.99 71.946Q322.404 74.7233 325.639 80.4187Q328.908 86.114 328.908 94.7624L328.908 141.696L310.768 141.696L310.768 96.0632Q310.768 90.1569 307.744 87.2038Q304.721 84.2507 299.236 84.2507Q293.049 84.2507 289.639 88.2233Q286.264 92.1608 286.264 99.5085L286.264 141.696L268.123 141.696L268.123 96.0632Q268.123 90.1569 265.1 87.2038Q262.076 84.2507 256.592 84.2507Q250.404 84.2507 247.029 88.2233Q243.654 92.1608 243.654 99.5085L243.654 141.696L225.514 141.696ZM348.49 141.696L348.49 70.2585L366.63 70.2585L366.63 141.696L348.49 141.696ZM357.56 61.9265Q352.638 61.9265 349.263 58.7624Q345.888 55.5983 345.888 50.3952Q345.888 45.2272 349.263 42.0632Q352.638 38.864 357.56 38.864Q362.587 38.864 365.892 42.0632Q369.197 45.2272 369.197 50.3952Q369.197 55.5983 365.892 58.7624Q362.587 61.9265 357.56 61.9265ZM386.794 141.696L386.794 70.2585L404.653 70.2585L404.653 79.6452L407.22 79.6452Q408.977 75.8835 413.723 72.5085Q418.47 69.1335 428.102 69.1335Q436.47 69.1335 442.727 72.9655Q448.985 76.7624 452.431 83.4772Q455.911 90.1569 455.911 99.0866L455.911 141.696L437.77 141.696L437.77 100.528Q437.77 92.4421 433.798 88.4343Q429.825 84.3913 422.513 84.3913Q414.145 84.3913 409.54 89.946Q404.934 95.4655 404.934 105.415L404.934 141.696L386.794 141.696ZM472.017 106.258L472.017 103.973Q472.017 92.7233 476.482 84.7429Q480.947 76.7624 488.365 72.5085Q495.783 68.2546 504.572 68.2546Q514.381 68.2546 519.408 71.7351Q524.435 75.1804 526.756 78.9069L529.357 78.9069L529.357 70.2585L547.217 70.2585L547.217 154.352Q547.217 161.7 542.892 166.094Q538.568 170.489 531.361 170.489L483.549 170.489L483.549 154.669L525.033 154.669Q529.041 154.669 529.041 150.344L529.041 131.747L526.474 131.747Q524.295 135.368 519.338 138.673Q514.381 141.977 504.572 141.977Q495.783 141.977 488.365 137.758Q480.947 133.505 476.482 125.524Q472.017 117.508 472.017 106.258ZM509.775 126.157Q518.107 126.157 523.732 120.848Q529.357 115.505 529.357 105.837L529.357 104.395Q529.357 94.6218 523.802 89.3835Q518.248 84.1101 509.775 84.1101Q501.408 84.1101 495.783 89.3835Q490.193 94.6218 490.193 104.395L490.193 105.837Q490.193 115.505 495.783 120.848Q501.408 126.157 509.775 126.157Z"
-                            fill="#000000"
-                            transform="translate(195 0)"
-                        />
-                        <g transform="translate(0 11)">
-                            <rect
-                                width="21.752"
-                                height="93.663"
-                                fill="#000000"
-                                fill-rule="evenodd"
-                                transform="translate(0 21.833)"
-                            />
-                            <rect
-                                width="21.752"
-                                height="115.496"
-                                fill="#000000"
-                                fill-rule="evenodd"
-                                transform="translate(122.248 46.504)"
-                            />
-                            <path
-                                d="M143.899 0L143.899 21.8329L0 21.8329L0 2.47504e-05L143.899 0Z"
-                                fill="#000000"
-                                fill-rule="evenodd"
-                                transform="translate(0.101 0)"
-                            />
-                            <rect
-                                width="29.801"
-                                height="29.911"
-                                fill="#000000"
-                                fill-rule="evenodd"
-                                transform="translate(56.991 65.935)"
-                            />
-                            <path
-                                d="M0 21.8329L4.05168e-07 0L122.248 0L122.248 21.8329L0 21.8329Z"
-                                fill="#000000"
-                                fill-rule="evenodd"
-                                transform="translate(0 140.167)"
-                            />
-                        </g>
-                    </g>
-                </svg>
+    <!--Title-->
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <!--Navigation-->
+    <div class="navigation">
+      <div class="logo">
+        <?xml version="1.0" encoding="utf-8"?>
+        <svg
+          viewBox="0 0 753 184"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g>
+            <path
+              d="M9.49219 141.696L9.49219 40.903L72.8789 40.903L72.8789 58.1647L28.5117 58.1647L28.5117 82.528L69.3984 82.528L69.3984 99.7897L28.5117 99.7897L28.5117 141.696L9.49219 141.696ZM86.9858 141.696L86.9858 70.2585L104.845 70.2585L104.845 78.3444L107.412 78.3444Q108.994 74.0202 112.65 72.0163Q116.341 69.9772 121.263 69.9772L129.876 69.9772L129.876 86.114L120.947 86.114Q114.056 86.114 109.591 89.8054Q105.126 93.4616 105.126 101.091L105.126 141.696L86.9858 141.696ZM164.465 143.7Q156.801 143.7 150.754 141.063Q144.708 138.391 141.192 133.294Q137.676 128.161 137.676 120.813Q137.676 109.739 145.446 104.114Q153.215 98.489 165.309 98.489L184.891 98.489L184.891 94.4812Q184.891 89.4187 181.727 86.1843Q178.563 82.9499 171.637 82.9499Q164.887 82.9499 161.547 86.0437Q158.243 89.1374 157.258 94.0241L140.559 88.3991Q142.282 82.9499 146.079 78.4147Q149.911 73.8796 156.309 71.0671Q162.708 68.2546 171.919 68.2546Q186.051 68.2546 194.243 75.321Q202.469 82.3522 202.469 95.7468L202.469 122.395Q202.469 126.719 206.512 126.719L212.243 126.719L212.243 141.696L200.149 141.696Q194.84 141.696 191.36 139.13Q187.915 136.528 187.915 132.204L187.915 132.063L185.172 132.063Q184.61 133.786 182.571 136.598Q180.567 139.376 176.243 141.555Q171.919 143.7 164.465 143.7ZM167.629 129.04Q175.258 129.04 180.075 124.786Q184.891 120.532 184.891 113.466L184.891 112.024L166.61 112.024Q161.583 112.024 158.7 114.204Q155.817 116.348 155.817 120.251Q155.817 124.118 158.84 126.579Q161.864 129.04 167.629 129.04ZM225.514 141.696L225.514 70.2585L243.373 70.2585L243.373 78.0632L245.94 78.0632Q247.838 74.4421 252.127 71.8054Q256.451 69.1335 263.518 69.1335Q271.147 69.1335 275.752 72.0866Q280.358 75.0397 282.819 79.7858L285.42 79.7858Q287.846 75.1804 292.311 72.1569Q296.776 69.1335 305.002 69.1335Q311.611 69.1335 316.99 71.946Q322.404 74.7233 325.639 80.4187Q328.908 86.114 328.908 94.7624L328.908 141.696L310.768 141.696L310.768 96.0632Q310.768 90.1569 307.744 87.2038Q304.721 84.2507 299.236 84.2507Q293.049 84.2507 289.639 88.2233Q286.264 92.1608 286.264 99.5085L286.264 141.696L268.123 141.696L268.123 96.0632Q268.123 90.1569 265.1 87.2038Q262.076 84.2507 256.592 84.2507Q250.404 84.2507 247.029 88.2233Q243.654 92.1608 243.654 99.5085L243.654 141.696L225.514 141.696ZM348.49 141.696L348.49 70.2585L366.63 70.2585L366.63 141.696L348.49 141.696ZM357.56 61.9265Q352.638 61.9265 349.263 58.7624Q345.888 55.5983 345.888 50.3952Q345.888 45.2272 349.263 42.0632Q352.638 38.864 357.56 38.864Q362.587 38.864 365.892 42.0632Q369.197 45.2272 369.197 50.3952Q369.197 55.5983 365.892 58.7624Q362.587 61.9265 357.56 61.9265ZM386.794 141.696L386.794 70.2585L404.653 70.2585L404.653 79.6452L407.22 79.6452Q408.977 75.8835 413.723 72.5085Q418.47 69.1335 428.102 69.1335Q436.47 69.1335 442.727 72.9655Q448.985 76.7624 452.431 83.4772Q455.911 90.1569 455.911 99.0866L455.911 141.696L437.77 141.696L437.77 100.528Q437.77 92.4421 433.798 88.4343Q429.825 84.3913 422.513 84.3913Q414.145 84.3913 409.54 89.946Q404.934 95.4655 404.934 105.415L404.934 141.696L386.794 141.696ZM472.017 106.258L472.017 103.973Q472.017 92.7233 476.482 84.7429Q480.947 76.7624 488.365 72.5085Q495.783 68.2546 504.572 68.2546Q514.381 68.2546 519.408 71.7351Q524.435 75.1804 526.756 78.9069L529.357 78.9069L529.357 70.2585L547.217 70.2585L547.217 154.352Q547.217 161.7 542.892 166.094Q538.568 170.489 531.361 170.489L483.549 170.489L483.549 154.669L525.033 154.669Q529.041 154.669 529.041 150.344L529.041 131.747L526.474 131.747Q524.295 135.368 519.338 138.673Q514.381 141.977 504.572 141.977Q495.783 141.977 488.365 137.758Q480.947 133.505 476.482 125.524Q472.017 117.508 472.017 106.258ZM509.775 126.157Q518.107 126.157 523.732 120.848Q529.357 115.505 529.357 105.837L529.357 104.395Q529.357 94.6218 523.802 89.3835Q518.248 84.1101 509.775 84.1101Q501.408 84.1101 495.783 89.3835Q490.193 94.6218 490.193 104.395L490.193 105.837Q490.193 115.505 495.783 120.848Q501.408 126.157 509.775 126.157Z"
+              fill="#000000"
+              transform="translate(195 0)"
+            />
+            <g transform="translate(0 11)">
+              <rect
+                width="21.752"
+                height="93.663"
+                fill="#000000"
+                fill-rule="evenodd"
+                transform="translate(0 21.833)"
+              />
+              <rect
+                width="21.752"
+                height="115.496"
+                fill="#000000"
+                fill-rule="evenodd"
+                transform="translate(122.248 46.504)"
+              />
+              <path
+                d="M143.899 0L143.899 21.8329L0 21.8329L0 2.47504e-05L143.899 0Z"
+                fill="#000000"
+                fill-rule="evenodd"
+                transform="translate(0.101 0)"
+              />
+              <rect
+                width="29.801"
+                height="29.911"
+                fill="#000000"
+                fill-rule="evenodd"
+                transform="translate(56.991 65.935)"
+              />
+              <path
+                d="M0 21.8329L4.05168e-07 0L122.248 0L122.248 21.8329L0 21.8329Z"
+                fill="#000000"
+                fill-rule="evenodd"
+                transform="translate(0 140.167)"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <ul>
+        <li>
+          <button onclick="redirect('index.html')">Início</button>
+        </li>
+
+        <li>
+          <button onclick="redirect('explore.html')">Explorar</button>
+        </li>
+
+        <li>
+          <button onclick="redirect('profile.html')">Meus posts</button>
+        </li>
+
+        <li>
+          <button>Curtidos</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="body">
+      <div class="profile-card">
+        <div class="image">
+          <img src="" id="foto_perfil" alt="Foto de perfil" />
+          <div class="">
+            <span class="name" id="name_user"></span>
+            <span id="usuario"></span>
+          </div>
+          <div class="informations">
+            <div class="item">
+              <span class="title-profile">Posts</span>
+              <span>101</span>
             </div>
-            <ul>
-                <li>
-                    <button onclick="redirect('index.html')">Início</button>
-                </li>
-
-                <li>
-                    <button>Meus posts</button>
-                </li>
-
-                <li>
-                    <button>Curtidos</button>
-                </li>
-                <li>
-                    <button onclick="redirect('dashboard.html')">
-                        Minha dashboard
-                    </button>
-                </li>
-            </ul>
-        </div>
-        <div class="body">
-            <div class="container-1">
-                <div class="card-profile">
-                    <img id="foto_perfil" />
-                    <div class="info">
-                        <span class="nome" id="name_user"></span>
-                        <div class="posts">
-                            <div class="information">
-                                <span class="title">Posts</span>
-                                <span>123</span>
-                            </div>
-                            <div class="information">
-                                <span class="title">Curtiu</span>
-                                <span>123</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="item">
+              <span class="title-profile">Posts</span>
+              <span>1234</span>
             </div>
-
-            <div>
-                <!--KPIS-->
-                <div class="kpi">
-                    <div class="total">
-                        <div class="data">
-                            <span>Total de curtidas</span>
-                            <div class="icon">
-                                <span class="value">1031</span>
-                                <?xml version="1.0" encoding="utf-8"?>
-                                <svg
-                                    width="25"
-                                    height="25"
-                                    viewBox="0 0 25 25"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <g>
-                                        <path
-                                            d="M12.5 21.875C12.5 21.875 23.0584 11.3166 23.0584 11.3166C24.3016 10.0734 25 8.38728 25 6.62913C25 6.62913 25 6.33178 25 6.33178C25 2.83484 22.1652 0 18.6683 0C16.7447 0 14.9255 0.874359 13.7239 2.37634C13.7239 2.37634 12.5 3.90625 12.5 3.90625C12.5 3.90625 11.2761 2.37634 11.2761 2.37634C10.0745 0.874359 8.25528 0 6.33178 0C2.83484 0 0 2.83484 0 6.33178C0 6.33178 0 6.62913 0 6.62913C0 8.38728 0.698422 10.0734 1.94162 11.3166C1.94162 11.3166 12.5 21.875 12.5 21.875Z"
-                                            fill="#FF0000"
-                                            fill-rule="evenodd"
-                                            transform="translate(0 1.563)"
-                                        />
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div class="data">
-                            <span>Total de curtidas</span>
-                            <div class="icon">
-                                <span class="value">1031</span>
-                                <?xml version="1.0" encoding="utf-8"?>
-                                <svg
-                                    width="25"
-                                    height="25"
-                                    viewBox="0 0 25 25"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <g>
-                                        <path
-                                            d="M18.75 0C18.75 0 0 0 0 0L0 15.625L6.25 15.625L9.375 18.75L12.5 15.625L18.75 15.625C18.75 15.625 18.75 0 18.75 0Z"
-                                            fill="#1759A8"
-                                            fill-rule="evenodd"
-                                            transform="translate(6.25 1.563)"
-                                        />
-                                        <path
-                                            d="M3.125 0C3.125 0 3.125 12.5 3.125 12.5L11.2056 12.5L13.6049 14.8992L11.3951 17.1089L9.91117 15.625L0 15.625L0 0C0 0 3.125 0 3.125 0Z"
-                                            fill="#1759A8"
-                                            fill-rule="evenodd"
-                                            transform="translate(0 7.813)"
-                                        />
-                                    </g>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-
-        <div class="chart">
-            <canvas id="myChart" style="width: 100%; max-width: 700px">
-            </canvas>
+      </div>
+      <div class="total-curtidas">
+        <div class="content">
+          <span>Total de curtidas</span>
+          <div class="icon">
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g>
+                <path
+                  d="M12.5 21.875C12.5 21.875 23.0584 11.3166 23.0584 11.3166C24.3016 10.0734 25 8.38728 25 6.62913C25 6.62913 25 6.33178 25 6.33178C25 2.83484 22.1652 0 18.6683 0C16.7447 0 14.9255 0.874359 13.7239 2.37634C13.7239 2.37634 12.5 3.90625 12.5 3.90625C12.5 3.90625 11.2761 2.37634 11.2761 2.37634C10.0745 0.874359 8.25528 0 6.33178 0C2.83484 0 0 2.83484 0 6.33178C0 6.33178 0 6.62913 0 6.62913C0 8.38728 0.698422 10.0734 1.94162 11.3166C1.94162 11.3166 12.5 21.875 12.5 21.875Z"
+                  fill="#FF0000"
+                  fill-rule="evenodd"
+                  transform="translate(0 1.563)"
+                />
+              </g>
+            </svg>
+            <span>123</span>
+          </div>
         </div>
+      </div>
+      <div class="total-comentario">
+        <div class="content">
+          <span>Total de comentários</span>
+          <div class="icon">
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g>
+                <path
+                  d="M18.75 0C18.75 0 0 0 0 0L0 15.625L6.25 15.625L9.375 18.75L12.5 15.625L18.75 15.625C18.75 15.625 18.75 0 18.75 0Z"
+                  fill="#1759A8"
+                  fill-rule="evenodd"
+                  transform="translate(6.25 1.563)"
+                />
+                <path
+                  d="M3.125 0C3.125 0 3.125 12.5 3.125 12.5L11.2056 12.5L13.6049 14.8992L11.3951 17.1089L9.91117 15.625L0 15.625L0 0C0 0 3.125 0 3.125 0Z"
+                  fill="#1759A8"
+                  fill-rule="evenodd"
+                  transform="translate(0 7.813)"
+                />
+              </g>
+            </svg>
+            <span>123</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart1">
+        <canvas id="curtidas" style="width: 100%; max-width: 800px"> </canvas>
+      </div>
+      <div class="ranking"></div>
+      <div class="chart3"></div>
+    </div>
 
-        <!--Session-->
-        <script src="assets/javascript/session.js"></script>
+    <script>
+      const ctx = document.getElementById("curtidas").getContext("2d");
 
-        <script>
-            const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-            const yValues = [55, 49, 44, 24, 15];
-            const barColors = ["red", "green", "blue", "orange", "brown"];
-
-            new Chart("myChart", {
-                type: "bar",
-                data: {
-                    labels: xValues,
-                    datasets: [
-                        {
-                            backgroundColor: barColors,
-                            data: yValues,
-                        },
-                    ],
+      const comentarios = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+          ],
+          datasets: [
+            {
+              label: "Quantidade de curtidas por mês",
+              data: [50, 75, 100, 125, 80, 53, 45],
+              backgroundColor: "rgb(0, 0, 0)",
+              borderColor: "rgba(0, 0, 0, 0)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          indexAxis: "x",
+          plugins: {
+            legend: {
+              labels: {
+                font: {
+                  size: 14,
+                  family: "Space Grotesk",
+                  style: "normal",
                 },
-            });
+              },
+            },
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              grid: {
+                display: false,
+                drawBorder: false,
+              },
+            },
+            y: {
+              grid: {
+                display: false,
+                drawBorder: false,
+              },
+            },
+          },
+        },
+      });
+    </script>
 
-            fotoPerfil = document.getElementById("foto_perfil").src =
-                sessionStorage.FOTO_PERFIL;
-            nome = document.getElementById("name_user").innerHTML =
-                `${sessionStorage.NOME_USUARIO} ${sessionStorage.SOBRENOME_USUARIO}`;
+    <!--Session-->
+    <script src="assets/javascript/session.js"></script>
 
-            const labels = Utils.months({ count: 7 });
-            const data = {
-                labels: labels,
-                datasets: [
-                    {
-                        axis: "y",
-                        label: "My First Dataset",
-                        data: [65, 59, 80, 81, 56, 55, 40],
-                        fill: false,
-                        backgroundColor: [
-                            "rgba(255, 99, 132, 0.2)",
-                            "rgba(255, 159, 64, 0.2)",
-                            "rgba(255, 205, 86, 0.2)",
-                            "rgba(75, 192, 192, 0.2)",
-                            "rgba(54, 162, 235, 0.2)",
-                            "rgba(153, 102, 255, 0.2)",
-                            "rgba(201, 203, 207, 0.2)",
-                        ],
-                        borderColor: [
-                            "rgb(255, 99, 132)",
-                            "rgb(255, 159, 64)",
-                            "rgb(255, 205, 86)",
-                            "rgb(75, 192, 192)",
-                            "rgb(54, 162, 235)",
-                            "rgb(153, 102, 255)",
-                            "rgb(201, 203, 207)",
-                        ],
-                        borderWidth: 1,
-                    },
-                ],
-            };
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        validarSessao();
+      });
 
-            const config = {
-                type: "bar",
-                data,
-                options: {
-                    indexAxis: "y",
-                },
-            };
-        </script>
-    </body>
+      // Ativar a foto de perfil
+      fotoPerfil = document.getElementById("foto_perfil").src =
+        sessionStorage.FOTO_PERFIL;
+      var nome = (document.getElementById(
+        "name_user"
+      ).innerHTML = `${sessionStorage.NOME_USUARIO} ${sessionStorage.SOBRENOME_USUARIO}`);
+      var usuario = (document.getElementById(
+        "usuario"
+      ).innerHTML = `@${sessionStorage.USUARIO}`);
+
+      const labels = Utils.months({ count: 7 });
+      const data = {
+        labels: labels,
+        datasets: [
+          {
+            label: "My First Dataset",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(255, 205, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(201, 203, 207, 0.2)",
+            ],
+            borderColor: [
+              "rgb(255, 99, 132)",
+              "rgb(255, 159, 64)",
+              "rgb(255, 205, 86)",
+              "rgb(75, 192, 192)",
+              "rgb(54, 162, 235)",
+              "rgb(153, 102, 255)",
+              "rgb(201, 203, 207)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      // Função para redirecionar
+      function redirect(url) {
+        window.location.href = url;
+      }
+    </script>
+  </body>
 </html>

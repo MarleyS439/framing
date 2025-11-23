@@ -1,6 +1,6 @@
 CREATE DATABASE framing;
 
--- DROP DATABASE framing;
+DROP DATABASE framing;
 
 USE framing;
 
@@ -14,11 +14,12 @@ CREATE TABLE usuario (
     senha VARCHAR(255) NOT NULL,
     resumo VARCHAR(45),
     foto_path VARCHAR(255) NOT NULL DEFAULT '/assets/uploads/profile/perfil_default.png',
-    capa_path VARCHAR(255) NOT NULL DEFAULT '/assets/uploads/profile/cover/capa_default.png',
+    capa_path VARCHAR(255) NOT NULL DEFAULT '/assets/uploads/profile/capa_default.png',
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     atualizado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+-- Tabela temporária
 CREATE TABLE temp (
     id INT PRIMARY KEY AUTO_INCREMENT,
     arquivo VARCHAR(255) NOT NULL,
@@ -26,13 +27,7 @@ CREATE TABLE temp (
     CONSTRAINT fkUsuarioTemp
         FOREIGN KEY (fk_id_usuario)
             REFERENCES usuario(id)
-);
-
--- Hashtag
-CREATE TABLE hashtag (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    hashtag VARCHAR(18) UNIQUE NOT NULL
-);
+);	
 
 -- Post
 CREATE TABLE post (
@@ -40,12 +35,14 @@ CREATE TABLE post (
     fk_id_usuario INT NOT NULL,
     titulo VARCHAR(45) NOT NULL,
     foto_path VARCHAR(255) NOT NULL,
-    descricao VARCHAR(145) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fkUsuario
         FOREIGN KEY (fk_id_usuario)
             REFERENCES usuario(id)
 );
+
+
 
 -- Comentário
 CREATE TABLE comentario (
@@ -68,17 +65,33 @@ CREATE TABLE comentario (
             REFERENCES usuario(id)
 );
 
--- Relacional N Post : N Hashtag
-CREATE TABLE post_hashtag (
-    id INT AUTO_INCREMENT,
-    fk_id_post INT NOT NULL,
-    fk_id_hashtag INT NOT NULL,
-    CONSTRAINT pkPostHashtag
-        PRIMARY KEY (id, fk_id_post, fk_id_hashtag),
-    CONSTRAINT fkPostHashtag
-        FOREIGN KEY (fk_id_post)
-            REFERENCES post(id) ON DELETE CASCADE,
-    CONSTRAINT fkHashtag
-        FOREIGN KEY (fk_id_hashtag)
-            REFERENCES hashtag(id) ON DELETE CASCADE
-);
+
+
+
+SELECT * FROM post;
+
+TRUNCATE TABLE post;
+
+SELECT * FROM usuario;
+
+
+SELECT id, titulo, foto_path, descricao, criado_em FROM post
+	WHERE fk_id_usuario = 1;
+
+DESC post;
+DESC usuario;
+
+SELECT 
+	u.usuario,
+	p.titulo,
+	p.foto_path,
+	p.descricao
+FROM usuario u JOIN post p
+	ON p.fk_id_usuario = u.id;
+
+
+
+
+
+
+

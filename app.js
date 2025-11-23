@@ -15,6 +15,7 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuariosRouter = require("./src/routes/usuarios");
 var uploadRouter = require("./src/routes/upload");
+var postsRouter = require("./src/routes/posts");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,6 +26,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuariosRouter);
 app.use("/upload", uploadRouter);
+app.use("/posts", postsRouter);
 
 app.listen(PORTA_APP, function () {
   console.log(`

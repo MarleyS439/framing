@@ -11,8 +11,12 @@ router.post("/autenticar", function (req, res) {
   usuarioController.autenticar(req, res);
 });
 
-router.post("/buscar/preview:id", function (req, res) {
-  usuarioController.buscarPreview();
+router.post("/confirmar/:id", function (req, res) {
+  usuarioController.confirmarCapa(req, res);
+});
+
+router.post("/posts/:id", function (req, res) {
+  usuarioController.listarPosts(req, res);
 });
 
 module.exports = router;

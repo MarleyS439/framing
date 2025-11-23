@@ -1,156 +1,163 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
-    <head>
-        <!--HTML Meta Tags-->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Marley de S. Santos" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta
-            name="copyright"
-            content="© 2025 Framing. Todos os direitos reservados."
-        />
+  <head>
+    <!--HTML Meta Tags-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Marley de S. Santos" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+      name="copyright"
+      content="© 2025 Framing. Todos os direitos reservados."
+    />
 
-        <!--Stylesheet-->
-        <link rel="stylesheet" href="assets/css/login.css" />
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="assets/css/login.css" />
 
-        <!--Favicon-->
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="assets/icons/favicon.png"
-        />
+    <!--Favicon-->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon.png"
+    />
 
-        <!--Google Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
-            rel="stylesheet"
-        />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
 
-        <!--Title-->
-        <title>Framing | Login</title>
-    </head>
+    <!--Title-->
+    <title>Framing | Login</title>
+  </head>
 
-    <body>
-        <div class="container">
-            <div class="image"></div>
+  <body>
+    <div class="container">
+      <div class="image"></div>
 
-            <!--Login Form-->
-            <form>
-                <div class="logo-container">
-                    <div class="logo">
-                        <?xml version="1.0" encoding="utf-8"?>
-                        <svg
-                            width="1024"
-                            height="1024"
-                            viewBox="0 0 1024 1024"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <g>
-                                <rect
-                                    width="1024"
-                                    height="1024"
-                                    fill="#FFFFFF"
-                                    fill-rule="evenodd"
-                                />
-                                <g transform="translate(181 141)">
-                                    <rect
-                                        width="100"
-                                        height="429"
-                                        fill="#000000"
-                                        fill-rule="evenodd"
-                                        transform="translate(0 100)"
-                                    />
-                                    <rect
-                                        width="100"
-                                        height="529"
-                                        fill="#000000"
-                                        fill-rule="evenodd"
-                                        transform="translate(562 213)"
-                                    />
-                                    <path
-                                        d="M0 0L100 0L100 661.535L0.00012207 661.535L0 0Z"
-                                        fill="#000000"
-                                        fill-rule="evenodd"
-                                        transform="matrix(0 1 -1 0 662 0)"
-                                    />
-                                    <rect
-                                        width="137"
-                                        height="137"
-                                        fill="#000000"
-                                        fill-rule="evenodd"
-                                        transform="translate(262 302)"
-                                    />
-                                    <path
-                                        d="M0 0L100 0L100 562.001L0 562.001L0 0Z"
-                                        fill="#000000"
-                                        fill-rule="evenodd"
-                                        transform="matrix(0 -1 1 0 0 742)"
-                                    />
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <h2>Login</h2>
-                </div>
-
-                <div class="inputs">
-                    <label for="input_email">E-mail</label>
-                    <input
-                        type="email"
-                        id="input_email"
-                        placeholder="seu.email@exemplo.com"
-                        required
-                        autocomplete="email"
-                        oninput="validarEmail()"
-                        onblur="validarEmail()"
-                    />
-                </div>
-
-                <div class="inputs">
-                    <label for="input_password">Senha</label>
-                    <input
-                        type="password"
-                        id="input_password"
-                        placeholder="* * * * * * *"
-                        required
-                        oninput="validarSenha()"
-                        onblur="validarSenha()"
-                    />
-                </div>
-
-                <div id="messages"></div>
-
-                <div class="inputs">
-                    <button type="button" id="login" onclick="fazerLogin()">
-                        Login
-                    </button>
-                </div>
-
-                <div class="more">
-                    <div class="link-container">
-                        <span>Ainda não possui conta?</span>
-                        <a href="register.html">Cadastre-se</a>
-                    </div>
-                </div>
-            </form>
+      <!--Login Form-->
+      <form>
+        <div class="logo-container">
+          <div class="logo">
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg
+              width="1024"
+              height="1024"
+              viewBox="0 0 1024 1024"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g>
+                <rect
+                  width="1024"
+                  height="1024"
+                  fill="#FFFFFF"
+                  fill-rule="evenodd"
+                />
+                <g transform="translate(181 141)">
+                  <rect
+                    width="100"
+                    height="429"
+                    fill="#000000"
+                    fill-rule="evenodd"
+                    transform="translate(0 100)"
+                  />
+                  <rect
+                    width="100"
+                    height="529"
+                    fill="#000000"
+                    fill-rule="evenodd"
+                    transform="translate(562 213)"
+                  />
+                  <path
+                    d="M0 0L100 0L100 661.535L0.00012207 661.535L0 0Z"
+                    fill="#000000"
+                    fill-rule="evenodd"
+                    transform="matrix(0 1 -1 0 662 0)"
+                  />
+                  <rect
+                    width="137"
+                    height="137"
+                    fill="#000000"
+                    fill-rule="evenodd"
+                    transform="translate(262 302)"
+                  />
+                  <path
+                    d="M0 0L100 0L100 562.001L0 562.001L0 0Z"
+                    fill="#000000"
+                    fill-rule="evenodd"
+                    transform="matrix(0 -1 1 0 0 742)"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <h2>Login</h2>
         </div>
 
-        <script>
-            var mensagem = document.getElementById("messages");
-            var emailInput = document.getElementById("input_email");
-            var button = document.getElementById("login");
-            var senhaInput = document.getElementById("input_password");
+        <div class="inputs">
+          <label for="input_email">E-mail</label>
+          <input
+            type="email"
+            id="input_email"
+            placeholder="seu.email@exemplo.com"
+            required
+            autocomplete="email"
+            oninput="validarEmail()"
+            onblur="validarEmail()"
+          />
+        </div>
 
-            // Exibir erro
-            function exibirErro(erro, campo) {
-                campo.style.outline = "1px solid var(--color-danger)";
-                mensagem.innerHTML = `
+        <div class="inputs">
+          <label for="input_password">Senha</label>
+          <input
+            type="password"
+            id="input_password"
+            placeholder="* * * * * * *"
+            required
+            oninput="validarSenha()"
+            onblur="validarSenha()"
+          />
+        </div>
+
+        <div id="messages"></div>
+
+        <div class="inputs">
+          <button type="button" id="login" onclick="fazerLogin()">Login</button>
+        </div>
+
+        <div class="more">
+          <div class="link-container">
+            <span>Ainda não possui conta?</span>
+            <a href="register.html">Cadastre-se</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (
+          !sessionStorage.USUARIO == null ||
+          !sessionStorage.USUARIO == undefined
+        ) {
+          window.location.href = "explore.html";
+        }
+      });
+
+      var mensagem = document.getElementById("messages");
+      var emailInput = document.getElementById("input_email");
+      var button = document.getElementById("login");
+      var senhaInput = document.getElementById("input_password");
+
+      // Exibir erro
+      function exibirErro(erro, campo) {
+        campo.style.outline = "1px solid var(--color-danger)";
+        mensagem.innerHTML = `
                 <div>
                     <?xml version="1.0" encoding="utf-8"?>
                     <svg
@@ -168,81 +175,77 @@
                 </div>
                 <span>${erro}</span>
                 `;
-            }
+      }
 
-            function validarSenha() {
-                var senhaVar = senhaInput.value;
+      function validarSenha() {
+        var senhaVar = senhaInput.value;
 
-                if (senhaVar.length < 8) {
-                    exibirErro(
-                        "Senha deve ter pelo menos 8 caracteres",
-                        senhaInput,
-                    );
-                    button.disabled = true;
-                } else {
-                    exibirSucesso(senhaInput);
-                    button.disabled = false;
-                }
-            }
+        if (senhaVar.length < 8) {
+          exibirErro("Senha deve ter pelo menos 8 caracteres", senhaInput);
+          button.disabled = true;
+        } else {
+          exibirSucesso(senhaInput);
+          button.disabled = false;
+        }
+      }
 
-            // Exibir sucesso
-            function exibirSucesso(campo) {
-                campo.style.outline = "1px solid var(--color-success)";
-                mensagem.innerHTML = "";
-            }
+      // Exibir sucesso
+      function exibirSucesso(campo) {
+        campo.style.outline = "1px solid var(--color-success)";
+        mensagem.innerHTML = "";
+      }
 
-            // Validar E-mail
-            function validarEmail() {
-                var emailVar = emailInput.value.trim();
-                if (
-                    !emailVar.includes("@") ||
-                    !emailVar.includes(".com") ||
-                    emailVar.includes(" ") ||
-                    emailVar == " "
-                ) {
-                    emailInput.value = emailVar.toLowerCase();
-                    exibirErro("E-mail inválido", emailInput);
-                    button.disabled = true;
-                } else {
-                    emailInput.value = emailVar.toLowerCase();
-                    exibirSucesso(emailInput);
-                    button.disabled = false;
-                }
-            }
+      // Validar E-mail
+      function validarEmail() {
+        var emailVar = emailInput.value.trim();
+        if (
+          !emailVar.includes("@") ||
+          !emailVar.includes(".com") ||
+          emailVar.includes(" ") ||
+          emailVar == " "
+        ) {
+          emailInput.value = emailVar.toLowerCase();
+          exibirErro("E-mail inválido", emailInput);
+          button.disabled = true;
+        } else {
+          emailInput.value = emailVar.toLowerCase();
+          exibirSucesso(emailInput);
+          button.disabled = false;
+        }
+      }
 
-            function fazerLogin() {
-                var emailVar = emailInput.value;
-                var senhaVar = senhaInput.value;
+      function fazerLogin() {
+        var emailVar = emailInput.value;
+        var senhaVar = senhaInput.value;
 
-                fetch("/usuarios/autenticar", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        emailServer: emailVar,
-                        senhaServer: senhaVar,
-                    }),
-                })
-                    .then(function (resposta) {
-                        console.log("resposta: ", resposta);
+        fetch("/usuarios/autenticar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+          }),
+        })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
 
-                        if (resposta.ok) {
-                            resposta.json().then((json) => {
-                                console.log(json);
-                                console.log(JSON.stringify(json));
-                                sessionStorage.USUARIO = json.usuario;
-                                sessionStorage.EMAIL_USUARIO = json.email;
-                                sessionStorage.NOME_USUARIO = json.nome;
-                                sessionStorage.SOBRENOME_USUARIO =
-                                    json.sobrenome;
-                                sessionStorage.FOTO_PERFIL = json.foto_path;
-                                sessionStorage.ID_USUARIO = json.id;
-                                sessionStorage.CAPA_USUARIO = json.capa_path;
-                            });
+            if (resposta.ok) {
+              resposta.json().then((json) => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                sessionStorage.USUARIO = json.usuario;
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.SOBRENOME_USUARIO = json.sobrenome;
+                sessionStorage.FOTO_PERFIL = json.foto_path;
+                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.CAPA_USUARIO = json.capa_path;
+              });
 
-                            mensagem.style.color = "var(--color-success)";
-                            mensagem.innerHTML = `
+              mensagem.style.color = "var(--color-success)";
+              mensagem.innerHTML = `
                               <div style="display: flex; justify-content: center; align-items: center">
                               <?xml version="1.0" encoding="utf-8"?>
                               <svg fill="#000000" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
@@ -303,21 +306,21 @@
                               </div>
                             `;
 
-                            setTimeout(() => {
-                                window.location = "profile.html";
-                            }, 2000);
-                            console.log(resposta);
-                            return true;
-                        } else {
-                            throw "Erro ao realizar o login";
-                        }
-                    })
-                    .catch(function (resposta) {
-                        mensagem.innerHTML = `Usuário ou senha inválidos`;
-                        console.log("#Erro", resposta);
-                    });
-                return false;
+              setTimeout(() => {
+                window.location = "profile.html";
+              }, 2000);
+              console.log(resposta);
+              return true;
+            } else {
+              throw "Erro ao realizar o login";
             }
-        </script>
-    </body>
+          })
+          .catch(function (resposta) {
+            mensagem.innerHTML = `Usuário ou senha inválidos`;
+            console.log("#Erro", resposta);
+          });
+        return false;
+      }
+    </script>
+  </body>
 </html>

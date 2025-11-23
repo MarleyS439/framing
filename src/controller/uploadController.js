@@ -55,4 +55,20 @@ function buscarPreview(req, res) {
     });
 }
 
+/* // Função para postar
+function postar(req, res) {
+  var imagem = req.file.filename;
+  var { id, titulo, foto_post, descricao } = req.body;
+  var post = { id, titulo, foto_post, descricao, imagem };
+
+  uploadModel
+    .enviar(post)
+    .then(function (resultado) {
+      res.status(201).send("Post criado com sucesso");
+    })
+    .catch(function (erro) {
+      res.status(500).send(erro);
+    });
+} */
+
 module.exports = { enviar, enviarPreview, buscarPreview };
