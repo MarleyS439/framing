@@ -203,6 +203,7 @@
         <span id="titulo_post">Título do post</span>
         <br />
         <span id="usuario_do_post">Usuário</span>
+        <div class="" id="msgComentarios"></div>
         <div class="input-area">
           <label>Comente este post:</label>
           <textarea
@@ -302,7 +303,7 @@
                                 </svg>
                               </div>
                             </div>
-                            <img src="/assets/uploads/images/${post.foto_path}" alt=""/>
+                            <img id="imagem-${post.idPost}" src="/assets/uploads/images/${post.foto_path}" alt=""/>
                         </div>
                     `;
               });
@@ -333,14 +334,24 @@
 
       // FUnção para abrir modal e comentar post
       function comentar(idPost) {
+        document.getElementById("msgComentarios").innerHTML = "";
+
         var modal = (document.getElementById("modalComentario").style.display =
           "flex");
+
         var usuarioPost = document.getElementById(
           `usuario_post-${idPost}`
         ).innerHTML;
         var tituloPost = document.getElementById(`titulo-${idPost}`).innerHTML;
+        var postId = document.getElementById(`${idPost}`);
+
         document.getElementById("titulo_post").innerHTML = tituloPost;
         document.getElementById("usuario_do_post").innerHTML = usuarioPost;
+        document
+          .getElementById("publicarComentario")
+          .addEventListener("click", () => {
+            publicarComentario(idPost);
+          });
 
         // Carregar os posts
         fetch(`posts/listarComentarios/${idPost}`, {
@@ -351,26 +362,40 @@
           body: JSON.stringify({
             idPost: idPost,
           }),
-        }).then(function (resposta) {
-          console.log("Listand os posts");
-          if (resposta.ok) {
-            resposta.json().then((json) => {
-              sessionStorage.COMENTARIOS = JSON.stringify(json);
-              var comentarios = JSON.parse(sessionStorage.COMENTARIOS);
+        })
+          .then(function (resposta) {
+            console.log("Listand os posts");
+            if (resposta.ok) {
+              resposta.json().then((json) => {
+                sessionStorage.COMENTARIOS = JSON.stringify(json);
+                var comentarios = JSON.parse(sessionStorage.COMENTARIOS);
 
-              if (comentarios.length == 0) {
-                document.getElementById("msgComentarios").innerHTML =
-                  "Nenhum comentário ainda";
-              } else {
-                comentarios.forEach((comentario) => {
-                  document.getElementById("msgComentarios").innerHTML += `
-                    <div>${comentario.conteudo}</div><br>
+                if (comentarios.length == 0) {
+                  document.getElementById(
+                    "msgComentarios"
+                  ).innerHTML = `<p class="not-comments">Nenhum comentário ainda</p>`;
+                } else {
+                  comentarios.forEach((comentario) => {
+                    document.getElementById("msgComentarios").innerHTML += `
+                    <div class="comentario">
+                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                      <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 1H4V11H8L10 13L12 11H16V1Z" fill="#000000"/>
+                      <path d="M2 5V13H7.17157L8.70711 14.5355L7.29289 15.9497L6.34315 15H0V5H2Z" fill="#000000"/>
+                    </svg>
+                      <span class="comentario-conteudo">${comentario.ConteudoComentario}</span>
+                      <span class="user-comentario">@${comentario.usuario}</span>
+                      <span class="data-hora">${comentario.data_hora}</span>
+                    </div><br>
                   `;
-                });
-              }
-            });
-          }
-        });
+                  });
+                }
+              });
+            }
+          })
+          .catch(function (erro) {
+            console.log(erro);
+          });
       }
 
       // Função para cencelar comentario
@@ -381,19 +406,30 @@
       // FUnção para comentar post
       function publicarComentario(idPost) {
         var idUsuario = sessionStorage.ID_USUARIO;
-        var comentario = document.getElementById("comentario");
+        var comentario = document.getElementById("comentarioValor").value;
 
         fetch(`posts/comentar/${idPost}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: {
+          body: JSON.stringify({
             idPost: idPost,
             idUsuario: idUsuario,
             comentario: comentario,
-          },
-        });
+          }),
+        })
+          .then(function (resposta) {
+            console.log("Comentando um post");
+            if (resposta.ok) {
+              console.log("Comentou");
+              console.log(resposta);
+              window.location.reload(true);
+            }
+          })
+          .catch(function (erro) {
+            console.log("OCorreu um erro ao comentar post");
+          });
       }
 
       // Função para curtir post

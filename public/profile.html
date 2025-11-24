@@ -59,7 +59,7 @@
         <div class="info-profile">
           <div class="data">
             <span class="label">Curtiu</span>
-            <span class="count">120</span>
+            <span id="count_curtidas" class="count_curtidas"></span>
           </div>
           <div class="data">
             <span class="label">Posts</span>
@@ -232,7 +232,7 @@
                 />
               </div>
 
-              <div class="inputs">
+              <!-- <div class="inputs">
                 <label for="input_senha">Senha atual</label>
                 <input
                   type="password"
@@ -249,7 +249,7 @@
                   required
                   placeholder="Digite sua nova senha"
                 />
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -278,6 +278,7 @@
               required
               name="foto_capa"
               id="input_cover"
+              oninput="enviarPreview()"
             />
           </div>
         </div>
@@ -334,7 +335,7 @@
         <div class="sidea">
           <span>Novo Post</span>
           <div class="image">
-            <img src="" alt="" />
+            <img id="preview" src="" alt="" />
           </div>
           <div>
             <label for="input_foto_post">Selecionar</label>
@@ -343,6 +344,7 @@
               id="input_foto_post"
               name="foto_post"
               oninput="exibirNomeFoto()"
+              oninput="enviarPreviewPost()"
               required
             />
             <div id="exibirNome"></div>
@@ -364,7 +366,7 @@
               <label for="input_titulo">Título</label>
               <input
                 type="text"
-                max="50"
+                max="45"
                 id="input_titulo"
                 oninput="titulo()"
                 onblur="titulo()"
@@ -396,19 +398,6 @@
       </div>
     </div>
 
-    <!-- Modal Image -->
-    <!-- <div class="modal-image" id="modalPostOpen">
-      <div class="image-container">
-        <img id="" src="assets/images/20210524_134649.jpg" alt="" />
-        <div class="container-info">
-          <div class="">
-            <span>Título do post</span>
-            <p>Descricao</p>
-          </div>
-        </div>
-      </div>
-    </div>
- -->
     <!--Session-->
     <script src="assets/javascript/session.js"></script>
 
@@ -416,8 +405,11 @@
       document.addEventListener("DOMContentLoaded", () => {
         validarSessao();
         buscarPostsUsuario();
+
         var msgSemPost = `<span class="nothing">Nada por enquanto. Que tal publicar uma foto?</span>`;
         var totalPosts = 0;
+
+        contagemCurtiu();
 
         // Função para buscar os posts do usuário
         function buscarPostsUsuario() {
@@ -445,13 +437,13 @@
                   var quantidade = document.getElementById("quantidade_posts");
                   quantidade.innerHTML = `${posts.length}`;
 
+                  sessionStorage.TOTAL_POSTS = posts.length;
+
                   if (posts.length == 0) {
                     document.getElementById("gallery").innerHTML = msgSemPost;
                   } else {
                     posts.forEach((post) => {
-                      document.getElementById(
-                        "gallery"
-                      ).innerHTML += `                     
+                      document.getElementById("gallery").innerHTML += `
                         <div class="image up">
                             <div class="image-overlay" id="imagem-${post.id}" onclick="abrirModal(${post.id})">
                               <span class="likes">
@@ -486,15 +478,6 @@
             });
         }
       });
-
-      // Função para abrir um modal de de iamgem
-      function abrirModal(id) {
-        var modal = document.getElementById("modalPostOpen");
-        var imagemClicada = document.getElementById(`imagem-${id}`);
-        var imgSrc = imagemClicada.getElementsByTagName("img")[0].src;
-        var titulo = imagemClicada.querySelector("span").innerText;
-        var descricao = imagemClicada.querySelector("p").innerText;
-      }
 
       // Função para redirecionar
       function redirect(url) {
@@ -582,18 +565,47 @@
         var foto = document.getElementById("input_cover");
         var id = sessionStorage.ID_USUARIO;
 
-        var formData = new FormData();
+        const formData = new FormData();
+
         formData.append("foto_capa", foto.files[0]);
         formData.append("id", id);
 
-        fetch("/upload/enviar/capa", {
+        fetch(`/upload/enviar/${id}`, {
           method: "POST",
           body: formData,
         })
           .then((resposta) => {
             if (resposta.ok) {
               resposta.json().then((json) => {
+                console.log("Enviando preview");
                 buscarPreview();
+              });
+            }
+          })
+          .catch((erro) => {
+            console.log(erro);
+          });
+      }
+
+      // FUnção para nenviar o preview
+      function enviarPreviewPost() {
+        var foto = document.getElementById("input_cover");
+        var id = sessionStorage.ID_USUARIO.toString();
+
+        const formData = new FormData();
+
+        formData.append("foto_capa", foto.files[0]);
+        formData.append("id", id);
+
+        fetch(`/upload/enviar/${id}`, {
+          method: "POST",
+          body: formData,
+        })
+          .then((resposta) => {
+            if (resposta.ok) {
+              resposta.json().then((json) => {
+                console.log("Enviando preview");
+                buscarPreviewPost();
               });
             }
           })
@@ -618,10 +630,55 @@
           .then((resposta) => {
             if (resposta.ok) {
               resposta.json().then((json) => {
+                sessionStorage.PREVIEW = `/assets/uploads/images/${json[0].arquivo}`;
+                document.getElementById(
+                  "preview"
+                ).style.backgroundImage = `url(${sessionStorage.PREVIEW})`;
+              });
+            }
+          })
+          .catch((erro) => {
+            console.error(erro);
+          });
+      }
+
+      function contagemCurtiu() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+        fetch(`/posts/curtiu/${idUsuario}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            idUsuario: idUsuario,
+          }),
+        }).then(function (resposta) {
+          if (resposta.ok) {
+            resposta.json().then((json) => {
+              console.log(json[0]);
+              sessionStorage.CURTIU = JSON.stringify(json);
+              sessionStorage.CURTIU = json[0].curtidas;
+              console.log(sessionStorage.CURTIU);
+              var qntLikes = (document.getElementById(
+                "count_curtidas"
+              ).innerHTML = sessionStorage.CURTIU);
+            });
+          }
+        });
+      }
+
+      // Função para buscar o preview da imagem
+      function buscarPreviewPost() {
+        var id = sessionStorage.ID_USUARIO;
+
+        fetch(`/upload/preview/${id}`)
+          .then((resposta) => {
+            if (resposta.ok) {
+              resposta.json().then((json) => {
                 sessionStorage.CAPA_USUARIO = `/assets/uploads/images/${json[0].arquivo}`;
                 document.getElementById(
                   "capa_edit"
-                ).style.backgroundImage = `url(${sessionStorage.CAPA_USUARIO})`;
+                ).src = `"${sessionStorage.CAPA_USUARIO}"`;
               });
             }
           })
@@ -691,7 +748,6 @@
         sessionStorage.clear();
         window.location.href = "index.html";
       }
-
     </script>
   </body>
 </html>

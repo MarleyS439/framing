@@ -75,7 +75,7 @@ function listarPosts(id) {
           descricao,
           criado_em
     FROM post
-    WHERE fk_id_usuario = ${id};
+    WHERE fk_id_usuario = ${id} ORDER BY id DESC;
   `;
   console.log("Executando a instrução SQL: \n", sql);
   return database.executar(sql);

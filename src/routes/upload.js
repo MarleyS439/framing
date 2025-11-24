@@ -14,7 +14,7 @@ router.post("/trazer", upload.single("foto"), function (req, res) {
 });
 
 // Enviar capa
-router.post("/enviar/capa", upload.single("foto_capa"), function (req, res) {
+router.post("/enviar/:id", upload.single("foto_capa"), function (req, res) {
   uploadController.enviarPreview(req, res);
 });
 

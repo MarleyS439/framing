@@ -30,7 +30,6 @@
     content: "";
     width: 100%;
     height: 100%;
-    background-color: var(--color-opaque);
     cursor: pointer;
     backdrop-filter: blur(2px);
     transition: 150ms ease-in-out;
@@ -50,6 +49,8 @@
 
   .image-overlay .likes .item {
     margin: 0px 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 
   .image-overlay .likes span {
@@ -168,6 +169,8 @@
     padding: 20px;
     bottom: 5%;
     right: 5%;
+    z-index: 250;
+    background-color: var(--color-white);
     border: 1px solid var(--color-black);
   }
 
@@ -193,9 +196,9 @@
 
   #modalComentario {
     position: fixed;
-    bottom: 20%;
     right: 0;
-    height: 40vh;
+    bottom: 0;
+    height: 100%;
     width: 30vw;
     padding: 20px;
     background-color: var(--color-white);
@@ -231,7 +234,7 @@
 
   .modalComentario {
     display: none;
-  } 
+  }
 
   .modalComentario form {
     width: 100%;
@@ -252,5 +255,41 @@
 
   #publicarComentario:hover {
     background-color: var(--color-hover);
+  }
+
+  .user-comentario {
+    width: min-content;
+    padding: 5px;
+    background-color: var(--color-gray);
+  }
+
+  #msgComentarios {
+    height: 300px;
+    overflow-y: auto;
+    border-top: 1px solid var(--color-gray);
+  }
+
+  .comentario {
+    padding: 10px;
+    display: flex;
+    border-bottom: 1px solid var(--color-gray);
+    flex-direction: column;
+  }
+
+  .data-hora {
+    padding: 10px 0px;
+  }
+
+  .comentario-conteudo {
+    padding: 10px 0px;
+  }
+
+  #usuario_do_post {
+    margin: 20px 0px;
+    display: block;
+  }
+
+  .not-comments {
+    padding: 20px 0px;
   }
 }

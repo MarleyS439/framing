@@ -125,14 +125,14 @@
             </div>
             <div class="item">
               <span class="title-profile">Posts</span>
-              <span>1234</span>
+              <span id="total_posts"></span>
             </div>
           </div>
         </div>
       </div>
       <div class="total-curtidas">
         <div class="content">
-          <span>Total de curtidas</span>
+          <span>Curtidas em seus posts</span>
           <div class="icon">
             <?xml version="1.0" encoding="utf-8"?>
             <svg
@@ -151,13 +151,13 @@
                 />
               </g>
             </svg>
-            <span>123</span>
+            <span id="total_curtidas"></span>
           </div>
         </div>
       </div>
       <div class="total-comentario">
         <div class="content">
-          <span>Total de comentários</span>
+          <span>Comentários em seus posts</span>
           <div class="icon">
             <?xml version="1.0" encoding="utf-8"?>
             <svg
@@ -182,7 +182,7 @@
                 />
               </g>
             </svg>
-            <span>123</span>
+            <span id="total_comentarios"></span>
           </div>
         </div>
       </div>
@@ -190,34 +190,9 @@
         <canvas id="curtidas" style="width: 100%; max-width: 800px"> </canvas>
       </div>
       <div class="ranking">
-        <span class="title-ranking">Ranking de posts seus que curtiram</span>
+        <span class="title-ranking">Ranking de seus posts mais curtidos</span>
 
-        <div class="ranking-container">
-          <div class="line">
-            <span><span class="order">1º</span> Título do post</span>
-            <span class="num">123</span>
-          </div>
-          <div class="line">
-            <span><span class="order">2º</span> Título do post</span>
-            <span class="num">123</span>
-          </div>
-          <div class="line">
-            <span><span class="order">3º</span> Título do post</span>
-            <span class="num">123</span>
-          </div>
-          <div class="line">
-            <span><span class="order">4º</span> Título do post</span>
-            <span class="num">123</span>
-          </div>
-          <div class="line">
-            <span><span class="order">5º</span> Título do post</span>
-            <span class="num">123</span>
-          </div>
-          <div class="line">
-            <span><span class="order">6º</span> Título do post</span>
-            <span class="num">123</span>
-          </div>
-        </div>
+        <div class="ranking-container" id="ranking-container"></div>
       </div>
       <div class="chart3">
         <canvas id="comentarios" style="width: 100%; max-width: 800px">
@@ -225,123 +200,306 @@
       </div>
     </div>
 
+    <!--Session-->
+    <script src="assets/javascript/session.js"></script>
+
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var labelsCurtidasMes = [];
+        var labelCurtidasQuantidadeMes = [];
+
+        var labelsComentariosMes = [];
+        var labelsComentariosQuantidade = [];
+
+        quantidadeCurtidas(idUsuario);
+        quantidadeComentarios(idUsuario);
+
+        quantidadeCurtidasMes(idUsuario);
+        quantidadeComentariosMes(idUsuario);
+
+        rankingPosts(idUsuario);
+
+        document.getElementById("total_posts").innerHTML =
+          sessionStorage.TOTAL_POSTS;
+
+        // Quantidade de comentarios mês
+        function quantidadeComentariosMes(idUsuario) {
+          fetch(`/posts/comentariosMes/${idUsuario}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuario: idUsuario,
+            }),
+          }).then(function (resposta) {
+            console.log(resposta);
+            if (resposta.ok) {
+              resposta.json().then((json) => {
+                sessionStorage.COMENTARIOS_MES = JSON.stringify(json[0]);
+
+                var comentarios = json;
+
+                comentarios.forEach((comentario) => {
+                  console.log(comentarios);
+                  labelsComentariosMes.push(comentario.mes);
+                  console.log(comentario.totalcomentariosmes);
+                  labelsComentariosQuantidade.push(
+                    comentario.totalcomentariosmes
+                  );
+                  graficoComentarios(
+                    labelsComentariosMes,
+                    labelsComentariosQuantidade
+                  );
+                });
+              });
+            }
+          });
+        }
+
+        // Função para buscar o ranking do usuario
+        function rankingPosts(idUsuario) {
+          fetch(`/posts/ranking/${idUsuario}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuario: idUsuario,
+            }),
+          })
+            .then(function (resposta) {
+              console.log(resposta);
+              if (resposta.ok) {
+                resposta.json().then((json) => {
+                  console.log(json);
+
+                  sessionStorage.RANKING = JSON.stringify(json);
+                  var posts = JSON.parse(sessionStorage.RANKING);
+
+                  var msgSemPost = `<p>Publique posts e aguarde interações</p>`;
+
+                  var num = 1;
+
+                  posts.forEach((post) => {
+                    document.getElementById("ranking-container").innerHTML += `
+                    <div class="line">
+                      <span><span class="order">${num++}º</span> ${
+                      post.titulo
+                    } </span>
+                      <span class="num">${post.totalcurtidas}</span>
+                    </div>
+                    `;
+                  });
+                });
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+        }
+
+        // Quantidade de curtidas por mês
+        function quantidadeCurtidasMes(idUsuario) {
+          fetch(`/posts/curtidasMes/${idUsuario}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuario: idUsuario,
+            }),
+          })
+            .then(function (resposta) {
+              console.log(resposta);
+              if (resposta.ok) {
+                resposta.json().then((json) => {
+                  sessionStorage.CURTIDAS_MES = JSON.stringify(json[0]);
+
+                  var dados = json;
+
+                  dados.forEach((valor) => {
+                    console.log(dados);
+                    labelsCurtidasMes.push(valor.mes);
+                    console.log(valor.mes);
+                    labelCurtidasQuantidadeMes.push(valor.totalcurtidas);
+                  });
+
+                  graficoCurtidas(
+                    labelsCurtidasMes,
+                    labelCurtidasQuantidadeMes
+                  );
+                });
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+        }
+
+        // Quantidade de comentários que o usuário recebeu
+        function quantidadeComentarios(idUsuario) {
+          fetch(`/posts/comentarios/${idUsuario}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuario: idUsuario,
+            }),
+          })
+            .then(function (resposta) {
+              console.log(resposta);
+              if (resposta.ok) {
+                resposta.json().then((json) => {
+                  sessionStorage.TOTAL_COMENTARIOS = json[0].totalcomentarios;
+                  document.getElementById("total_comentarios").innerHTML =
+                    sessionStorage.TOTAL_COMENTARIOS;
+                });
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+        }
+
+        // Puxar a quantidade de curtidas
+        function quantidadeCurtidas(idUsuario) {
+          fetch(`/posts/dados/${idUsuario}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idUsuario: idUsuario,
+            }),
+          })
+            .then(function (resposta) {
+              console.log(resposta);
+              if (resposta.ok) {
+                resposta.json().then((json) => {
+                  sessionStorage.TOTAL_CURTIDAS = json[0].totalcurtidas;
+                  document.getElementById("total_curtidas").innerHTML =
+                    sessionStorage.TOTAL_CURTIDAS;
+                });
+              }
+            })
+            .catch(function (erro) {
+              console.log(erro);
+            });
+        }
+      });
+
       const curtidasCtx = document.getElementById("curtidas").getContext("2d");
       const comentariosCtx = document
         .getElementById("comentarios")
         .getContext("2d");
 
       /* Grafico de comentarios */
-      const comentarios = new Chart(comentariosCtx, {
-        type: "bar",
-        data: {
-          labels: [
-            "Janeiro",
-            "Fevereiro",
-            "Março",
-            "Abril",
-            "Maio",
-            "Junho",
-            "Julho",
-          ],
-          datasets: [
-            {
-              label: "Quantidade de curtidas por mês",
-              data: [50, 75, 100, 125, 80, 53, 45],
-              backgroundColor: "rgb(0, 0, 0)",
-              borderColor: "rgba(0, 0, 0, 0)",
-              borderWidth: 1,
+      function graficoComentarios(
+        labelsComentariosMes,
+        labelsComentariosQuantidade
+      ) {
+        var opcoes = {
+          type: "bar",
+          data: {
+            labels: labelsComentariosMes,
+            datasets: [
+              {
+                label: "Quantidade de comentários por mês",
+                data: labelsComentariosQuantidade,
+                backgroundColor: "rgb(0, 0, 0)",
+                borderColor: "rgba(0, 0, 0, 0)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            indexAxis: "y",
+            plugins: {
+              legend: {
+                labels: {
+                  font: {
+                    size: 14,
+                    family: "Space Grotesk",
+                    style: "normal",
+                  },
+                },
+              },
             },
-          ],
-        },
-        options: {
-          indexAxis: "y",
-          plugins: {
-            legend: {
-              labels: {
-                font: {
-                  size: 14,
-                  family: "Space Grotesk",
-                  style: "normal",
+            scales: {
+              x: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                  drawBorder: false,
+                },
+              },
+              y: {
+                grid: {
+                  display: false,
+                  drawBorder: false,
                 },
               },
             },
           },
-          scales: {
-            x: {
-              beginAtZero: true,
-              grid: {
-                display: false,
-                drawBorder: false,
-              },
-            },
-            y: {
-              grid: {
-                display: false,
-                drawBorder: false,
-              },
-            },
-          },
-        },
-      });
+        };
+
+        const comentarios = new Chart(comentariosCtx, opcoes);
+      }
 
       /* Gráfico de curtidas */
-      const curtidas = new Chart(curtidasCtx, {
-        type: "bar",
-        data: {
-          labels: [
-            "Janeiro",
-            "Fevereiro",
-            "Março",
-            "Abril",
-            "Maio",
-            "Junho",
-            "Julho",
-          ],
-          datasets: [
-            {
-              label: "Quantidade de curtidas por mês",
-              data: [50, 75, 100, 125, 80, 53, 45],
-              backgroundColor: "rgb(0, 0, 0)",
-              borderColor: "rgba(0, 0, 0, 0)",
-              borderWidth: 1,
+      function graficoCurtidas(labelsCurtidasMes, labelCurtidasQuantidade) {
+        var opcoes = {
+          type: "bar",
+          data: {
+            labels: labelsCurtidasMes,
+            datasets: [
+              {
+                label: "Quantidade de curtidas por mês",
+                data: labelCurtidasQuantidade,
+                backgroundColor: "rgb(0, 0, 0)",
+                borderColor: "rgba(0, 0, 0, 0)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            indexAxis: "x",
+            plugins: {
+              legend: {
+                labels: {
+                  font: {
+                    size: 14,
+                    family: "Space Grotesk",
+                    style: "normal",
+                  },
+                },
+              },
             },
-          ],
-        },
-        options: {
-          indexAxis: "x",
-          plugins: {
-            legend: {
-              labels: {
-                font: {
-                  size: 14,
-                  family: "Space Grotesk",
-                  style: "normal",
+            scales: {
+              x: {
+                beginAtZero: true,
+                grid: {
+                  display: false,
+                  drawBorder: false,
+                },
+              },
+              y: {
+                grid: {
+                  display: false,
+                  drawBorder: false,
                 },
               },
             },
           },
-          scales: {
-            x: {
-              beginAtZero: true,
-              grid: {
-                display: false,
-                drawBorder: false,
-              },
-            },
-            y: {
-              grid: {
-                display: false,
-                drawBorder: false,
-              },
-            },
-          },
-        },
-      });
-    </script>
+        };
 
-    <!--Session-->
-    <script src="assets/javascript/session.js"></script>
+        const curtidas = new Chart(curtidasCtx, opcoes);
+      }
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {

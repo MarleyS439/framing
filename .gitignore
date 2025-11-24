@@ -6,3 +6,6 @@ node_modules
 
 # Ignorar .env
 .env
+
+# Ignorar o conteúdo pasta de uploads
+public/assets/uploads/images/*

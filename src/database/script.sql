@@ -117,15 +117,17 @@ SELECT
 DESC comentario;
 
 INSERT INTO comentario (id, conteudo, fk_id_post, fk_id_usuario) VALUES 
-	(DEFAULT, 'Primeiro comentário sobre o post', 1, 2);
+	(DEFAULT, 'Segundo e terceiro comentário sobre o post', 1, 2);
 
 SELECT 
 	u.usuario, 
 	p.titulo,
 	p.foto_path,
-	p.descricao
+	p.descricao,
+	p.criado_em
 FROM usuario u JOIN post p
 	ON p.fk_id_usuario = u.id
+	ORDER BY p.criado_em DESC;
 	
 	
 SELECT * FROM comentario;
@@ -139,5 +141,130 @@ SELECT
 FROM comentario c JOIN usuario u
 	ON c.fk_id_usuario = u.id;
 	
+
+TRUNCATE post_curtido;
+
+DESC comentario;
 	
+SELECT
+	p.id idPost,
+	c.id idComentario,
+	c.conteudo ConteudoComentario,
+	u.usuario usuario,
+	DATE_FORMAT(c.data_hora, '%d, %M de %Y')
+FROM comentario c
+JOIN usuario u
+	ON c.fk_id_usuario = u.id
+JOIN post p
+	ON c.fk_id_post = p.id
+	WHERE p.id = 1;
 	
+SELECT
+      p.id idPost,
+      c.id idComentario,
+      c.conteudo ConteudoComentario,
+      u.usuario usuario,
+      DATE_FORMAT(c.data_hora, '%d, %M de %Y') data_hora
+    FROM comentario c
+    JOIN usuario u
+      ON c.fk_id_usuario = u.id
+    JOIN post p
+      ON c.fk_id_post = p.id
+      WHERE p.id = 4
+		ORDER BY c.data_hora DESC;
+
+SELECT
+	COUNT(*) FROM post WHERE fk_id_usuario = 1;
+
+SHOW TABLES;
+
+SELECT * FROM comentario;
+
+-- Quntidade de comentarios dos posts do usuario
+SELECT
+	COUNT(*) quantidadeComentarios
+FROM comentario c
+	JOIN usuario u 
+		ON c.fk_id_usuario = u.id
+			WHERE fk_id_usuario <> 1;
+
+SELECT * FROM post_curtido;
+
+-- Quantidade de curtidas nos posts do usuario (contagem de curtidas que não foi ele que deu)
+SELECT
+	p.titulo,
+	COUNT(*) TotalCurtidas
+FROM post_curtido pc JOIN post p
+	ON pc.fk_id_post = p.id
+WHERE pc.fk_id_usuario = 1 AND p.fk_id_usuario <> 1
+	GROUP BY p.titulo;
+	
+
+SELECT * from usuario;
+
+SELECT COUNT(*) from post_curtido pc;
+
+SELECT
+	p.id idPost,
+	count(*)
+from post_curtido pc JOIN post p 
+	ON pc.fk_id_usuario = p.fk_id_usuario 
+	WHERE pc.fk_id_usuario <>  GROUP BY p.id;
+
+
+
+SELECT
+	p.titulo,
+	COUNT(*) totalCurtidas
+FROM post_curtido pc JOIN post p
+	ON pc.fk_id_post = p.id
+WHERE pc.fk_id_usuario = 1 AND p.fk_id_usuario <> 1
+	GROUP BY p.titulo;
+
+
+-- Quantidade de curtidas que um usuaruio recebeu de seus posts
+SELECT
+    COUNT(*) AS totalCurtidas
+FROM post_curtido pc
+JOIN post p ON pc.fk_id_post = p.id
+WHERE p.fk_id_usuario = 2
+	AND pc.fk_id_usuario <> 2;
+
+SELECT * FROM usuario;
+
+SELECT
+	COUNT(*) totalComentarios
+FROM comentario c 
+	JOIN post p 
+		ON c.fk_id_post = p.id
+	WHERE p.fk_id_usuario = 3
+		AND c.fk_id_usuario <> 3;
+
+SELECT * FROM post;
+
+UPDATE post SET criado_em = '2026-01-01 00:00:00' WHERE id = 3;
+
+ALTER TABLE post_curtido ADD COLUMN data_hora DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP();
+
+TRUNCATE post_curtido;
+
+SELECT * FROM post_curtido;
+
+INSERT INTO post_curtido VALUES (2, 1, DEFAULT);
+
+UPDATE post_curtido pc SET data_hora = '2025-12-01-01' WHERE fk_id_post = 2;
+
+DESC post_curtido;
+
+-- Quantidade de curtidas agrupadas por mes
+SELECT
+	DATE_FORMAT(pc.data_hora, '%M') mes,
+    COUNT(*) AS totalCurtidas
+FROM post_curtido pc
+JOIN post p ON pc.fk_id_post = p.id
+WHERE p.fk_id_usuario = 2
+	AND pc.fk_id_usuario <> 2 GROUP BY mes;
+
+
+
+

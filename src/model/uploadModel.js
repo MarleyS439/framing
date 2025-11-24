@@ -1,12 +1,12 @@
 var database = require("../database/config");
 
 // Função para enviar arvquivo
-function enviar(arquivo, id) {
+function enviar(img) {
   console.log("Enviando arquivo...");
 
   const sql = `
     INSERT INTO temp (arquivo, fk_id_usuario)
-    VALUES ('${arquivo}', ${id});
+    VALUES ('${img.file}', ${img.id});
   `;
   console.log("Executando SQL:\n", sql);
   return database.executar(sql);
@@ -26,7 +26,6 @@ function buscarPreview(id) {
   console.log("Executando SQL:\n", sql);
   return database.executar(sql);
 }
-
 
 module.exports = {
   enviar,

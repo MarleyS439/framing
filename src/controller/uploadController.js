@@ -2,14 +2,18 @@ var uploadModel = require("../model/uploadModel");
 
 // Função para enviar foto
 function enviar(req, res) {
-  const file = req.file.filename;
-  const { id } = req.body;
+  var file = req.file.filename;
+  console.log(file);
+
+  var { id } = req.body;
+
+  var img = { id, file };
 
   if (file == undefined) {
     res.status(400).send("Imagem está undefined");
   } else {
     uploadModel
-      .enviar(file, id)
+      .enviar(img)
       .then((resultado) => {
         return res.status(201).json(resultado);
       })
@@ -26,12 +30,16 @@ function enviarPreview(req, res) {
     return res.status(400).send("Nenhuma imagem foi enviada.");
   }
 
-  const file = req.file.filename;
-  const { id } = req.body;
+  var file = req.file.filename;
+
+  var { id } = req.body;
+
+  var preview = { file, id };
 
   uploadModel
-    .enviar(file, id)
+    .enviar(preview)
     .then(function (resultado) {
+      console.log(preview);
       return res.status(201).json(resultado);
     })
     .catch(function (erro) {

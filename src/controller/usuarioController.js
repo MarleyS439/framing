@@ -73,6 +73,7 @@ function cadastrar(req, res) {
 // Função para confirmar a capa
 function confirmarCapa(req, res) {
   var id = req.params.id;
+
   console.log("Confirmando alteração para: ", id);
 
   usuarioModel
@@ -102,8 +103,6 @@ function listarPosts(req, res) {
       res.status(500).send(erro);
     });
 }
-
-
 
 module.exports = {
   cadastrar,
