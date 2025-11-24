@@ -63,20 +63,24 @@ function buscarPreview(req, res) {
     });
 }
 
-/* // Função para postar
-function postar(req, res) {
-  var imagem = req.file.filename;
-  var { id, titulo, foto_post, descricao } = req.body;
-  var post = { id, titulo, foto_post, descricao, imagem };
+// Função para enviar a foto de perfil
+function enviarFotoPerfilPreview(req, res) {
+  var id = req.params.id;
+  console.log("Enviando foto de perfil");
 
   uploadModel
-    .enviar(post)
+    .enviarFotoPerfilPreview()
     .then(function (resultado) {
-      res.status(201).send("Post criado com sucesso");
+      res.json(resultado);
     })
     .catch(function (erro) {
       res.status(500).send(erro);
     });
-} */
+}
 
-module.exports = { enviar, enviarPreview, buscarPreview };
+module.exports = {
+  enviar,
+  enviarPreview,
+  buscarPreview,
+  enviarFotoPerfilPreview,
+};

@@ -159,7 +159,7 @@
         </li>
 
         <li>
-          <button>Meus posts</button>
+          <button style="font-weight: bold;">Meus posts</button>
         </li>
 
         <li>
@@ -632,7 +632,7 @@
               resposta.json().then((json) => {
                 sessionStorage.PREVIEW = `/assets/uploads/images/${json[0].arquivo}`;
                 document.getElementById(
-                  "preview"
+                  "capa_edit"
                 ).style.backgroundImage = `url(${sessionStorage.PREVIEW})`;
               });
             }

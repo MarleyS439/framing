@@ -28,4 +28,13 @@ router.get("/preview/:id", function (req, res) {
   uploadController.buscarPreview(req, res);
 });
 
+// Enviar preview de foto de perfil
+router.post(
+  "/previewPerfil/:id",
+  upload.single("input_fot_perfil"),
+  function (req, res) {
+    uploadController.enviarFotoPerfilPreview(req, res);
+  }
+);
+
 module.exports = router;

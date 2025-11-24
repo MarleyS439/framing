@@ -27,7 +27,10 @@ function buscarPreview(id) {
   return database.executar(sql);
 }
 
+function enviarFotoPerfilPreview() {}
+
 module.exports = {
   enviar,
   buscarPreview,
+  enviarFotoPerfilPreview,
 };

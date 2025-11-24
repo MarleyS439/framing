@@ -465,7 +465,7 @@
   }
 
   #saveCover:hover {
-    background-color: var(--color-opaque);
+    background-color: var(--color-hover);
   }
 
   .add-post {
