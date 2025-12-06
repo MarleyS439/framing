@@ -256,15 +256,50 @@ UPDATE post_curtido pc SET data_hora = '2025-12-01-01' WHERE fk_id_post = 2;
 
 DESC post_curtido;
 
+DESC comentario;
+
+SELECT * FROM comentario c;
+
 -- Quantidade de curtidas agrupadas por mes
 SELECT
 	DATE_FORMAT(pc.data_hora, '%M') mes,
-    COUNT(*) AS totalCurtidas
+    COUNT(*) AS totalCurtidasMes
 FROM post_curtido pc
 JOIN post p ON pc.fk_id_post = p.id
 WHERE p.fk_id_usuario = 2
 	AND pc.fk_id_usuario <> 2 GROUP BY mes;
 
+-- Quantidade de comentarios agrupadas por mes
+SELECT
+	DATE_FORMAT(c.data_hora, '%M') mes,
+	COUNT(*) AS totalComentariosMes
+FROM comentario c JOIN post p
+	ON c.fk_id_post = p.id
+	WHERE p.fk_id_usuario = 2
+		AND c.fk_id_usuario <> 2
+	GROUP BY mes;
+
+SELECT * FROM post_curtido;
+
+-- Ranking de posts de um usuário (por curtida)
+SELECT
+    p.id AS idPost,
+    p.titulo,
+    p.fk_id_usuario,
+    COUNT(pc.fk_id_usuario) AS totalCurtidas
+FROM post p JOIN post_curtido pc ON p.id = pc.fk_id_post
+WHERE p.fk_id_usuario = 2
+GROUP BY p.id, p.titulo, p.fk_id_usuario
+ORDER BY totalCurtidas DESC;
 
 
+DESC post;
 
+SELECT * FROM usuario;
+
+SELECT * FROM post_curtido;
+
+SELECT
+	COUNT(*) curtidas
+FROM post_curtido
+WHERE fk_id_usuario = 2;

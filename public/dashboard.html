@@ -226,7 +226,7 @@
 
         // Quantidade de comentarios mês
         function quantidadeComentariosMes(idUsuario) {
-          fetch(`/posts/comentariosMes/${idUsuario}`, {
+          fetch(`/posts/comentariosMes/${idUsuario}`, { 
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -286,10 +286,10 @@
                   posts.forEach((post) => {
                     document.getElementById("ranking-container").innerHTML += `
                     <div class="line">
-                      <span><span class="order">${num++}º</span> ${
+                      <span><span class="order">${num++}º</span> <span class="title-post">${
                       post.titulo
-                    } </span>
-                      <span class="num">${post.totalcurtidas}</span>
+                    } </span></span>
+                      <span class="num"><span style="font-size: 1rem">curtidas</span> ${post.totalcurtidas}</span>
                     </div>
                     `;
                   });

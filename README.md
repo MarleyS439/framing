@@ -1,5 +1,3 @@
-
-
 # Framing - Rede Social Para Amantes da Fotografia
 
 ## Sobre o Projeto
@@ -47,7 +45,7 @@ Para usufruir deste projeto, você repositório em sua máquina e executar os se
 
 ## Observações
 
-- Como o projeto é de intuito acadêmico, não há implementação de tecnicas de responsividade no layout das páginas.
+- Como o projeto é de intuito acadêmico, não há implementação de técnicas de responsividade no layout das páginas.
 
 ## Contato
 

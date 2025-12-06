@@ -36,6 +36,8 @@
   </head>
   <body>
     <div class="top">
+      <div id="bg-image" class="bg-image"></div>
+
       <!--Navigation-->
       <div class="navigation">
         <ul>
@@ -248,10 +250,14 @@
 
       document.addEventListener("DOMContentLoaded", listartPosts());
 
+      document.getElementById(
+        "bg-image"
+      ).style.backgroundImage = `url(${sessionStorage.CAPA_USUARIO})`;
+
       // Listar todos os posts
       function listartPosts() {
         var id = sessionStorage.ID_USUARIO;
-        
+
         fetch(`/posts/listaTudoMenosEu/${id}`, {
           method: "POST",
           headers: {

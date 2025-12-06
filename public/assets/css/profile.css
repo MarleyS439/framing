@@ -375,8 +375,8 @@
     transition: 200ms ease-in-out;
   }
   .options .save:hover {
-    background-color: var(--color-opaque);
-    border: 1px solid var(--color-opaque);
+    background-color: var(--color-hover);
+    border: 1px solid var(--color-hover);
   }
 
   /* Modal Edit Cover */
@@ -568,7 +568,7 @@
   }
 
   #publicar:hover {
-    background-color: var(--color-opaque);
+    background-color: var(--color-hover);
   }
 
   #hashtag {

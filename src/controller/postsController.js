@@ -1,7 +1,7 @@
 const upload = require("../config/upload");
 var postsModel = require("../model/postsModel");
 
-// Função para postar um post de um Usuário
+// Função para postar
 function postar(req, res) {
   var foto = req.file.filename;
 
@@ -49,7 +49,7 @@ function listarTudo(req, res) {
     });
 }
 
-// Função para listar todos os posts que não sejam do propŕio usuario
+// Função para listar todos os posts que não sejam do próprio usuário
 function listarTudoMenosEu(req, res) {
   var id = req.body.id;
   console.log("Listando todo os posts que não seja do usuário");
@@ -84,7 +84,7 @@ function curtir(req, res) {
     });
 }
 
-// Função para listar comentarios
+// Função para listar comentários
 function listarComentarios(req, res) {
   var idPost = req.body.idPost;
   console.log("Verificando comentários para o post de ID: " + idPost);
@@ -101,7 +101,7 @@ function listarComentarios(req, res) {
     });
 }
 
-// Função para comenta rum post
+// Função para comentar um post
 function comentar(req, res) {
   var idPost = req.body.idPost;
   var idUsuario = req.body.idUsuario;
@@ -121,7 +121,7 @@ function comentar(req, res) {
     });
 }
 
-// COntagem de curtidas que um usário recebeu
+// Contagem de curtidas que um usário recebeu
 function quantidadeCurtidasQueRecebeu(req, res) {
   var idUsuario = req.body.idUsuario;
 
@@ -212,7 +212,7 @@ function curtidas(req, res) {
   var idUsuario = req.body.idUsuario;
   console.log(
     "Consultando quantidade de posts que esse usário curtiu: ",
-    idUsuario
+    idUsuario,
   );
 
   postsModel
